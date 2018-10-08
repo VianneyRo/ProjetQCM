@@ -1,4 +1,4 @@
-package main.java.fr.eni.projet.qcm.bo;
+package fr.eni.projet.qcm.bo;
 
 import java.util.ArrayList;
 import java.util.List;
