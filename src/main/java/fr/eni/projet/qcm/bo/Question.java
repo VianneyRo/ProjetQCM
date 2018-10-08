@@ -5,24 +5,24 @@ import java.util.List;
 
 public class Question {
 
-	private int id;
+	private Integer id;
 	private String enonce;
 	private String media;
-	private int points;
+	private Integer points;
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 
 	public Question() {}
 
-	public int getId() { return id; }
+	public Integer getId() { return id; }
 	public String getEnonce() { return enonce; }
 	public String getMedia() { return media; }
-	public int getPoints() { return points; }
+	public Integer getPoints() { return points; }
 	public List<Proposition> getPropositions() { return this.propositions; }
 
-	public void setId(int id) { this.id = id; }
+	public void setId(Integer id) { this.id = id; }
 	public void setEnonce(String enonce) { this.enonce = enonce; }
 	public void setMedia(String media) { this.media = media; }
-	public void setPoints(int points) { this.points = points; }
+	public void setPoints(Integer points) { this.points = points; }
 	public void setPropositions(List<Proposition> propositions) { this.propositions = propositions; }
 
 	public void ajouterProposition(Proposition proposition) {

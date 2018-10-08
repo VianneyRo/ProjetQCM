@@ -1,31 +1,24 @@
 package fr.eni.projet.qcm.bo;
 
-import java.io.Serializable;
 
-public class Profil implements Serializable {
-
-	private static final long serialVersionUID = 8724460074293802216L;
+public class Profil {
 	
-	private int id;
+	private Integer id;
 	private String libelle;	
 	
 	/**
-	 * 
 	 * @param id
 	 * @param libelle
 	 */
-	public Profil(int id, String libelle) {
-		super();
+	public Profil(Integer id, String libelle) {
 		this.id = id;
 		this.libelle = libelle;
 	}
 
 	/**
-	 * 
 	 * @param libelle
 	 */
 	public Profil(String libelle) {
-		super();
 		this.libelle = libelle;
 	}
 
@@ -40,23 +33,10 @@ public class Profil implements Serializable {
 		return builder.toString();
 	}
 
-	public int getId() {
-		return id;
-	}
+	public Integer getId() { return id; }
+	public String getLibelle() { return libelle; }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	public void setId(Integer id) { this.id = id; }
+	public void setLibelle(String libelle) { this.libelle = libelle; }
 
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	
-	
-	
-	
 }

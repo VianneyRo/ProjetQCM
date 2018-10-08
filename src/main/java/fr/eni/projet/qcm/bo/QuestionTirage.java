@@ -5,25 +5,24 @@ import java.util.List;
 
 public class QuestionTirage {
 
-	private int numOrdre;
+	private Integer numOrdre;
 	private boolean marquee;
 	private Question question;
-	private List<ReponseTirage> reponsesTirage = new ArrayList<ReponseTirage>();
+	private List<Integer> reponsesTirage = new ArrayList<Integer>();
 
 	public QuestionTirage(int numOrdre, Question question) {
 		this.numOrdre = numOrdre;
 		this.question = question;
 	}
 
-	public int getNumOrdre() { return this.numOrdre; }
+	public Integer getNumOrdre() { return this.numOrdre; }
 	public boolean isMarquee() { return marquee; }
 	public Question getQuestion() { return question; }
-	public List<ReponseTirage> getReponsesTirage() { return reponsesTirage; }
+	public List<Integer> getReponsesTirage() { return reponsesTirage; }
 
-	public void setNumOrdre(int numOrdre) { this.numOrdre = numOrdre; }
+	public void setNumOrdre(Integer numOrdre) { this.numOrdre = numOrdre; }
 	public void setMarquee(boolean marquee) { this.marquee = marquee; }
 	public void setQuestion(Question question) { this.question = question; }
-	public void setReponsesTirage(List<ReponseTirage> reponsesTirage) { this.reponsesTirage = reponsesTirage; }
-	
-	
+	public void setReponsesTirage(List<Integer> reponsesTirage) { this.reponsesTirage = reponsesTirage; }
+
 }

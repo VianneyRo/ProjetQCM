@@ -1,47 +1,45 @@
 package fr.eni.projet.qcm.bo;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Theme implements Serializable{
+import fr.eni.projet.qcm.bo.Question;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8015702896692045415L;
-	private int idTheme;
+public class Theme {
+
+	private Integer id;
 	private String libelle;
+	private List<Question> questions = new ArrayList<Question>();
 	
-	public Theme() {
-		super();
-	}
+	public Theme() {}
 
-	public Theme(int idTheme, String libelle) {
-		super();
-		this.idTheme = idTheme;
+	public Theme(Integer id, String libelle, List<Question> questions) {
+		this.id = id;
 		this.libelle = libelle;
+		this.questions = questions;
 	}
 
-	public int getIdTheme() {
-		return idTheme;
+	public Integer getId() { return this.id; }
+	public String getLibelle() { return this.libelle; }
+	public List<Question> getQuestions() { return this.questions; }
+
+	public void setId(Integer id) { this.id = id; }
+	public void setLibelle(String libelle) { this.libelle = libelle; }
+	public void setQuestions(List<Question> questions) { this.questions = questions; }
+
+	public void ajouterQuestion(Question question) {
+		this.questions.add(question);
 	}
 
-	public void setIdTheme(int idTheme) {
-		this.idTheme = idTheme;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public void supprimererQuestion(Question question) {
+		this.questions.remove(question);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Theme [idTheme=");
-		builder.append(idTheme);
+		builder.append(id);
 		builder.append(", libelle=");
 		builder.append(libelle);
 		builder.append("]");

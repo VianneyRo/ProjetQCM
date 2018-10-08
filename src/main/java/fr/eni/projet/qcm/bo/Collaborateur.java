@@ -1,20 +1,29 @@
 package fr.eni.projet.qcm.bo;
 
-import java.io.Serializable;
-
-public class Collaborateur extends Utilisateur implements Serializable {
-
-	private static final long serialVersionUID = -6683587888031135573L;
+public class Collaborateur extends Utilisateur {
 
 	/**
-	 * 
+	 * @param id
 	 * @param nom
 	 * @param prenom
 	 * @param email
 	 * @param password
+	 * @param profil
 	 */
-	public Collaborateur(String nom, String prenom, String email, String password) {
-		super(nom, prenom, email, password);
+	public Collaborateur(Integer id, String nom, String prenom,
+			String email, String password, Profil profil) {
+		super(id, nom, prenom, email, password, profil);
+	}
+
+	/**
+	 * @param nom
+	 * @param prenom
+	 * @param email
+	 * @param password
+	 * @param profil
+	 */
+	public Collaborateur(String nom, String prenom, String email, String password, Profil profil) {
+		super(nom, prenom, email, password, profil);
 	}
 
 }
