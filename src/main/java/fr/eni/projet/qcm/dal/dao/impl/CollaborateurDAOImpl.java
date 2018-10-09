@@ -23,16 +23,16 @@ public class CollaborateurDAOImpl implements CollaborateurDAO {
 	private static final String INSERT_COLLABORATEUR_QUERY = "INSERT INTO utilisateur(nom, prenom, email, password, u.profil_id) VALUES (?, ?, ?, ?, ?)";
 	private static final String DELETE_COLLABORATEUR_QUERY = "DELETE FROM utilisateur WHERE id = ?";
 	private static final String UPDATE_COLLABORATEUR_QUERY = "UPDATE utilisateur SET nom = ?, prenom = ?, email = ?, password = ? WHERE id = ?";
-	
+
 	private static final String PROFIL_ID_COLLABORATEUR = "1";
-	
+
 	private static CollaborateurDAOImpl instance;
-	
-	private CollaborateurDAOImpl(){
-		
+
+	private CollaborateurDAOImpl() {
+
 	}
-	
-	public static CollaborateurDAOImpl getInstance(){
+
+	public static CollaborateurDAOImpl getInstance() {
 		if (instance == null) {
 			instance = new CollaborateurDAOImpl();
 		}
@@ -95,7 +95,7 @@ public class CollaborateurDAOImpl implements CollaborateurDAO {
 		} finally {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
-		
+
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public class CollaborateurDAOImpl implements CollaborateurDAO {
 		} finally {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
-		
+
 	}
 
 	@Override
@@ -150,65 +150,60 @@ public class CollaborateurDAOImpl implements CollaborateurDAO {
 	public List<Collaborateur> selectAll() throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        List<Collaborateur> list = new ArrayList<>();
-        
-        try {
-            connection = MSSQLConnectionFactory.get();
-            statement = connection.prepareStatement(SELECT_ALL_COLLABORATEURS_QUERY);
-            
-            statement.setString(1, PROFIL_ID_COLLABORATEUR);
-            resultSet = statement.executeQuery();
+		ResultSet resultSet = null;
+		List<Collaborateur> list = new ArrayList<>();
 
-            while (resultSet.next()) {
-                list.add(resultSetToNote(resultSet));
-            }
-        } catch(SQLException e) {
-            throw new DaoException(e.getMessage(), e);
-        } finally {
-            ResourceUtil.safeClose(resultSet, statement, connection);
-        }
-        
-        return list;
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_ALL_COLLABORATEURS_QUERY);
+
+			statement.setString(1, PROFIL_ID_COLLABORATEUR);
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				list.add(resultSetToNote(resultSet));
+			}
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return list;
 	}
 
 	@Override
 	public boolean checkExistenceWithName(String name) throws DaoException {
 		Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        boolean isExist = false;
-        
-        try {
-            connection = MSSQLConnectionFactory.get();
-            statement = connection.prepareStatement(SELECT_ONE_COLLABORATEUR_BY_NAME_QUERY);
-            
-            statement.setString(1, PROFIL_ID_COLLABORATEUR);
-            statement.setString(2, name);
-            resultSet = statement.executeQuery();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean isExist = false;
 
-            isExist = resultSet.next();
-            
-        } catch(SQLException e) {
-            throw new DaoException(e.getMessage(), e);
-        } finally {
-            ResourceUtil.safeClose(resultSet, statement, connection);
-        }
-        
-        return isExist;
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_ONE_COLLABORATEUR_BY_NAME_QUERY);
+
+			statement.setString(1, PROFIL_ID_COLLABORATEUR);
+			statement.setString(2, name);
+			resultSet = statement.executeQuery();
+
+			isExist = resultSet.next();
+
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return isExist;
 	}
-	
-	private Collaborateur resultSetToNote(ResultSet resultSet)throws SQLException {
 
-		Collaborateur collaborateur = new Collaborateur();
-		collaborateur.setId(resultSet.getInt("id"));
-		collaborateur.setNom(resultSet.getString("nom"));
-		collaborateur.setPrenom(resultSet.getString("prenom"));
-		collaborateur.setEmail(resultSet.getString("email"));
-		collaborateur.setPassword(resultSet.getString("password"));
+	private Collaborateur resultSetToNote(ResultSet resultSet) throws SQLException {
+
+		Collaborateur collaborateur = new Collaborateur(resultSet.getInt("id"), resultSet.getString("nom"),
+				resultSet.getString("prenom"), resultSet.getString("email"), resultSet.getString("password"));
 
 		return collaborateur;
 	}
-	
-	
+
 }

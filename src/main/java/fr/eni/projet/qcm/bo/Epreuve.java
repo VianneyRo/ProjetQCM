@@ -1,117 +1,104 @@
 package fr.eni.projet.qcm.bo;
 
-import java.io.Serializable;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class Epreuve implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -404541744556399989L;
+public class Epreuve {
 	
-	private int idEpreuve;
+	private Integer id;
 	private Date dateDebutValidite;
 	private Date dateFinValidite;
 	private long tempsEcoule;
+	private float noteObtenue;
+	private String niveauObtenu;
 	private String etat;
-	private float note_obtenue;
-	private String niveau_obtenu;
+
+	private Candidat candidat;
+	private Test test;
+	private List<QuestionTirage> questionsTirage = new ArrayList<QuestionTirage>();
 	
-	
-	public Epreuve() {
-		super();
+	/**
+	 * Constructeur BO
+	 * @param candidat
+	 * @param test
+	 */
+	public Epreuve(Candidat candidat, Test test) {
+		this.candidat = candidat;
+		this.test = test;
 	}
 
-
-	public Epreuve(int idEpreuve, Date dateDebutValidite, Date dateFinValidite, long tempsEcoule, String etat,
-			float note_obtenue, String niveau_obtenu) {
-		super();
-		this.idEpreuve = idEpreuve;
+	/**
+	 * Constructeur BDD
+	 * @param candidat
+	 * @param test
+	 * @param dateDebutValidite
+	 * @param dateFinValidite
+	 * @param tempsEcoule
+	 * @param etat
+	 * @param noteObtenue
+	 * @param niveauObtenu
+	 */
+	public Epreuve(Integer id, Candidat candidat, Test test, Date dateDebutValidite,
+			Date dateFinValidite, long tempsEcoule, String etat, float noteObtenue,
+			String niveauObtenu) {
+		this.id = id;
+		this.candidat = candidat;
+		this.test = test;
 		this.dateDebutValidite = dateDebutValidite;
 		this.dateFinValidite = dateFinValidite;
 		this.tempsEcoule = tempsEcoule;
 		this.etat = etat;
-		this.note_obtenue = note_obtenue;
-		this.niveau_obtenu = niveau_obtenu;
+		this.noteObtenue = noteObtenue;
+		this.niveauObtenu = niveauObtenu;
 	}
 
+	public Integer getId() { return id; }
+	public Date getDateDebutValidite() { return dateDebutValidite; }
+	public Date getDateFinValidite() { return dateFinValidite; }
+	public long getTempsEcoule() { return tempsEcoule; }
+	public float getNoteObtenue() { return noteObtenue; }
+	public String getNiveauObtenu() { return niveauObtenu; }
+	public String getEtat() { return etat; }
+	public Candidat getCandidat() { return candidat; }
+	public Test getTest() { return test; }
+	public List<QuestionTirage> getQuestionsTirage() { return this.questionsTirage; }
 
-	public int getIdEpreuve() {
-		return idEpreuve;
+	public void setId(Integer id) { this.id = id; }
+	public void setDateDebutValidite(Date dateDebutValidite) { this.dateDebutValidite = dateDebutValidite; }
+	public void setDateFinValidite(Date dateFinValidite) { this.dateFinValidite = dateFinValidite; }
+	public void setTempsEcoule(long tempsEcoule) { this.tempsEcoule = tempsEcoule; }
+	public void setNote_obtenue(float note_obtenue) { this.noteObtenue = note_obtenue; }
+	public void setNiveau_obtenu(String niveau_obtenu) { this.niveauObtenu = niveau_obtenu; }
+	public void setEtat(String etat) { this.etat = etat; }
+	public void setCandidat(Candidat candidat) { this.candidat = candidat; }
+	public void setTest(Test test) { this.test = test; }
+	public void setQuestionsTirage(List<QuestionTirage> questionsTirage) { this.questionsTirage = questionsTirage; }
+
+	/**
+	 * Génère les questionsTirage d'une épreuve à partir des questions du test.
+	 * @throws Exception
+	 */
+	public void tirerQuestions() throws Exception {
+		List<Question> questions = null;
+		try {
+			questions = this.test.tirerQuestions();
+
+			int index = 0;
+			this.questionsTirage = new ArrayList<QuestionTirage>();
+			for(Question question: questions) {
+				this.questionsTirage.add(new QuestionTirage(index++, question));
+			}
+		} catch(Exception e) {
+			throw new Exception(e.getMessage(), e);
+		}
 	}
-
-
-	public void setIdEpreuve(int idEpreuve) {
-		this.idEpreuve = idEpreuve;
-	}
-
-
-	public Date getDateDebutValidite() {
-		return dateDebutValidite;
-	}
-
-
-	public void setDateDebutValidite(Date dateDebutValidite) {
-		this.dateDebutValidite = dateDebutValidite;
-	}
-
-
-	public Date getDateFinValidite() {
-		return dateFinValidite;
-	}
-
-
-	public void setDateFinValidite(Date dateFinValidite) {
-		this.dateFinValidite = dateFinValidite;
-	}
-
-
-	public long getTempsEcoule() {
-		return tempsEcoule;
-	}
-
-
-	public void setTempsEcoule(long tempsEcoule) {
-		this.tempsEcoule = tempsEcoule;
-	}
-
-
-	public String getEtat() {
-		return etat;
-	}
-
-
-	public void setEtat(String etat) {
-		this.etat = etat;
-	}
-
-
-	public float getNote_obtenue() {
-		return note_obtenue;
-	}
-
-
-	public void setNote_obtenue(float note_obtenue) {
-		this.note_obtenue = note_obtenue;
-	}
-
-
-	public String getNiveau_obtenu() {
-		return niveau_obtenu;
-	}
-
-
-	public void setNiveau_obtenu(String niveau_obtenu) {
-		this.niveau_obtenu = niveau_obtenu;
-	}
-
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Epreuve [idEpreuve=");
-		builder.append(idEpreuve);
+		builder.append(id);
 		builder.append(", dateDebutValidite=");
 		builder.append(dateDebutValidite);
 		builder.append(", dateFinValidite=");
@@ -121,9 +108,9 @@ public class Epreuve implements Serializable{
 		builder.append(", etat=");
 		builder.append(etat);
 		builder.append(", note_obtenue=");
-		builder.append(note_obtenue);
+		builder.append(noteObtenue);
 		builder.append(", niveau_obtenu=");
-		builder.append(niveau_obtenu);
+		builder.append(niveauObtenu);
 		builder.append("]");
 		return builder.toString();
 	}

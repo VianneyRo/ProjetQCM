@@ -5,25 +5,43 @@ import java.util.List;
 
 public class QuestionTirage {
 
-	private int numOrdre;
+	private Integer numOrdre;
 	private boolean marquee;
-	private Question question;
-	private List<ReponseTirage> reponsesTirage = new ArrayList<ReponseTirage>();
 
-	public QuestionTirage(int numOrdre, Question question) {
+	private Question question;
+	private List<Integer> reponsesTirage = new ArrayList<Integer>();
+
+	/**
+	 * Constructeur BO
+	 * @param numOrdre
+	 * @param question
+	 */
+	public QuestionTirage(Integer numOrdre, Question question) {
 		this.numOrdre = numOrdre;
 		this.question = question;
 	}
 
-	public int getNumOrdre() { return this.numOrdre; }
+	/**
+	 * Constructeur BDD
+	 * @param numOrdre
+	 * @param question
+	 * @param marquee
+	 */
+	public QuestionTirage(Integer numOrdre, Question question, boolean marquee, List<Integer> reponsesTirage) {
+		this.numOrdre = numOrdre;
+		this.question = question;
+		this.marquee = marquee;
+		this.reponsesTirage = reponsesTirage;
+	}
+
+	public Integer getNumOrdre() { return this.numOrdre; }
 	public boolean isMarquee() { return marquee; }
 	public Question getQuestion() { return question; }
-	public List<ReponseTirage> getReponsesTirage() { return reponsesTirage; }
+	public List<Integer> getReponsesTirage() { return reponsesTirage; }
 
-	public void setNumOrdre(int numOrdre) { this.numOrdre = numOrdre; }
+	public void setNumOrdre(Integer numOrdre) { this.numOrdre = numOrdre; }
 	public void setMarquee(boolean marquee) { this.marquee = marquee; }
 	public void setQuestion(Question question) { this.question = question; }
-	public void setReponsesTirage(List<ReponseTirage> reponsesTirage) { this.reponsesTirage = reponsesTirage; }
-	
-	
+	public void setReponsesTirage(List<Integer> reponsesTirage) { this.reponsesTirage = reponsesTirage; }
+
 }

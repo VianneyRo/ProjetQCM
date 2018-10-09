@@ -1,87 +1,103 @@
 package fr.eni.projet.qcm.bo;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Test implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2512408522833222346L;
+public class Test {
 	
-	private int idTest;
+	private Integer id;
 	private String libelle;
 	private String description;
-	private int duree;
-	private float seuil_haut;
-	private float seuil_bas;
-	
-	public Test() {
-		super();
-	}
+	private Integer duree;
+	private float seuilHaut;
+	private float seuilBas;
 
-	public Test(int idTest, String libelle, String description, int duree, float seuil_haut, float seuil_bas) {
-		super();
-		this.idTest = idTest;
-		this.libelle = libelle;
-		this.description = description;
-		this.duree = duree;
-		this.seuil_haut = seuil_haut;
-		this.seuil_bas = seuil_bas;
-	}
+	private List<SectionTest> sectionsTest = new ArrayList<SectionTest>();
 
-	public int getIdTest() {
-		return idTest;
-	}
-
-	public void setIdTest(int idTest) {
-		this.idTest = idTest;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
+	/**
+	 * Constructeur BO
+	 */
+	public Test(String libelle) {
 		this.libelle = libelle;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
+	/**
+	 * Constructeur BDD
+	 * @param id
+	 * @param libelle
+	 * @param description
+	 * @param duree
+	 * @param seuilHaut
+	 * @param seuilBas
+	 * @param sectionsTest
+	 */
+	public Test(Integer id, String libelle, String description, Integer duree,
+			float seuilHaut, float seuilBas, List<SectionTest> sectionsTest) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
 		this.description = description;
-	}
-
-	public int getDuree() {
-		return duree;
-	}
-
-	public void setDuree(int duree) {
 		this.duree = duree;
+		this.seuilHaut = seuilHaut;
+		this.seuilBas = seuilBas;
+		this.sectionsTest = sectionsTest;
 	}
 
-	public float getSeuil_haut() {
-		return seuil_haut;
+	public Integer getId() { return id; }
+	public String getLibelle() { return libelle; }
+	public String getDescription() { return description; }
+	public Integer getDuree() { return duree; }
+	public float getSeuilHaut() { return seuilHaut; }
+	public float getSeuilBas() { return seuilBas; }
+	public List<SectionTest> getSectionsTest() { return this.sectionsTest; }
+
+	public void setId(Integer id) { this.id = id; }
+	public void setLibelle(String libelle) { this.libelle = libelle; }
+	public void setDescription(String description) { this.description = description; }
+	public void setDuree(Integer duree) { this.duree = duree; }
+	public void setSeuilHaut(float seuilHaut) { this.seuilHaut = seuilHaut; }
+	public void setSeuilBas(float seuilBas) { this.seuilBas = seuilBas; }
+	public void setSectionsTest(List<SectionTest> sectionsTest) { this.sectionsTest = sectionsTest; }
+
+	/**
+	 * Ajoute une section de test au test.
+	 * @param sectionTest
+	 */
+	public void ajouterSectionTest(SectionTest sectionTest) {
+		this.sectionsTest.add(sectionTest);
 	}
 
-	public void setSeuil_haut(float seuil_haut) {
-		this.seuil_haut = seuil_haut;
+	/**
+	 * Retire une section de test du test.
+	 * @param sectionTest
+	 */
+	public void supprimerSectionTest(SectionTest sectionTest) {
+		this.sectionsTest.remove(sectionTest);
 	}
 
-	public float getSeuil_bas() {
-		return seuil_bas;
-	}
-
-	public void setSeuil_bas(float seuil_bas) {
-		this.seuil_bas = seuil_bas;
+	/**
+	 * Renvoie une liste de questions tirées aléatoirement de toutes les sections de test.
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Question> tirerQuestions() throws Exception {
+		List<Question> questionsTirees = null;
+		try {
+			questionsTirees = new ArrayList<Question>();
+			for(SectionTest sectionTest: this.sectionsTest) {
+				questionsTirees.addAll(sectionTest.tirerQuestions());
+			}
+		} catch(Exception e) {
+			throw new Exception(e.getMessage(), e);
+		}
+		return questionsTirees;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Test [idTest=");
-		builder.append(idTest);
+		builder.append(id);
 		builder.append(", libelle=");
 		builder.append(libelle);
 		builder.append(", description=");
@@ -89,9 +105,9 @@ public class Test implements Serializable{
 		builder.append(", duree=");
 		builder.append(duree);
 		builder.append(", seuil_haut=");
-		builder.append(seuil_haut);
+		builder.append(seuilHaut);
 		builder.append(", seuil_bas=");
-		builder.append(seuil_bas);
+		builder.append(seuilBas);
 		builder.append("]");
 		return builder.toString();
 	}
