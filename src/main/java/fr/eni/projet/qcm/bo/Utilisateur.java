@@ -12,6 +12,10 @@ public abstract class Utilisateur implements Serializable {
 	private String email;
 	private String password;
 	
+	public Utilisateur(){
+		
+	}
+	
 	/**
 	 * 
 	 * @param id

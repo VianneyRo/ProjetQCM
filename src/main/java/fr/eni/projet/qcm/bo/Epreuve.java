@@ -1,7 +1,7 @@
 package fr.eni.projet.qcm.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Epreuve implements Serializable{
 

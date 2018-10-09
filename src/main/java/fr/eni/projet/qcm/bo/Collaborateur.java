@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class Collaborateur extends Utilisateur implements Serializable {
 
 	private static final long serialVersionUID = -6683587888031135573L;
+	
+	public Collaborateur(){
+		
+	}
 
 	/**
 	 * 

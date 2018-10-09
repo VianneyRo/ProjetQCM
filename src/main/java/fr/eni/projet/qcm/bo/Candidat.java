@@ -16,11 +16,16 @@ public class Candidat extends Utilisateur implements Serializable {
 	 * @param prenom
 	 * @param email
 	 * @param password
-	 * @param candidats
 	 */
-	public Candidat(int id, String nom, String prenom, String email, String password, List<Candidat> candidats) {
+	public Candidat(int id, String nom, String prenom, String email, String password) {
 		super(id, nom, prenom, email, password);
 	}
+
+	public Candidat() {
+		super();
+	}
+	
+	
 
 
 }
