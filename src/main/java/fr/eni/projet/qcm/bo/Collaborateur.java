@@ -26,4 +26,9 @@ public class Collaborateur extends Utilisateur {
 		super(nom, prenom, email, password, profil);
 	}
 
+	/**
+	 * Constructeur
+	 */
+	public Collaborateur() {}
+
 }

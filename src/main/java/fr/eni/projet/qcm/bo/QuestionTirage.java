@@ -10,9 +10,27 @@ public class QuestionTirage {
 	private Question question;
 	private List<Integer> reponsesTirage = new ArrayList<Integer>();
 
-	public QuestionTirage(int numOrdre, Question question) {
+	/**
+	 * Constructeur
+	 * @param numOrdre
+	 * @param question
+	 */
+	public QuestionTirage(Integer numOrdre, Question question) {
 		this.numOrdre = numOrdre;
 		this.question = question;
+	}
+
+	/**
+	 * Constructeur
+	 * @param numOrdre
+	 * @param question
+	 * @param marquee
+	 */
+	public QuestionTirage(Integer numOrdre, Question question, boolean marquee, List<Integer> reponsesTirage) {
+		this.numOrdre = numOrdre;
+		this.question = question;
+		this.marquee = marquee;
+		this.reponsesTirage = reponsesTirage;
 	}
 
 	public Integer getNumOrdre() { return this.numOrdre; }

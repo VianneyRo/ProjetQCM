@@ -7,6 +7,7 @@ public class Profil {
 	private String libelle;	
 	
 	/**
+	 * Constructeur
 	 * @param id
 	 * @param libelle
 	 */
@@ -16,11 +17,23 @@ public class Profil {
 	}
 
 	/**
+	 * Constructeur
 	 * @param libelle
 	 */
 	public Profil(String libelle) {
 		this.libelle = libelle;
 	}
+
+	/**
+	 * Constructeur
+	 */
+	public Profil() {}
+
+	public Integer getId() { return id; }
+	public String getLibelle() { return libelle; }
+
+	public void setId(Integer id) { this.id = id; }
+	public void setLibelle(String libelle) { this.libelle = libelle; }
 
 	@Override
 	public String toString() {
@@ -32,11 +45,5 @@ public class Profil {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	public Integer getId() { return id; }
-	public String getLibelle() { return libelle; }
-
-	public void setId(Integer id) { this.id = id; }
-	public void setLibelle(String libelle) { this.libelle = libelle; }
 
 }

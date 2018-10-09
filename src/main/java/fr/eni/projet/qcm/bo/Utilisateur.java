@@ -13,6 +13,7 @@ public abstract class Utilisateur {
 	private Profil profil;
 	
 	/**
+	 * Constructeur
 	 * @param id
 	 * @param nom
 	 * @param prenom
@@ -30,6 +31,7 @@ public abstract class Utilisateur {
 	}
 	
 	/**
+	 * Constructeur
 	 * @param nom
 	 * @param prenom
 	 * @param email
@@ -43,6 +45,11 @@ public abstract class Utilisateur {
 		this.password = password;
 		this.profil = profil;
 	}
+
+	/**
+	 * Constructeur
+	 */
+	public Utilisateur() {}
 
 	public Integer getId() { return this.id; }
 	public String getNom() { return this.nom; }

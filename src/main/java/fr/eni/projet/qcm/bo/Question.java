@@ -11,7 +11,29 @@ public class Question {
 	private Integer points;
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 
-	public Question() {}
+	/**
+	 * Constructeur
+	 */
+	public Question(String enonce, Integer points) {
+		this.enonce = enonce;
+		this.points = points;
+	}
+
+	/**
+	 * Constructeur
+	 * @param id
+	 * @param enonce
+	 * @param media
+	 * @param points
+	 * @param propositions
+	 */
+	public Question(Integer id, String enonce, String media, Integer points, List<Proposition> propositions) {
+		this.id = id;
+		this.enonce = enonce;
+		this.media = media;
+		this.points = points;
+		this.propositions = propositions;
+	}
 
 	public Integer getId() { return id; }
 	public String getEnonce() { return enonce; }
@@ -25,16 +47,30 @@ public class Question {
 	public void setPoints(Integer points) { this.points = points; }
 	public void setPropositions(List<Proposition> propositions) { this.propositions = propositions; }
 
+	/**
+	 * Ajoute une proposition à la question.
+	 * @param proposition
+	 */
 	public void ajouterProposition(Proposition proposition) {
 		if(!contientProposition(proposition)) {
 			this.propositions.add(proposition);
 		}
 	}
 
+	/**
+	 * Supprime une proposition de la question.
+	 * @param proposition
+	 */
 	public void supprimerProposition(Proposition proposition) {
 		this.propositions.remove(proposition);
 	}
 
+	/**
+	 * Renvoie vrai si l'énoncé de la proposition est déjà présent dans la liste des propositions.
+	 * Renvoie faux sinon.
+	 * @param proposition
+	 * @return
+	 */
 	private boolean contientProposition(Proposition proposition) {
 		for(Proposition prop: this.propositions) {
 			if(prop.getEnonce().equals(proposition.getEnonce())) {

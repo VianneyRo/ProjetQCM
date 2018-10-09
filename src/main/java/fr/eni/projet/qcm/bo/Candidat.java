@@ -4,6 +4,7 @@ package fr.eni.projet.qcm.bo;
 public class Candidat extends Utilisateur {
 
 	/**
+	 * Constructeur
 	 * @param id
 	 * @param nom
 	 * @param prenom
@@ -17,6 +18,7 @@ public class Candidat extends Utilisateur {
 	}
 
 	/**
+	 * Constructeur
 	 * @param nom
 	 * @param prenom
 	 * @param email
@@ -26,5 +28,10 @@ public class Candidat extends Utilisateur {
 	public Candidat(String nom, String prenom, String email,String password, Profil profil) {
 		super(nom, prenom, email, password, profil);
 	}
+
+	/**
+	 * Constructeur
+	 */
+	public Candidat() {}
 
 }

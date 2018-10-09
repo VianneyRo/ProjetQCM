@@ -19,6 +19,7 @@ public class Epreuve {
 	private List<QuestionTirage> questionsTirage = new ArrayList<QuestionTirage>();
 	
 	/**
+	 * Constructeur
 	 * @param candidat
 	 * @param test
 	 */
@@ -28,6 +29,30 @@ public class Epreuve {
 	}
 
 	/**
+	 * Constructeur
+	 * @param candidat
+	 * @param test
+	 * @param dateDebutValidite
+	 * @param dateFinValidite
+	 * @param tempsEcoule
+	 * @param etat
+	 * @param noteObtenue
+	 * @param niveauObtenu
+	 */
+	public Epreuve(Candidat candidat, Test test, Date dateDebutValidite, Date dateFinValidite,
+			long tempsEcoule, String etat, float noteObtenue, String niveauObtenu) {
+		this.candidat = candidat;
+		this.test = test;
+		this.dateDebutValidite = dateDebutValidite;
+		this.dateFinValidite = dateFinValidite;
+		this.tempsEcoule = tempsEcoule;
+		this.etat = etat;
+		this.noteObtenue = noteObtenue;
+		this.niveauObtenu = niveauObtenu;
+	}
+
+	/**
+	 * Constructeur
 	 * @param id
 	 * @param candidat
 	 * @param test
@@ -74,6 +99,10 @@ public class Epreuve {
 	public void setTest(Test test) { this.test = test; }
 	public void setQuestionsTirage(List<QuestionTirage> questionsTirage) { this.questionsTirage = questionsTirage; }
 
+	/**
+	 * Génère les questionsTirage d'une épreuve à partir des questions du test.
+	 * @throws Exception
+	 */
 	public void tirerQuestions() throws Exception {
 		List<Question> questions = null;
 

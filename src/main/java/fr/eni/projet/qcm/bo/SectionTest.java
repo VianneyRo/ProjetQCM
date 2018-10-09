@@ -9,11 +9,20 @@ public class SectionTest {
 	private Integer nbQuestionsATirer;
 	private Theme theme;
 
+	/**
+	 * Constructeur
+	 * @param theme
+	 */
 	public SectionTest(Theme theme) {
 		this.nbQuestionsATirer = 1;
 		this.theme = theme;
 	}
 
+	/**
+	 * Constructeur
+	 * @param nbQuestionsATirer
+	 * @param theme
+	 */
 	public SectionTest(int nbQuestionsATirer, Theme theme) {
 		this.nbQuestionsATirer = nbQuestionsATirer;
 		this.theme = theme;
@@ -25,6 +34,11 @@ public class SectionTest {
 	public void setNbQuestionsATirer(int nbQuestionsATirer) { this.nbQuestionsATirer = nbQuestionsATirer; }
 	public void setTheme(Theme theme) { this.theme = theme; }
 
+	/**
+	 * Renvoie une liste de questions de taille n aléatoirement choises parmi les questions du thème.
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Question> tirerQuestions() throws Exception {
 		List<Question> ensembleQuestions = this.theme.getQuestions();
 		List<Question> questionsTirees = null;

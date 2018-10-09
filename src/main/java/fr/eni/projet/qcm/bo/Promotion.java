@@ -1,14 +1,16 @@
 package fr.eni.projet.qcm.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Promotion {
 	
 	private Integer id;
 	private String libelle;
-	private List<Candidat> candidats;
+	private List<Candidat> candidats = new ArrayList<Candidat>();
 	
 	/**
+	 * Constructeur
 	 * @param id
 	 * @param libelle
 	 * @param candidats
@@ -20,6 +22,7 @@ public class Promotion {
 	}
 
 	/**
+	 * Constructeur
 	 * @param libelle
 	 * @param candidats
 	 */
@@ -27,6 +30,11 @@ public class Promotion {
 		this.libelle = libelle;
 		this.candidats = candidats;
 	}
+
+	/**
+	 * Constructeur
+	 */
+	public Promotion() {}
 
 	public Integer getId() { return id; }
 	public String getLibelle() { return libelle; }
@@ -36,10 +44,18 @@ public class Promotion {
 	public void setLibelle(String libelle) { this.libelle = libelle; }
 	public void setCandidats(List<Candidat> candidats) { this.candidats = candidats; }
 
+	/**
+	 * Ajoute le candidat à la promotion
+	 * @param candidat
+	 */
 	public void ajouterCandidat(Candidat candidat) {
 		this.candidats.add(candidat);
 	}
 
+	/**
+	 * Retire le candidat de la promotion
+	 * @param candidat
+	 */
 	public void supprimerCandidat(Candidat candidat) {
 		this.candidats.remove(candidat);
 	}

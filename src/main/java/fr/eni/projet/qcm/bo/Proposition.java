@@ -6,6 +6,10 @@ public class Proposition {
 	private String enonce;
 	private boolean correcte;
 
+	/**
+	 * @param enonce
+	 * @param estBonne
+	 */
 	public Proposition(String enonce, boolean estBonne) {}
 
 	public Integer getId() { return this.id; }
