@@ -16,14 +16,14 @@ import fr.eni.tp.web.common.util.ResourceUtil;
 
 public class EpreuveDAOImpl implements EpreuveDAO {
 
-	private static final String SELECT_ALL_EPREUVES_QUERY = "";
-	private static final String SELECT_ONE_EPREUVE_QUERY = " ";
+	private static final String SELECT_ALL_EPREUVES_QUERY = "SELECT e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e ORDER BY e.etat DESC";
+	private static final String SELECT_ONE_EPREUVE_QUERY = "SELECT e.id, e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e WHERE e.id = ?";
 	private static final String SELECT_CANDIDAT_BY_EPREUVE_QUERY = " ";
 	private static final String SELECT_TEST_BY_EPREUVE_QUERY = " ";
-	private static final String SELECT_ONE_EPREUVE_BY_NAME_QUERY = " ";
-	private static final String INSERT_EPREUVE_QUERY = " ";
-	private static final String DELETE_EPREUVE_QUERY = " ";
-	private static final String UPDATE_EPREUVE_QUERY = " ";
+	private static final String SELECT_ONE_EPREUVE_BY_NOTE_QUERY = "SELECT e.id FROM epreuve e WHERE e.noteObtenue = ?";
+	private static final String INSERT_EPREUVE_QUERY = "INSERT INTO epreuve(dateDebutValidite, dateFinValidite, tempsEcoule, note_obtenue, niveau_obtenu, etat) VALUES(?,?,?,?,?,?) ";
+	private static final String DELETE_EPREUVE_QUERY = "DELETE FROM epreuve WHERE id = ? ";
+	private static final String UPDATE_EPREUVE_QUERY = "UPDATE epreuve SET dateDebutValidite = ?, dateFinValidite = ?, tempsEcoule = ?, noteObtenue = ?, niveauObtenu = ?, etat = ? WHERE id = ?";
 
 	private static EpreuveDAOImpl instance;
 
@@ -181,7 +181,7 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_BY_NAME_QUERY);
+			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_BY_NOTE_QUERY);
 
 			statement.setString(1, name);
 			resultSet = statement.executeQuery();
