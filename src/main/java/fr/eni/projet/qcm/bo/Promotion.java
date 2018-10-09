@@ -7,22 +7,11 @@ public class Promotion {
 	
 	private Integer id;
 	private String libelle;
+
 	private List<Candidat> candidats = new ArrayList<Candidat>();
 	
 	/**
-	 * Constructeur
-	 * @param id
-	 * @param libelle
-	 * @param candidats
-	 */
-	public Promotion(Integer id, String libelle, List<Candidat> candidats) {
-		this.id = id;
-		this.libelle = libelle;
-		this.candidats = candidats;
-	}
-
-	/**
-	 * Constructeur
+	 * Constructeur BO
 	 * @param libelle
 	 * @param candidats
 	 */
@@ -32,9 +21,16 @@ public class Promotion {
 	}
 
 	/**
-	 * Constructeur
+	 * Constructeur BDD
+	 * @param id
+	 * @param libelle
+	 * @param candidats
 	 */
-	public Promotion() {}
+	public Promotion(Integer id, String libelle, List<Candidat> candidats) {
+		this.id = id;
+		this.libelle = libelle;
+		this.candidats = candidats;
+	}
 
 	public Integer getId() { return id; }
 	public String getLibelle() { return libelle; }

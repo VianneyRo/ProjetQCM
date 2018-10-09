@@ -32,7 +32,8 @@ public abstract class Utilisateur {
 	 * @param password
 	 * @param profil
 	 */
-	public Utilisateur(Integer id, String nom, String prenom, String email, String password, Profil profil) {
+	public Utilisateur(Integer id, String nom, String prenom, String email,
+			String password, Profil profil) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;

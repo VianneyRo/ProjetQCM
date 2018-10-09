@@ -4,34 +4,24 @@ package fr.eni.projet.qcm.bo;
 public class Candidat extends Utilisateur {
 
 	/**
-	 * Constructeur
+	 * Constructeur BO
+	 * @param nom
+	 * @param prenom
+	 */
+	public Candidat(String nom, String prenom) {
+		super(nom, prenom, new Profil("Candidat"));
+	}
+
+	/**
+	 * Constructeur BDD
 	 * @param id
 	 * @param nom
 	 * @param prenom
 	 * @param email
 	 * @param password
-	 * @param profil
 	 */
-	public Candidat(Integer id, String nom, String prenom,
-			String email, String password, Profil profil) {
-		super(id, nom, prenom, email, password, profil);
+	public Candidat(Integer id, String nom, String prenom, String email, String password) {
+		super(id, nom, prenom, email, password, new Profil("Candidat"));
 	}
-
-	/**
-	 * Constructeur
-	 * @param nom
-	 * @param prenom
-	 * @param email
-	 * @param password
-	 * @param profil
-	 */
-	public Candidat(String nom, String prenom, String email,String password, Profil profil) {
-		super(nom, prenom, email, password, profil);
-	}
-
-	/**
-	 * Constructeur
-	 */
-	public Candidat() {}
 
 }

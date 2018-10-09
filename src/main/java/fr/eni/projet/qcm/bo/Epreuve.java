@@ -19,7 +19,7 @@ public class Epreuve {
 	private List<QuestionTirage> questionsTirage = new ArrayList<QuestionTirage>();
 	
 	/**
-	 * Constructeur
+	 * Constructeur BO
 	 * @param candidat
 	 * @param test
 	 */
@@ -29,7 +29,7 @@ public class Epreuve {
 	}
 
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param candidat
 	 * @param test
 	 * @param dateDebutValidite
@@ -39,32 +39,9 @@ public class Epreuve {
 	 * @param noteObtenue
 	 * @param niveauObtenu
 	 */
-	public Epreuve(Candidat candidat, Test test, Date dateDebutValidite, Date dateFinValidite,
-			long tempsEcoule, String etat, float noteObtenue, String niveauObtenu) {
-		this.candidat = candidat;
-		this.test = test;
-		this.dateDebutValidite = dateDebutValidite;
-		this.dateFinValidite = dateFinValidite;
-		this.tempsEcoule = tempsEcoule;
-		this.etat = etat;
-		this.noteObtenue = noteObtenue;
-		this.niveauObtenu = niveauObtenu;
-	}
-
-	/**
-	 * Constructeur
-	 * @param id
-	 * @param candidat
-	 * @param test
-	 * @param dateDebutValidite
-	 * @param dateFinValidite
-	 * @param tempsEcoule
-	 * @param etat
-	 * @param note_obtenue
-	 * @param niveau_obtenu
-	 */
-	public Epreuve(Integer id, Candidat candidat, Test test, Date dateDebutValidite, Date dateFinValidite,
-			long tempsEcoule, String etat, float noteObtenue, String niveauObtenu) {
+	public Epreuve(Integer id, Candidat candidat, Test test, Date dateDebutValidite,
+			Date dateFinValidite, long tempsEcoule, String etat, float noteObtenue,
+			String niveauObtenu) {
 		this.id = id;
 		this.candidat = candidat;
 		this.test = test;
@@ -75,7 +52,6 @@ public class Epreuve {
 		this.noteObtenue = noteObtenue;
 		this.niveauObtenu = niveauObtenu;
 	}
-
 
 	public Integer getId() { return id; }
 	public Date getDateDebutValidite() { return dateDebutValidite; }
@@ -105,7 +81,6 @@ public class Epreuve {
 	 */
 	public void tirerQuestions() throws Exception {
 		List<Question> questions = null;
-
 		try {
 			questions = this.test.tirerQuestions();
 

@@ -5,9 +5,17 @@ public class Profil {
 	
 	private Integer id;
 	private String libelle;	
+
+	/**
+	 * Constructeur BO
+	 * @param libelle
+	 */
+	public Profil(String libelle) {
+		this.libelle = libelle;
+	}
 	
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param id
 	 * @param libelle
 	 */
@@ -15,19 +23,6 @@ public class Profil {
 		this.id = id;
 		this.libelle = libelle;
 	}
-
-	/**
-	 * Constructeur
-	 * @param libelle
-	 */
-	public Profil(String libelle) {
-		this.libelle = libelle;
-	}
-
-	/**
-	 * Constructeur
-	 */
-	public Profil() {}
 
 	public Integer getId() { return id; }
 	public String getLibelle() { return libelle; }
