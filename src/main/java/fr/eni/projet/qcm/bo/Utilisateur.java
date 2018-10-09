@@ -11,9 +11,20 @@ public abstract class Utilisateur {
 	private String password;
 
 	private Profil profil;
+
+	/**
+	 * Constructeur BO
+	 * @param nom
+	 * @param prenom
+	 */
+	public Utilisateur(String nom, String prenom, Profil profil) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.profil = profil;
+	}
 	
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param id
 	 * @param nom
 	 * @param prenom
@@ -29,27 +40,6 @@ public abstract class Utilisateur {
 		this.password = password;
 		this.profil = profil;
 	}
-	
-	/**
-	 * Constructeur
-	 * @param nom
-	 * @param prenom
-	 * @param email
-	 * @param password
-	 * @param profil
-	 */
-	public Utilisateur(String nom, String prenom, String email, String password, Profil profil) {
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.password = password;
-		this.profil = profil;
-	}
-
-	/**
-	 * Constructeur
-	 */
-	public Utilisateur() {}
 
 	public Integer getId() { return this.id; }
 	public String getNom() { return this.nom; }

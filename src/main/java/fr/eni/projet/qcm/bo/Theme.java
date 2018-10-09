@@ -9,10 +9,23 @@ public class Theme {
 
 	private Integer id;
 	private String libelle;
-	private List<Question> questions = new ArrayList<Question>();
-	
-	public Theme() {}
 
+	private List<Question> questions = new ArrayList<Question>();
+
+	/**
+	 * Constructeur BO
+	 * @param libelle
+	 */
+	public Theme(String libelle) {
+		this.libelle = libelle;
+	}
+
+	/**
+	 * Constructeur BDD
+	 * @param id
+	 * @param libelle
+	 * @param questions
+	 */
 	public Theme(Integer id, String libelle, List<Question> questions) {
 		this.id = id;
 		this.libelle = libelle;
@@ -27,10 +40,18 @@ public class Theme {
 	public void setLibelle(String libelle) { this.libelle = libelle; }
 	public void setQuestions(List<Question> questions) { this.questions = questions; }
 
+	/**
+	 * Ajoute une question à la liste des questions du thème.
+	 * @param question
+	 */
 	public void ajouterQuestion(Question question) {
 		this.questions.add(question);
 	}
 
+	/**
+	 * Retire une question de la liste des questions du thème.
+	 * @param question
+	 */
 	public void supprimererQuestion(Question question) {
 		this.questions.remove(question);
 	}
@@ -45,8 +66,5 @@ public class Theme {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
-	
+
 }

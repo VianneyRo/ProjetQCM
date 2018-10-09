@@ -7,11 +7,12 @@ public class QuestionTirage {
 
 	private Integer numOrdre;
 	private boolean marquee;
+
 	private Question question;
 	private List<Integer> reponsesTirage = new ArrayList<Integer>();
 
 	/**
-	 * Constructeur
+	 * Constructeur BO
 	 * @param numOrdre
 	 * @param question
 	 */
@@ -21,7 +22,7 @@ public class QuestionTirage {
 	}
 
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param numOrdre
 	 * @param question
 	 * @param marquee

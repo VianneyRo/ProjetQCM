@@ -9,10 +9,13 @@ public class Question {
 	private String enonce;
 	private String media;
 	private Integer points;
+
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 
 	/**
-	 * Constructeur
+	 * Constructeur BO
+	 * @param enonce
+	 * @param points
 	 */
 	public Question(String enonce, Integer points) {
 		this.enonce = enonce;
@@ -20,7 +23,7 @@ public class Question {
 	}
 
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param id
 	 * @param enonce
 	 * @param media

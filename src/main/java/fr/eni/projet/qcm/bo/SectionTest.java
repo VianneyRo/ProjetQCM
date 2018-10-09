@@ -7,10 +7,11 @@ import java.util.Random;
 public class SectionTest {
 	
 	private Integer nbQuestionsATirer;
+
 	private Theme theme;
 
 	/**
-	 * Constructeur
+	 * Constructeur BO
 	 * @param theme
 	 */
 	public SectionTest(Theme theme) {
@@ -19,7 +20,7 @@ public class SectionTest {
 	}
 
 	/**
-	 * Constructeur
+	 * Constructeur BDD
 	 * @param nbQuestionsATirer
 	 * @param theme
 	 */
@@ -42,7 +43,6 @@ public class SectionTest {
 	public List<Question> tirerQuestions() throws Exception {
 		List<Question> ensembleQuestions = this.theme.getQuestions();
 		List<Question> questionsTirees = null;
-
 		if(this.nbQuestionsATirer > ensembleQuestions.size()) {
 			throw new Exception("Le nombre de questions à tirer est supérieur au nombre de questions disponibles");
 		} else {
@@ -55,7 +55,6 @@ public class SectionTest {
 				ensembleQuestions.remove(questionTiree);
 			}
 		}
-
 		return questionsTirees;
 	}
 

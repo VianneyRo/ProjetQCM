@@ -7,10 +7,26 @@ public class Proposition {
 	private boolean correcte;
 
 	/**
+	 * Constructeur BO
 	 * @param enonce
-	 * @param estBonne
+	 * @param correcte
 	 */
-	public Proposition(String enonce, boolean estBonne) {}
+	public Proposition(String enonce, boolean correcte) {
+		this.enonce = enonce;
+		this.correcte = correcte;
+	}
+
+	/**
+	 * Constructeur BDD
+	 * @param id
+	 * @param enonce
+	 * @param correcte
+	 */
+	public Proposition(Integer id, String enonce, boolean correcte) {
+		this.id = id;
+		this.enonce = enonce;
+		this.correcte = correcte;
+	}
 
 	public Integer getId() { return this.id; }
 	public String getEnonce() { return this.enonce; }
