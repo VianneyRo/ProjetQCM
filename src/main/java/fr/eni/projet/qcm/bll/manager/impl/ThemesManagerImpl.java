@@ -15,8 +15,6 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 public class ThemesManagerImpl implements ThemesManager {
 
     private ThemeDAO themeDAO = DAOFactory.themeDao();
-    private QuestionDAO questionDAO = DAOFactory.questionDao();
-    private PropositionDAO propositionDAO = DAOFactory.propositionDao();
     private static ThemesManagerImpl instance;
 
 	@Override
@@ -65,7 +63,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
 		Question savedQuestion = null;
 		try {
-			savedQuestion = questionDAO.save(theme, question);
+			savedQuestion = questionDAO.save(theme.getId(), question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

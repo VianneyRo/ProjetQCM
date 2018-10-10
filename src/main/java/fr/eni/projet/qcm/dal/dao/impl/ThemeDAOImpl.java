@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import fr.eni.projet.qcm.bo.Proposition;
+import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;
@@ -21,9 +23,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 	
 	private static ThemeDAOImpl instance;
 	
-	private ThemeDAOImpl(){
-		
-	}
+	private ThemeDAOImpl(){}
 	
 	public static ThemeDAOImpl getInstance(){
 		if(instance == null){
@@ -129,5 +129,31 @@ public class ThemeDAOImpl implements ThemeDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Question ajouterQuestion(Theme theme, Question question) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question retirerQuestion(Question question) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposition ajouterProposition(Question question, Proposition proposition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposition retirerProposition(Proposition proposition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
