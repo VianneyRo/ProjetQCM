@@ -9,7 +9,12 @@ public class Promotion {
 	private String libelle;
 
 	private List<Candidat> candidats = new ArrayList<Candidat>();
-	
+
+	/**
+	 * Constructeur
+	 */
+	public Promotion() {}
+
 	/**
 	 * Constructeur BO
 	 * @param libelle

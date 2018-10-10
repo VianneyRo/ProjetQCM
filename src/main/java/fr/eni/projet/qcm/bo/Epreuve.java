@@ -17,7 +17,12 @@ public class Epreuve {
 	private Candidat candidat;
 	private Test test;
 	private List<QuestionTirage> questionsTirage = new ArrayList<QuestionTirage>();
-	
+
+	/**
+	 * Constructeur
+	 */
+	public Epreuve() {}
+
 	/**
 	 * Constructeur BO
 	 * @param candidat
@@ -68,8 +73,8 @@ public class Epreuve {
 	public void setDateDebutValidite(Date dateDebutValidite) { this.dateDebutValidite = dateDebutValidite; }
 	public void setDateFinValidite(Date dateFinValidite) { this.dateFinValidite = dateFinValidite; }
 	public void setTempsEcoule(long tempsEcoule) { this.tempsEcoule = tempsEcoule; }
-	public void setNote_obtenue(float note_obtenue) { this.noteObtenue = note_obtenue; }
-	public void setNiveau_obtenu(String niveau_obtenu) { this.niveauObtenu = niveau_obtenu; }
+	public void setNoteObtenue(float noteObtenue) { this.noteObtenue = noteObtenue; }
+	public void setNiveauObtenu(String niveauObtenu) { this.niveauObtenu = niveauObtenu; }
 	public void setEtat(String etat) { this.etat = etat; }
 	public void setCandidat(Candidat candidat) { this.candidat = candidat; }
 	public void setTest(Test test) { this.test = test; }

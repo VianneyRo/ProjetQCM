@@ -13,6 +13,11 @@ public class Question {
 	private List<Proposition> propositions = new ArrayList<Proposition>();
 
 	/**
+	 * Constructeur
+	 */
+	public Question() {}
+
+	/**
 	 * Constructeur BO
 	 * @param enonce
 	 * @param points

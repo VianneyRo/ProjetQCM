@@ -7,6 +7,11 @@ public class Proposition {
 	private boolean correcte;
 
 	/**
+	 * Constructeur
+	 */
+	public Proposition() {}
+
+	/**
 	 * Constructeur BO
 	 * @param enonce
 	 * @param correcte

@@ -109,12 +109,10 @@ public class ThemeDAOImpl implements ThemeDAO {
 	}
 
 	/**
-	 * Not use
 	 * @param id
 	 * @return
 	 * @throws DaoException
 	 */
-	@Deprecated
 	@Override
 	public Theme selectById(Integer id) throws DaoException {
 		// TODO Auto-generated method stub
@@ -122,12 +120,10 @@ public class ThemeDAOImpl implements ThemeDAO {
 	}
 
 	/**
-	 * Not use
 	 * @param id
 	 * @return
 	 * @throws DaoException
 	 */
-	@Deprecated
 	@Override
 	public List<Theme> selectAll() throws DaoException {
 		// TODO Auto-generated method stub

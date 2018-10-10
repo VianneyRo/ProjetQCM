@@ -13,6 +13,11 @@ public abstract class Utilisateur {
 	private Profil profil;
 
 	/**
+	 * Constructeur
+	 */
+	public Utilisateur() {}
+
+	/**
 	 * Constructeur BO
 	 * @param nom
 	 * @param prenom
@@ -21,10 +26,6 @@ public abstract class Utilisateur {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.profil = profil;
-	}
-	
-	public Utilisateur(){
-		
 	}
 	
 	/**

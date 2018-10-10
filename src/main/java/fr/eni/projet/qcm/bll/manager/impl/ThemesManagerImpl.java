@@ -6,6 +6,7 @@ import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
+import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
@@ -13,9 +14,9 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 
 public class ThemesManagerImpl implements ThemesManager {
 
-    private ThemeDAO themeDAO = DAOFactory.themeDAO();
-    private QuestionDAO questionDAO = DAOFactory.questionDAO();
-    private PropositionDAO propositionDAO = DAOFactory.propositionDAO();
+    private ThemeDAO themeDAO = DAOFactory.themeDao();
+    private QuestionDAO questionDAO = DAOFactory.questionDao();
+    private PropositionDAO propositionDAO = DAOFactory.propositionDao();
     private static ThemesManagerImpl instance;
 
 	@Override
@@ -33,7 +34,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Theme findOne(Integer id) throws ManagerException, ElementNotFoundException {
 		Theme theme = null;
 		try {
-			theme = themeDAO.selectOne(id);
+			theme = themeDAO.selectById(id);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -43,7 +44,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void deleteOne(Integer id) throws ManagerException {
 		try {
-			themeDAO.deleteOne(id);
+			themeDAO.delete(id);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -53,7 +54,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Theme saveOne(Theme theme) throws ManagerException, FunctionalException {
 		Theme savedTheme = null;
 		try {
-			savedTheme = themeDAO.save(theme);
+			savedTheme = themeDAO.insert(theme);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

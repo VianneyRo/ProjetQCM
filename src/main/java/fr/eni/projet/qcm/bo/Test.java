@@ -15,6 +15,11 @@ public class Test {
 	private List<SectionTest> sectionsTest = new ArrayList<SectionTest>();
 
 	/**
+	 * Constructeur
+	 */
+	public Test() {}
+
+	/**
 	 * Constructeur BO
 	 */
 	public Test(String libelle) {

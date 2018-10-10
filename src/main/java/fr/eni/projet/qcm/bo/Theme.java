@@ -13,6 +13,11 @@ public class Theme {
 	private List<Question> questions = new ArrayList<Question>();
 
 	/**
+	 * Constructeur
+	 */
+	public Theme() {}
+
+	/**
 	 * Constructeur BO
 	 * @param libelle
 	 */
