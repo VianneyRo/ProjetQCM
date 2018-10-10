@@ -12,6 +12,11 @@ public class QuestionTirage {
 	private List<Integer> reponsesTirage = new ArrayList<Integer>();
 
 	/**
+	 * Constructeur
+	 */
+	public QuestionTirage() {}
+
+	/**
 	 * Constructeur BO
 	 * @param numOrdre
 	 * @param question

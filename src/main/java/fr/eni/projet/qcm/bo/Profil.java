@@ -7,6 +7,11 @@ public class Profil {
 	private String libelle;	
 
 	/**
+	 * Constructeur
+	 */
+	public Profil() {}
+
+	/**
 	 * Constructeur BO
 	 * @param libelle
 	 */

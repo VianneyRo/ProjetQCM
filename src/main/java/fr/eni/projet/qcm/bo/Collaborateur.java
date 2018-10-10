@@ -3,6 +3,13 @@ package fr.eni.projet.qcm.bo;
 public class Collaborateur extends Utilisateur {
 
 	/**
+	 * Constructeur
+	 */
+	public Collaborateur() {
+		super();
+	}
+
+	/**
 	 * Constructeur BO
 	 * @param nom
 	 * @param prenom

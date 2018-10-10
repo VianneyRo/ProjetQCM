@@ -11,6 +11,11 @@ public class SectionTest {
 	private Theme theme;
 
 	/**
+	 * Constructeur
+	 */
+	public SectionTest() {}
+
+	/**
 	 * Constructeur BO
 	 * @param theme
 	 */

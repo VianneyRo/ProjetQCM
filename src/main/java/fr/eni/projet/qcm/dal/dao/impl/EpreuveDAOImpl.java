@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.projet.qcm.dal.util.DateUtil;
 import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.dal.dao.EpreuveDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;
@@ -18,8 +19,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 
 	private static final String SELECT_ALL_EPREUVES_QUERY = "SELECT e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e ORDER BY e.etat DESC";
 	private static final String SELECT_ONE_EPREUVE_QUERY = "SELECT e.id, e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e WHERE e.id = ?";
-	private static final String SELECT_CANDIDAT_BY_EPREUVE_QUERY = " ";
-	private static final String SELECT_TEST_BY_EPREUVE_QUERY = " ";
 	private static final String SELECT_ONE_EPREUVE_BY_NOTE_QUERY = "SELECT e.id FROM epreuve e WHERE e.noteObtenue = ?";
 	private static final String INSERT_EPREUVE_QUERY = "INSERT INTO epreuve(dateDebutValidite, dateFinValidite, tempsEcoule, note_obtenue, niveau_obtenu, etat) VALUES(?,?,?,?,?,?) ";
 	private static final String DELETE_EPREUVE_QUERY = "DELETE FROM epreuve WHERE id = ? ";
@@ -47,9 +46,9 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			connection = MSSQLConnectionFactory.get();
 
 			statement = connection.prepareStatement(INSERT_EPREUVE_QUERY, Statement.RETURN_GENERATED_KEYS);
-			// TODO : gérer les setDate 
-			statement.setDate(1, (Date) epreuve.getDateDebutValidite());
-			statement.setDate(2, (Date) epreuve.getDateFinValidite());
+			
+			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
+			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
 			statement.setLong(3, epreuve.getTempsEcoule());
 			statement.setString(4, epreuve.getEtat());
 			statement.setFloat(5, epreuve.getNoteObtenue());
@@ -82,8 +81,8 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 
 			statement = connection.prepareStatement(UPDATE_EPREUVE_QUERY);
 
-			statement.setDate(1, (Date) epreuve.getDateDebutValidite());
-			statement.setDate(2, (Date) epreuve.getDateFinValidite());
+			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
+			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
 			statement.setLong(3, epreuve.getTempsEcoule());
 			statement.setString(4, epreuve.getEtat());
 			statement.setFloat(5, epreuve.getNoteObtenue());
@@ -198,22 +197,14 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 	}
 
 	private Epreuve resultSetToNote(ResultSet resultSet) throws SQLException {
-
-		int idTest = resultSet.getInt("idTest");
-		int idCandidat = resultSet.getInt("idCandidat");
-		Epreuve epreuve = new Epreuve(resultSet.getInt("idEpreuve"), resultSet.getDate("dateDebutValidite"),
-				resultSet.getDate("dateFinValidite"), resultSet.getLong("tempsEcoule"), resultSet.getString("etat"),
-				resultSet.getFloat("note_obtenue"), resultSet.getString("niveau_obtenu"));
-		// Mettre en paramètre le nom de la colonne de la table Epreuve
+		Epreuve epreuve = new Epreuve();
 		epreuve.setId(resultSet.getInt("idEpreuve"));
-		epreuve.setDateDebutValidite(resultSet.getDate("dateDebutValidite"));
-		epreuve.setDateFinValidite(resultSet.getDate("dateFinValidite"));
+		epreuve.setDateDebutValidite(DateUtil.JDBCDateToUtilDate(resultSet.getDate("dateDebutValidite")));		
+		epreuve.setDateFinValidite(DateUtil.JDBCDateToUtilDate(resultSet.getDate("dateFinValidite")));
 		epreuve.setTempsEcoule(resultSet.getLong("tempsEcoule"));
 		epreuve.setEtat(resultSet.getString("etat"));
-		epreuve.setNote_obtenue(resultSet.getFloat("note_obtenue"));
-		epreuve.setNiveau_obtenu(resultSet.getString("niveau_obtenu"));
-
+		epreuve.setNoteObtenue(resultSet.getFloat("note_obtenue"));
+		epreuve.setNiveauObtenu(resultSet.getString("niveau_obtenu"));
 		return epreuve;
 	}
-
 }

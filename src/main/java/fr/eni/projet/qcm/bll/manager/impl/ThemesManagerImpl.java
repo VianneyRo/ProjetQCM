@@ -6,8 +6,11 @@ import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
+<<<<<<< HEAD
 import fr.eni.projet.qcm.dal.dao.PropositionDAO;
 import fr.eni.projet.qcm.dal.dao.QuestionDAO;
+=======
+>>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
@@ -17,8 +20,11 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 public class ThemesManagerImpl implements ThemesManager {
 
     private ThemeDAO themeDAO = DAOFactory.themeDao();
+<<<<<<< HEAD
     private QuestionDAO questionDAO = DAOFactory.questionDao();
     private PropositionDAO propositionDAO = DAOFactory.propositionDao();
+=======
+>>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
     private static ThemesManagerImpl instance;
 
 	@Override
@@ -36,7 +42,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Theme findOne(Integer id) throws ManagerException, ElementNotFoundException {
 		Theme theme = null;
 		try {
-			theme = themeDAO.selectOne(id);
+			theme = themeDAO.selectById(id);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -46,7 +52,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void deleteOne(Integer id) throws ManagerException {
 		try {
-			themeDAO.deleteOne(id);
+			themeDAO.delete(id);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -56,7 +62,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Theme saveOne(Theme theme) throws ManagerException, FunctionalException {
 		Theme savedTheme = null;
 		try {
-			savedTheme = themeDAO.save(theme);
+			savedTheme = themeDAO.insert(theme);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -67,7 +73,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
 		Question savedQuestion = null;
 		try {
-			savedQuestion = questionDAO.save(theme, question);
+			savedQuestion = questionDAO.save(theme.getId(), question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
