@@ -6,11 +6,6 @@ import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
-<<<<<<< HEAD
-import fr.eni.projet.qcm.dal.dao.PropositionDAO;
-import fr.eni.projet.qcm.dal.dao.QuestionDAO;
-=======
->>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
@@ -20,11 +15,6 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 public class ThemesManagerImpl implements ThemesManager {
 
     private ThemeDAO themeDAO = DAOFactory.themeDao();
-<<<<<<< HEAD
-    private QuestionDAO questionDAO = DAOFactory.questionDao();
-    private PropositionDAO propositionDAO = DAOFactory.propositionDao();
-=======
->>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
     private static ThemesManagerImpl instance;
 
 	@Override
