@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="sebeez">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <title>Projet QCM : Page de Connexion</title>
+  <title>Projet QCM</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery-3.2.1.min.js"></script>
@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire à choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire Ã  choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,31 +53,12 @@
           }
       </style>
 
-<div class="container center" style="text-align:center">
+<div class="container center">
 <div class="col-md-12">
     
-        <h1 class="mt-5"><u>Authentifiez-vous</u></h1>
+        <h1 class="mt-5">Candidat/h1>
 
-        <div class="alert alert-danger" id="alert-message" style="visibility: hidden"></div>
-        <div class="alert alert-info" id="info-message" role="alert" style="visibility: hidden"> </div>
-
-                <form method="post" action="connexion">
-            <fieldset>
-                <p>Vous pouvez vous connecter via ce formulaire.</p>
-
-                <label for="nom">Adresse email <span class="requis">*</span></label>
-                <input type="email" id="email" name="email" value="" />
-                <br />
-
-                <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
-                <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-              
-                <br />
-
-                <input type="submit" value="Connexion" class="sansLabel" />
-                <br />
-            </fieldset>
-        </form>
+        
     </div>
 </div>
 

@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html" >Questionnaire à choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire à choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -55,10 +55,8 @@
 
 <div class="container center">
 <div class="col-md-12">
-    
-        <h1 class="mt-5">Candidat/h1>
-
-        
+    		 <h1 class="mt-5">Collaborateur/h1>
+   
     </div>
 </div>
 
