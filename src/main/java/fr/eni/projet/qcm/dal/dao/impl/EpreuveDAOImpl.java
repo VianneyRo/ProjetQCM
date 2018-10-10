@@ -47,9 +47,9 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			connection = MSSQLConnectionFactory.get();
 
 			statement = connection.prepareStatement(INSERT_EPREUVE_QUERY, Statement.RETURN_GENERATED_KEYS);
-
-			statement.setDate(1, epreuve.getDateDebutValidite());
-			statement.setDate(2, epreuve.getDateFinValidite());
+			// TODO : gérer les setDate 
+			statement.setDate(1, (Date) epreuve.getDateDebutValidite());
+			statement.setDate(2, (Date) epreuve.getDateFinValidite());
 			statement.setLong(3, epreuve.getTempsEcoule());
 			statement.setString(4, epreuve.getEtat());
 			statement.setFloat(5, epreuve.getNoteObtenue());
@@ -82,8 +82,8 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 
 			statement = connection.prepareStatement(UPDATE_EPREUVE_QUERY);
 
-			statement.setDate(1, epreuve.getDateDebutValidite());
-			statement.setDate(2, epreuve.getDateFinValidite());
+			statement.setDate(1, (Date) epreuve.getDateDebutValidite());
+			statement.setDate(2, (Date) epreuve.getDateFinValidite());
 			statement.setLong(3, epreuve.getTempsEcoule());
 			statement.setString(4, epreuve.getEtat());
 			statement.setFloat(5, epreuve.getNoteObtenue());
