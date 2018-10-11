@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.tp.web.common.util.ValidationUtil;
+
 @WebServlet("/ConnexionController")
 public class ConnexionController extends HttpServlet{
 
@@ -17,14 +19,14 @@ public class ConnexionController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*String email = req.getParameter("email");
+		String email = req.getParameter("email");
 		String motdepasse = req.getParameter("motdepasse");
 		
 		ValidationUtil.checkNotNull(email);
 		ValidationUtil.checkNotNull(motdepasse);
 		
 		if (email.equals("admin@admin.com")){
-			req.getRequestDispatcher("/CandidatController").forward(req, resp);
+			req.getRequestDispatcher("/AdminController").forward(req, resp);
 		}
 		else if (email.equals("collaborateur@collaborateur.com")){
 			req.getRequestDispatcher("/CollaborateurController").forward(req, resp);
@@ -32,8 +34,7 @@ public class ConnexionController extends HttpServlet{
 		
 		else {
 			req.getRequestDispatcher("/CandidatController").forward(req, resp);
-		}*/
-		System.out.println("toto");
+		}
 	}
 
 	
