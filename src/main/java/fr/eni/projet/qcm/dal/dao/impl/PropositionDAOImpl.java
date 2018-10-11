@@ -31,7 +31,7 @@ public class PropositionDAOImpl implements PropositionDAO {
 	}
 
 	@Override
-	public Proposition insert(Proposition proposition, Integer questionId) throws DaoException {
+	public Proposition insert(Proposition proposition, Question question) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -40,7 +40,7 @@ public class PropositionDAOImpl implements PropositionDAO {
 		try {
 			connection = MSSQLConnectionFactory.get();
 			statement = connection.prepareStatement(INSERT_PROPOSITION_QUERY, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, questionId);
+			statement.setInt(1, question.getId());
 			statement.setString(2, proposition.getEnonce());
 
 			resultSet = statement.executeQuery();

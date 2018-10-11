@@ -21,7 +21,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 	private static final String SELECT_BY_THEME = "SELECT id, enonce, media, points WHERE themeId=?";
 
 	@Override
-	public Question insert(Question question, Integer themeId) throws DaoException {
+	public Question insert(Question question, Theme theme) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 		try {
 			connection = MSSQLConnectionFactory.get();
 			statement = connection.prepareStatement(INSERT_QUESTION_QUERY, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, themeId);
+			statement.setInt(1, theme.getId());
 			statement.setString(2, question.getEnonce());
 			statement.setString(3, question.getMedia());
 			statement.setInt(4, question.getPoints());

@@ -57,7 +57,7 @@ public class Theme {
 	 * Retire une question de la liste des questions du thème.
 	 * @param question
 	 */
-	public void supprimererQuestion(Question question) {
+	public void supprimerQuestion(Question question) {
 		this.questions.remove(question);
 	}
 

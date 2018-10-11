@@ -7,24 +7,26 @@ import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
-import fr.eni.tp.web.common.exception.FunctionalException;
 
 
 public interface ThemesManager {
 
-    List<Theme> findAll() throws ManagerException;
-    Theme findOne(Integer id) throws ManagerException, ElementNotFoundException;
-    void deleteOne(Integer id) throws ManagerException;
-    Theme saveOne(Theme theme) throws ManagerException, FunctionalException;
-    List<Question> getListeQuestions(Theme theme) throws ManagerException;
+    List<Theme> getAllThemes() throws ManagerException;
+    Theme getTheme(Integer id) throws ManagerException, ElementNotFoundException;
+    void supprimerTheme(Integer id) throws ManagerException;
+    Theme modifierTheme(Theme theme) throws ManagerException;
+    List<Question> getQuestions(Theme theme) throws ManagerException;
 
-    Question ajouterQuestion(Theme theme, Question question) throws ManagerException;
-    Question modifierNomQuestion(Question question, String nom) throws ManagerException;
-    Question supprimerQuestion(Question question) throws ManagerException;
-    List<Proposition> getListePropositions(Question theme) throws ManagerException;
+    void ajouterQuestion(Theme theme, Question question) throws ManagerException;
+    void modifierEnonceQuestion(Question question, String enonce) throws ManagerException;
+    void modifierMediaQuestion(Question question, String media) throws ManagerException;
+    void modifierPointsQuestion(Question question, Integer points) throws ManagerException;
+    void supprimerQuestion(Theme theme, Question question) throws ManagerException;
+    List<Proposition> getPropositions(Question question) throws ManagerException;
 
-    Proposition ajouterProposition(Question question, Proposition proposition) throws ManagerException;
-    Proposition modifierNomProposition(Proposition proposition, String nom) throws ManagerException;
-    Proposition supprimerProposition(Proposition propsition) throws ManagerException;
+    void ajouterProposition(Question question, Proposition proposition) throws ManagerException;
+    void modifierEnonceProposition(Proposition proposition, String enonce) throws ManagerException;
+    void modifierCorrecteProposition(Proposition proposition, boolean correcte) throws ManagerException;
+    void supprimerProposition(Question question, Proposition proposition) throws ManagerException;
 
 }

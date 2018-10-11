@@ -8,7 +8,7 @@ import fr.eni.projet.qcm.dal.exception.DaoException;
 
 public interface QuestionDAO {
 
-	public Question insert(Question question, Integer themeId) throws DaoException;
+	public Question insert(Question question, Theme theme) throws DaoException;
 	public Question delete(Question question) throws DaoException;
 	public Question update(Question question) throws DaoException;
 //	public Question selectById(Integer id) throws DaoException;

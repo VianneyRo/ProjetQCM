@@ -13,7 +13,6 @@ import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
-import fr.eni.tp.web.common.exception.FunctionalException;
 
 public class ThemesManagerImpl implements ThemesManager {
     private ThemeDAO themeDAO = DAOFactory.themeDao();
@@ -23,15 +22,15 @@ public class ThemesManagerImpl implements ThemesManager {
 
     private ThemesManagerImpl() {}
 
-    public ThemesManagerImpl getInstance() {
-    	if(this.instance == null) {
-    		this.instance = new ThemesManagerImpl();
+    public static ThemesManagerImpl getInstance() {
+    	if(instance == null) {
+    		instance = new ThemesManagerImpl();
     	}
-    	return this.instance;
+    	return instance;
     }
 
 	@Override
-	public List<Theme> findAll() throws ManagerException {
+	public List<Theme> getAllThemes() throws ManagerException {
 		List<Theme> themes = null;
 		try {
 			themes = themeDAO.selectAll();
@@ -42,7 +41,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public Theme findOne(Integer id) throws ManagerException, ElementNotFoundException {
+	public Theme getTheme(Integer id) throws ManagerException, ElementNotFoundException {
 		Theme theme = null;
 		try {
 			theme = themeDAO.selectById(id);
@@ -53,7 +52,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public void deleteOne(Integer id) throws ManagerException {
+	public void supprimerTheme(Integer id) throws ManagerException {
 		try {
 			themeDAO.delete(id);
 		} catch(Exception e) {
@@ -62,7 +61,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public Theme saveOne(Theme theme) throws ManagerException, FunctionalException {
+	public Theme modifierTheme(Theme theme) throws ManagerException {
 		Theme savedTheme = null;
 		try {
 			savedTheme = themeDAO.insert(theme);
@@ -73,7 +72,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public List<Question> getListeQuestions(Theme theme) throws ManagerException {
+	public List<Question> getQuestions(Theme theme) throws ManagerException {
 		List<Question> questions = null;
 		try {
 			questions = questionDAO.selectByTheme(theme);
@@ -83,46 +82,109 @@ public class ThemesManagerImpl implements ThemesManager {
 		return questions;
 	}
 
+
+
 	@Override
-	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
-		Question question = null;
-		return null;
+	public void ajouterQuestion(Theme theme, Question question) throws ManagerException {
+		try {
+			Question insertedQuestion = questionDAO.insert(question, theme);
+			theme.ajouterQuestion(insertedQuestion);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public Question modifierNomQuestion(Question question, String nom) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public void modifierEnonceQuestion(Question question, String enonce) throws ManagerException {
+		try {
+			question.setEnonce(enonce);
+			questionDAO.update(question);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public Question supprimerQuestion(Question question) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public void modifierMediaQuestion(Question question, String media) throws ManagerException {
+		try {
+			question.setMedia(media);
+			questionDAO.update(question);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public List<Proposition> getListePropositions(Question theme) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public void modifierPointsQuestion(Question question, Integer points) throws ManagerException {
+		try {
+			question.setPoints(points);
+			questionDAO.update(question);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public Proposition ajouterProposition(Question question, Proposition proposition) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public void supprimerQuestion(Theme theme, Question question) throws ManagerException {
+		try {
+			Question deletedQuestion = questionDAO.delete(question);
+			theme.supprimerQuestion(deletedQuestion);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public Proposition modifierNomProposition(Proposition proposition, String nom) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Proposition> getPropositions(Question question) throws ManagerException {
+		List<Proposition> propositions = new ArrayList<Proposition>();
+		try {
+			propositions = propositionDAO.selectByQuestion(question);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return propositions;
+	}
+
+
+
+	@Override
+	public void ajouterProposition(Question question, Proposition proposition) throws ManagerException {
+		try {
+			Proposition insertedProposition = propositionDAO.insert(proposition, question);
+			question.ajouterProposition(insertedProposition);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 	@Override
-	public Proposition supprimerProposition(Proposition propsition) throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+	public void modifierEnonceProposition(Proposition proposition, String enonce) throws ManagerException {
+		try {
+			proposition.setEnonce(enonce);
+			propositionDAO.update(proposition);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public void modifierCorrecteProposition(Proposition proposition, boolean correcte) throws ManagerException {
+		try {
+			proposition.setCorrecte(correcte);
+			propositionDAO.update(proposition);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public void supprimerProposition(Question question, Proposition proposition) throws ManagerException {
+		try {
+			Proposition deletedProposition = propositionDAO.delete(proposition);
+			question.supprimerProposition(deletedProposition);
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
 	}
 
 }
