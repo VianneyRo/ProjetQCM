@@ -5,4 +5,8 @@ import fr.eni.tp.web.common.dal.dao.GenericDAO;
 
 public interface QuestionDAO extends GenericDAO<Question, Integer> {
 
+	Question save(Integer id, Question question);
+
+	Question delete(Question question);
+
 }

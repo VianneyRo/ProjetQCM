@@ -150,4 +150,16 @@ public class QuestionDAOImpl implements QuestionDAO {
         return question;
 	}
 
+	@Override
+	public Question save(Integer id, Question question) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question delete(Question question) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

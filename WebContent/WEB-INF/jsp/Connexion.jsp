@@ -61,7 +61,7 @@
         <div class="alert alert-danger" id="alert-message" style="visibility: hidden"></div>
         <div class="alert alert-info" id="info-message" role="alert" style="visibility: hidden"> </div>
 
-                <form method="post" action="connexion">
+                <form method="GET" action="ConnexionController">
             <fieldset>
                 <p>Vous pouvez vous connecter via ce formulaire.</p>
 

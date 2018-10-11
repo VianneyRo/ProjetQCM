@@ -6,6 +6,8 @@ import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
+import fr.eni.projet.qcm.dal.dao.PropositionDAO;
+import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
@@ -15,7 +17,8 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 public class ThemesManagerImpl implements ThemesManager {
 
     private ThemeDAO themeDAO = DAOFactory.themeDao();
-    private static ThemesManagerImpl instance;
+	private QuestionDAO questionDAO = DAOFactory.questionDao();
+	private PropositionDAO propositionDAO = DAOFactory.propositionDAO();
 
 	@Override
 	public List<Theme> findAll() throws ManagerException {
@@ -93,7 +96,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public Proposition supprimerProposition(Proposition propsition) throws ManagerException {
+	public Proposition supprimerProposition(Proposition proposition) throws ManagerException {
 		Proposition deletedProposition = null;
 		try {
 			deletedProposition = propositionDAO.delete(proposition);

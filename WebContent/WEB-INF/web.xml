@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	id="WebApp_ID" version="3.1">
-	<welcome-file-list>
-	<welcome-file>Connexion</welcome-file>
-	</welcome-file-list>
-	
-	<display-name>ProjetQCM</display-name>
-
-	<servlet>
-		<servlet-name>ConnexionController</servlet-name>
-		<servlet-class>fr.eni.projet.qcm.ui.controller.ConnexionController</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>ConnexionController</servlet-name>
-		<jsp-file>/Connexion.jsp</jsp-file>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ConnexionController</servlet-name>
-		<url-pattern>/"WebContent/Connexion.jsp"</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>accueilCandidat</servlet-name>
-		<jsp-file>/accueilCandidat.jsp</jsp-file>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>accueilCandidat</servlet-name>
-		<url-pattern>/accueilCandidat</url-pattern>
-	</servlet-mapping>
-	
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <welcome-file-list>
+    <welcome-file>/ConnexionController</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Connexion</servlet-name>
+    <jsp-file>/WEB-INF/jsp/Connexion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connexion</servlet-name>
+    <url-pattern>/Connexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CandidatController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.CandidatController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CandidatController</servlet-name>
+    <url-pattern>/CandidatController</url-pattern>
+  </servlet-mapping>
 </web-app>
