@@ -1,8 +1,12 @@
 package fr.eni.projet.qcm.dal.dao;
 
 import fr.eni.projet.qcm.bo.Proposition;
-import fr.eni.tp.web.common.dal.dao.GenericDAO;
+import fr.eni.projet.qcm.dal.exception.DaoException;
 
-public interface PropositionDAO extends GenericDAO<Proposition, Integer>{
+public interface PropositionDAO {
+
+	public Proposition insert(Proposition proposition, Integer questionId) throws DaoException;
+	public Proposition delete(Proposition proposition) throws DaoException;
+	public Proposition update(Proposition proposition) throws DaoException;
 
 }

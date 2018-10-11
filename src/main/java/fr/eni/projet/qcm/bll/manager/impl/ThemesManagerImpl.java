@@ -13,9 +13,17 @@ import fr.eni.tp.web.common.bll.exception.ManagerException;
 import fr.eni.tp.web.common.exception.FunctionalException;
 
 public class ThemesManagerImpl implements ThemesManager {
-
     private ThemeDAO themeDAO = DAOFactory.themeDao();
     private static ThemesManagerImpl instance;
+
+    private ThemesManagerImpl() {}
+
+    public ThemesManagerImpl getInstance() {
+    	if(this.instance == null) {
+    		this.instance = new ThemesManagerImpl();
+    	}
+    	return this.instance;
+    }
 
 	@Override
 	public List<Theme> findAll() throws ManagerException {
@@ -60,47 +68,55 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
-		Question savedQuestion = null;
+	public List<Question> getListeQuestions(Theme theme) throws ManagerException {
+		List<Question> questions = null;
 		try {
-			savedQuestion = questionDAO.save(theme.getId(), question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
-		return savedQuestion;
+		return questions;
+	}
+
+	@Override
+	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question modifierNomQuestion(Question question, String nom) throws ManagerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Question supprimerQuestion(Question question) throws ManagerException {
-		Question deletedQuestion = null;
-		try {
-			deletedQuestion = questionDAO.delete(question);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-		return deletedQuestion;
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Proposition> getListePropositions(Question theme) throws ManagerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Proposition ajouterProposition(Question question, Proposition proposition) throws ManagerException {
-		Proposition savedProposition = null;
-		try {
-			savedProposition = propositionDAO.save(question, proposition);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-		return savedProposition;
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposition modifierNomProposition(Proposition proposition, String nom) throws ManagerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Proposition supprimerProposition(Proposition propsition) throws ManagerException {
-		Proposition deletedProposition = null;
-		try {
-			deletedProposition = propositionDAO.delete(proposition);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-		return deletedProposition;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

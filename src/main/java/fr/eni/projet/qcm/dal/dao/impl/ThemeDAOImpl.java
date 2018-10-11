@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
@@ -16,7 +18,9 @@ import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 import fr.eni.tp.web.common.util.ResourceUtil;
 
 public class ThemeDAOImpl implements ThemeDAO {
-	
+
+	private static final String SELECT_BY_ID_QUERY = "SELECT id, libelle from theme WHERE id = ?";
+	private static final String SELECT_ALL_QUERY = "SELECT id, libelle from theme";
 	private static final String INSERT_THEME_QUERY = "INSERT INTO theme(libelle) VALUES (?)";
 	private static final String DELETE_THEME_QUERY = "DELETE FROM theme WHERE id = ?";
 	private static final String UPDATE_THEME_QUERY = "UPDATE theme SET libelle = ? WHERE id = ?";
@@ -115,8 +119,27 @@ public class ThemeDAOImpl implements ThemeDAO {
 	 */
 	@Override
 	public Theme selectById(Integer id) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Theme theme = null;
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_BY_ID_QUERY);
+			statement.setInt(1, id);
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				theme = resultSetToTheme(resultSet);
+			}
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return theme;
 	}
 
 	/**
@@ -126,34 +149,37 @@ public class ThemeDAOImpl implements ThemeDAO {
 	 */
 	@Override
 	public List<Theme> selectAll() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<Theme> themes = new ArrayList<Theme>();
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(SELECT_ALL_QUERY);
+			while (resultSet.next()) {
+				themes.add(resultSetToTheme(resultSet));
+			}
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return themes;
 	}
 
-	@Override
-	public Question ajouterQuestion(Theme theme, Question question) {
-		// TODO Auto-generated method stub
-		return null;
+	private Theme resultSetToTheme(ResultSet resultSet) throws DaoException {
+		Theme theme = null;
+		try {
+			theme = new Theme();
+			theme.setId(resultSet.getInt("id"));
+			theme.setLibelle(resultSet.getString("libelle"));
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		return theme;
 	}
-
-	@Override
-	public Question retirerQuestion(Question question) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proposition ajouterProposition(Question question, Proposition proposition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proposition retirerProposition(Proposition proposition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 }
