@@ -57,12 +57,12 @@
           }
       </style>
 
-<div class="container center">
+<div class="container center" style="text-align:center">
 <div class="col-md-12">
     
-        <h1 class="mt-5">Liste des Test/h1>
-		<c:forEach items="${liste}" var="listee">
-				<span id="lib">${listee.libelle}</span>
+        <h1 class="mt-5">Liste des Tests</h1>
+		<c:forEach items="${liste}" var="test">
+				<span id="lib">${test.libelle}</span>
 				<br><br>
 			</c:forEach>
     </div>

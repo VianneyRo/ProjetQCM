@@ -69,7 +69,7 @@
                 <input type="email" id="email" name="email" value="" />
                 <br />
 
-                <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
+                <label for="motdepasse">Mot de passe <span class="re	quis">*</span></label>
                 <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
               
                 <br />
@@ -85,6 +85,6 @@
     <div class="footer-copyright text-center py-3">&copy; 2018 Copyright:
       <a href="https://www.eni-ecole.fr"> ENI Ecole</a>
     </div>
-  </footer>
+</footer>
 
 </body>

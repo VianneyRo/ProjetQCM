@@ -2,6 +2,7 @@ package fr.eni.projet.qcm.bll.manager.impl;
 
 import java.util.List;
 
+import fr.eni.projet.qcm.bll.manager.TestManager;
 import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
@@ -16,10 +17,20 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 
 public class ThemesManagerImpl implements ThemesManager {
 
+	private static ThemesManager singleton = null;
     private ThemeDAO themeDAO = DAOFactory.themeDao();
 	private QuestionDAO questionDAO = DAOFactory.questionDao();
 	private PropositionDAO propositionDAO = DAOFactory.propositionDAO();
 
+	public static ThemesManager getInstance() {
+		if (singleton == null)
+			singleton = new ThemesManagerImpl();
+		
+		return singleton;
+	}
+	
+	
+	
 	@Override
 	public List<Theme> findAll() throws ManagerException {
 		List<Theme> themes = null;

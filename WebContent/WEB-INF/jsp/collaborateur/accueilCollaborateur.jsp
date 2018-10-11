@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire ├а choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire ра choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,15 +47,14 @@
           
           .page-footer {
               position: absolute;
-              bottom: 0;
-              text-align: center;
               width: 100%;
           }
       </style>
 
 <div class="container center">
 <div class="col-md-12">
-    		 <h1 class="mt-5">Collaborateur/h1>
+    		 <h1 class="mt-5">Collaborateur</h1>
+    		 
    
     </div>
 </div>
