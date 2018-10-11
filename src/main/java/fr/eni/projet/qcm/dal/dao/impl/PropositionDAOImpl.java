@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import fr.eni.projet.qcm.bo.Proposition;
+import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.dal.dao.PropositionDAO;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
@@ -99,6 +100,18 @@ public class PropositionDAOImpl implements PropositionDAO {
 			throw new DaoException(e.getMessage(), e);
 		}
 		return proposition;
+	}
+
+	@Override
+	public Proposition save(Question question, Proposition proposition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proposition delete(Proposition proposition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

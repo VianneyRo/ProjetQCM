@@ -9,4 +9,8 @@ public interface QuestionDAO {
 	public Question delete(Question question) throws DaoException;
 	public Question update(Question question) throws DaoException;
 
+	Question save(Integer id, Question question);
+
+	Question delete(Question question);
+
 }

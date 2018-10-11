@@ -56,7 +56,10 @@
 <div class="container center">
 <div class="col-md-12">
     
-        <h1 class="mt-5">Candidat/h1>
+        <h1 class="mt-5">Administrateur : Gestion des paramètres/h1>
+        <button type="button" class="btn btn-secondary"><a href="#">CANDIDAT</a></button>
+        
+        <button type="button" class="btn btn-secondary"><a href="#">COLLABORATEUR</a></button>
 
         
     </div>

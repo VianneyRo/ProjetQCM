@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.projet.qcm.bo.Candidat;
 import fr.eni.projet.qcm.bo.Collaborateur;
 import fr.eni.projet.qcm.dal.dao.CollaborateurDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;

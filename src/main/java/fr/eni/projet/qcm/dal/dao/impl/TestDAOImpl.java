@@ -93,7 +93,7 @@ public class TestDAOImpl implements TestDAO {
 	}
 
 	@Override
-	public void delete(Integer id) throws DaoException {
+	public void deleteById(Integer id) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -114,25 +114,12 @@ public class TestDAOImpl implements TestDAO {
 		
 	}
 
-	/**
-	 * Not use
-	 * @param id
-	 * @return
-	 * @throws DaoException
-	 */
-	@Deprecated
 	@Override
-	public Test selectById(Integer id) throws DaoException {
+	public Test selectByLibelle(String libelle) throws DaoException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * Not use
-	 * @return
-	 * @throws DaoException
-	 */
-	@Deprecated
 	@Override
 	public List<Test> selectAll() throws DaoException {
 		// TODO Auto-generated method stub

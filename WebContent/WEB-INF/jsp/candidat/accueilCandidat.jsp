@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -6,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="sebeez">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <title>Projet QCM</title>
+  <title>Projet QCM : Accueil Candidat</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery-3.2.1.min.js"></script>
@@ -19,7 +23,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire à choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire à  choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,9 +60,11 @@
 <div class="container center">
 <div class="col-md-12">
     
-        <h1 class="mt-5">Candidat/h1>
-
-        
+        <h1 class="mt-5">Liste des Test/h1>
+		<c:forEach items="${liste}" var="listee">
+				<span id="lib">${listee.libelle}</span>
+				<br><br>
+			</c:forEach>
     </div>
 </div>
 
