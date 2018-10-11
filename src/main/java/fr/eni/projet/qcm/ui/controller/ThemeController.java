@@ -10,30 +10,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
-import fr.eni.projet.qcm.bll.manager.TestManager;
-import fr.eni.projet.qcm.bo.Test;
+import fr.eni.projet.qcm.bll.manager.ThemesManager;
+import fr.eni.projet.qcm.bo.Theme;
 
-@WebServlet("/CandidatController")
-public class CandidatController extends HttpServlet{
+@WebServlet("/ThemeController")
+public class ThemeController extends HttpServlet{
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5587704326721666725L;
-	private  TestManager testManager = ManagerFactory.testManager();
-
-	/* CHARGEMENT LISTES des Test */
-	@Override
+	private static final long serialVersionUID = 3263229810023667329L;
+	private  ThemesManager themesManager = ManagerFactory.themesManager();
+	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			
-			List<Test> tests = testManager.selectAll();
-			req.setAttribute("liste", tests);
-			req.getRequestDispatcher("/WEB-INF/jsp/candidat/accueilCandidat.jsp").forward(req, resp);
-			}
+			List<Theme> themes = themesManager.getAllThemes();
+			req.setAttribute("themes", themes);
+			req.getRequestDispatcher("/WEB-INF/jsp/collaborateur/gestionThemes.jsp").forward(req, resp);
+		}
 		catch (Exception e) {
 			resp.sendError(500);
 		}
-	}
-
+		
 }
+	}

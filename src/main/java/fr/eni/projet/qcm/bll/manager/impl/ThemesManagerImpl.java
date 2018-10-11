@@ -15,6 +15,8 @@ import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
 
 public class ThemesManagerImpl implements ThemesManager {
+
+
     private ThemeDAO themeDAO = DAOFactory.themeDao();
     private QuestionDAO questionDAO = DAOFactory.questionDao();
     private PropositionDAO propositionDAO = DAOFactory.propositionDAO();

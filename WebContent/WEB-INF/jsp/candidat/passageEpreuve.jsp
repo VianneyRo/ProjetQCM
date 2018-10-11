@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -6,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="sebeez">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-  <title>Projet QCM : Page de Connexion</title>
+  <title>Projet QCM : Accueil Candidat</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery-3.2.1.min.js"></script>
@@ -19,7 +23,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire � choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire à  choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,28 +60,18 @@
 <div class="container center" style="text-align:center">
 <div class="col-md-12">
     
-        <h1 class="mt-5"><u>Authentifiez-vous</u></h1>
-
-        <div class="alert alert-danger" id="alert-message" style="visibility: hidden"></div>
-        <div class="alert alert-info" id="info-message" role="alert" style="visibility: hidden"> </div>
-
-                <form method="GET" action="ConnexionController">
-            <fieldset>
-                <p>Vous pouvez vous connecter via ce formulaire.</p>
-
-                <label for="nom">Adresse email <span class="requis">*</span></label>
-                <input type="email" id="email" name="email" value="" />
-                <br />
-
-                <label for="motdepasse">Mot de passe <span class="re	quis">*</span></label>
-                <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-              
-                <br />
-
-                <input type="submit" value="Connexion" class="sansLabel" />
-                <br />
-            </fieldset>
-        </form>
+        <h1 class="mt-5">Vous avez 1h pour répondre aux questions</h1>
+		<c:forEach items="${questions}" var="question">
+					<a href="#"><span id="lib">${question.enonce}</span></a>
+				<br><br>
+		
+		</c:forEach>
+		
+		
+		
+		
+		
+		
     </div>
 </div>
 
@@ -85,6 +79,6 @@
     <div class="footer-copyright text-center py-3">&copy; 2018 Copyright:
       <a href="https://www.eni-ecole.fr"> ENI Ecole</a>
     </div>
-</footer>
+  </footer>
 
 </body>

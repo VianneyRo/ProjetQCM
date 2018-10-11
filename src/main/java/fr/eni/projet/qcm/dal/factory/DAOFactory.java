@@ -35,8 +35,7 @@ public class DAOFactory {
 		return QuestionDAOImpl.getInstance();
 	}
 
-	public static PropositionDAO propositionDAO() {
-		
+	public static PropositionDAO propositionDAO() {		
 		return PropositionDAOImpl.getInstance();
 	}
 }

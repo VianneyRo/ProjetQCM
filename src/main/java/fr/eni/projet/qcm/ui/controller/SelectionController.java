@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
-import fr.eni.projet.qcm.bll.manager.TestManager;
-import fr.eni.projet.qcm.bo.Test;
+import fr.eni.projet.qcm.bll.manager.QuestionsManager;
+import fr.eni.projet.qcm.bo.Question;
 
-@WebServlet("/CandidatController")
-public class CandidatController extends HttpServlet{
+@WebServlet("/SelectionController")
+public class SelectionController extends HttpServlet {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5587704326721666725L;
-	private  TestManager testManager = ManagerFactory.testManager();
-
-	/* CHARGEMENT LISTES des Test */
+	private static final long serialVersionUID = 7885126200275346869L;
+	private  QuestionsManager questionManager = ManagerFactory.questionsManager();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	
 		try {
-			
-			List<Test> tests = testManager.selectAll();
-			req.setAttribute("liste", tests);
-			req.getRequestDispatcher("/WEB-INF/jsp/candidat/accueilCandidat.jsp").forward(req, resp);
-			}
+			List<Question> lesQuestions = questionManager.selectAll();
+			req.setAttribute("questions", lesQuestions);
+			req.getRequestDispatcher("/WEB-INF/jsp/candidat/passageEpreuve.jsp").forward(req, resp);
+		}
 		catch (Exception e) {
 			resp.sendError(500);
 		}
 	}
+	
 
 }

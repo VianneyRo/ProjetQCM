@@ -71,4 +71,9 @@ public class TestManagerImpl implements TestManager{
 		}
 		return liste;
 		}
+	@Override
+	public Test selectById(String libelle) throws ManagerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	}
