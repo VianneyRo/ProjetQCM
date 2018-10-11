@@ -52,6 +52,18 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
+	public void ajouterTheme(Theme theme) throws ManagerException {
+		try {
+			Theme insertedTheme = themeDAO.insert(theme);
+			for(Question question: theme.getQuestions()) {
+				this.ajouterQuestion(insertedTheme, question);
+			}
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+	}
+
+	@Override
 	public void supprimerTheme(Integer id) throws ManagerException {
 		try {
 			themeDAO.delete(id);
@@ -88,7 +100,9 @@ public class ThemesManagerImpl implements ThemesManager {
 	public void ajouterQuestion(Theme theme, Question question) throws ManagerException {
 		try {
 			Question insertedQuestion = questionDAO.insert(question, theme);
-			theme.ajouterQuestion(insertedQuestion);
+			for(Proposition proposition: question.getPropositions()) {
+				this.ajouterProposition(insertedQuestion, proposition);
+			}
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -127,8 +141,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void supprimerQuestion(Theme theme, Question question) throws ManagerException {
 		try {
-			Question deletedQuestion = questionDAO.delete(question);
-			theme.supprimerQuestion(deletedQuestion);
+			questionDAO.delete(question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -150,8 +163,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void ajouterProposition(Question question, Proposition proposition) throws ManagerException {
 		try {
-			Proposition insertedProposition = propositionDAO.insert(proposition, question);
-			question.ajouterProposition(insertedProposition);
+			propositionDAO.insert(proposition, question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

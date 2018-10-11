@@ -12,6 +12,7 @@ public interface TestManager {
 	List<Test> selectAll() throws ManagerException;
 	
 	void deleteById(int id) throws ManagerException;
-	
+
+	Test selectById(String libelle) throws ManagerException;
 	Test selectByLibelle(String libelle) throws ManagerException;
 }
