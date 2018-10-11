@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.projet.qcm.bo.Question;
+import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
@@ -15,6 +18,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 	private static final String INSERT_QUESTION_QUERY = "INSERT INTO question(themeId, enonce, media, points) VALUES(?, ?, ?, ?)";
 	private static final String DELETE_QUESTION_QUERY = "DELETE FROM question WHERE id=?";
 	private static final String UPDATE_QUESTION_QUERY = "UPDATE question SET enonce=?, media=?, points=? WHERE id=?";
+	private static final String SELECT_BY_THEME = "SELECT id, enonce, media, points WHERE themeId=?";
 
 	@Override
 	public Question insert(Question question, Integer themeId) throws DaoException {
@@ -83,6 +87,29 @@ public class QuestionDAOImpl implements QuestionDAO {
 		return updatedQuestion;
 	}
 
+	@Override
+	public List<Question> selectByTheme(Theme theme) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		List<Question> questions = new ArrayList<Question>();
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_BY_THEME, Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, theme.getId());
+
+			resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				questions.add(resultSetToQuestion(resultSet));
+			}
+		} catch(Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+
+		return questions;
+	}
+
 	private Question resultSetToQuestion(ResultSet resultSet) throws DaoException {
 		Question question = null;
 		try {
@@ -95,18 +122,6 @@ public class QuestionDAOImpl implements QuestionDAO {
 			throw new DaoException(e.getMessage(), e);
 		}
 		return question;
-	}
-
-	@Override
-	public Question save(Integer id, Question question) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Question delete(Question question) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

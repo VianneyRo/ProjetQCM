@@ -1,11 +1,14 @@
 package fr.eni.projet.qcm.bll.manager.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
+import fr.eni.projet.qcm.dal.dao.PropositionDAO;
+import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
@@ -14,6 +17,8 @@ import fr.eni.tp.web.common.exception.FunctionalException;
 
 public class ThemesManagerImpl implements ThemesManager {
     private ThemeDAO themeDAO = DAOFactory.themeDao();
+    private QuestionDAO questionDAO = DAOFactory.questionDao();
+    private PropositionDAO propositionDAO = DAOFactory.propositionDAO();
     private static ThemesManagerImpl instance;
 
     private ThemesManagerImpl() {}
@@ -71,6 +76,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	public List<Question> getListeQuestions(Theme theme) throws ManagerException {
 		List<Question> questions = null;
 		try {
+			questions = questionDAO.selectByTheme(theme);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -79,7 +85,7 @@ public class ThemesManagerImpl implements ThemesManager {
 
 	@Override
 	public Question ajouterQuestion(Theme theme, Question question) throws ManagerException {
-		// TODO Auto-generated method stub
+		Question question = null;
 		return null;
 	}
 

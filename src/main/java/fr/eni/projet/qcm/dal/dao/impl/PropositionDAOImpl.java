@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.projet.qcm.bo.Proposition;
 import fr.eni.projet.qcm.bo.Question;
@@ -16,6 +18,7 @@ public class PropositionDAOImpl implements PropositionDAO {
 	private static final String INSERT_PROPOSITION_QUERY = "INSERT INTO proposition(questionId, enonce, correcte) VALUES(?, ?, FALSE)";
 	private static final String DELETE_PROPOSITION_QUERY = "DELETE FROM proposition WHERE id=?";
 	private static final String UPDATE_PROPOSITION_QUERY = "UPDATE proposition SET enonce=?, correcte=? WHERE id=?";
+	private static final String SELECT_BY_QUESTION = "SELECT id, enonce, correcte WHERE idQuestion=?";
 	private PropositionDAOImpl instance;
 
 	private PropositionDAOImpl() {}
@@ -90,6 +93,29 @@ public class PropositionDAOImpl implements PropositionDAO {
 		return updatedProposition;
 	}
 
+	@Override
+	public List<Proposition> selectByQuestion(Question question) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		List<Proposition> propositions = new ArrayList<Proposition>();
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_BY_QUESTION, Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, question.getId());
+
+			resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				propositions.add(resultSetToProposition(resultSet));
+			}
+		} catch(Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+
+		return propositions;
+	}
+
 	private Proposition resultSetToProposition(ResultSet resultSet) throws DaoException {
 		Proposition proposition = new Proposition();
 		try {
@@ -100,18 +126,6 @@ public class PropositionDAOImpl implements PropositionDAO {
 			throw new DaoException(e.getMessage(), e);
 		}
 		return proposition;
-	}
-
-	@Override
-	public Proposition save(Question question, Proposition proposition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proposition delete(Proposition proposition) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
