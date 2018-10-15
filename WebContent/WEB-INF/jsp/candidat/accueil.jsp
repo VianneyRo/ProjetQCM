@@ -11,11 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="sebeez">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/functions.js"></script>
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 
 	<body>
