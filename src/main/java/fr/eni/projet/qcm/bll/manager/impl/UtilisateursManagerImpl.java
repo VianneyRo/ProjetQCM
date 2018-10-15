@@ -1,9 +1,6 @@
 package fr.eni.projet.qcm.bll.manager.impl;
 
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
-import fr.eni.projet.qcm.bo.Admin;
-import fr.eni.projet.qcm.bo.Candidat;
-import fr.eni.projet.qcm.bo.Collaborateur;
 import fr.eni.projet.qcm.bo.Profil;
 import fr.eni.projet.qcm.bo.Promotion;
 import fr.eni.projet.qcm.bo.Utilisateur;

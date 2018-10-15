@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire Ã  choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire à  choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,13 +53,14 @@
           }
       </style>
 
-<div class="container center">
+<div class="container center" style="text-align:center">
 <div class="col-md-12">
     
-        <h1 class="mt-5">Administrateur : Gestion des paramètres/h1>
-        <button type="button" class="btn btn-secondary"><a href="#">CANDIDAT</a></button>
+        <h1 class="mt-5">Administrateur : Gestion des paramètres</h1><br>
         
-        <button type="button" class="btn btn-secondary"><a href="#">COLLABORATEUR</a></button>
+        <button type="button" class="btn btn-light"><a href="CandidatController">CANDIDAT</a></button>
+        
+        <button type="button" class="btn btn-light"><a href="CollaborateurController">COLLABORATEUR</a></button>
 
         
     </div>

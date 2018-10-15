@@ -21,7 +21,8 @@ public class ConnexionController extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = -1286738201204346510L;
-
+	Utilisateur utilisateur = null;
+	
 	public ConnexionController() {
 		utilisateursManager = ManagerFactory.utilisateursManager();
 	}
@@ -30,8 +31,8 @@ public class ConnexionController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String email = req.getParameter("email");
-		String password = req.getParameter("password");		
-		Utilisateur utilisateur = null;
+		String password = req.getParameter("motdepasse");		
+		
 		try {
 			ValidationUtil.checkNotNull(email);
 			ValidationUtil.checkNotNull(password);

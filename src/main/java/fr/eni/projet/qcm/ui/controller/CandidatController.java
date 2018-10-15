@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
 import fr.eni.projet.qcm.bll.manager.EpreuvesManager;
 import fr.eni.projet.qcm.bo.Epreuve;
-import fr.eni.projet.qcm.bo.Test;
-import fr.eni.projet.qcm.bo.Candidat;
 
 @WebServlet("/CandidatController")
 public class CandidatController extends HttpServlet{

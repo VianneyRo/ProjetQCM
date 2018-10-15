@@ -16,6 +16,7 @@ import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String LOGIN = "SELECT u.id, u.nom, u.prenom, u.email, p.libelle FROM utilisateur u, profil p WHERE u.email=? AND u.password=? AND u.codeProfil=p.code";
+	
 	private static UtilisateurDAOImpl instance;
 
 	public static UtilisateurDAOImpl getInstance() {
@@ -43,6 +44,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		Utilisateur utilisateur = null;
+		
 		try {
 			System.out.println("Connexion: [email=" + email + ", password=" + password + "]");
 			connection = MSSQLConnectionFactory.get();
@@ -55,24 +57,22 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		}
+	
 		return utilisateur;
 	}
 
 	@Override
 	public Utilisateur insert(Utilisateur utilisateur) throws DaoException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void delete(Integer id) throws DaoException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void update(Integer id, Utilisateur utilisateur) throws DaoException {
-		// TODO Auto-generated method stub
 		
 	}
 
