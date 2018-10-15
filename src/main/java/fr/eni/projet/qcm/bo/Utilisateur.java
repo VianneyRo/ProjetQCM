@@ -9,8 +9,7 @@ public abstract class Utilisateur {
 	private String prenom;
 	private String email;
 	private String password;
-
-	private Profil profil;
+	private String profil;
 
 	/**
 	 * Constructeur
@@ -22,7 +21,7 @@ public abstract class Utilisateur {
 	 * @param nom
 	 * @param prenom
 	 */
-	public Utilisateur(String nom, String prenom, Profil profil) {
+	public Utilisateur(String nom, String prenom, String profil) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.profil = profil;
@@ -37,8 +36,8 @@ public abstract class Utilisateur {
 	 * @param password
 	 * @param profil
 	 */
-	public Utilisateur(Integer id, String nom, String prenom, String email,
-			String password, Profil profil) {
+	public Utilisateur(Integer id, String nom, String prenom,
+			String email, String password, String profil) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -52,30 +51,13 @@ public abstract class Utilisateur {
 	public String getPrenom() { return this.prenom; }
 	public String getEmail() { return this.email; }
 	public String getPassword() { return this.password; }
-	public Profil getProfil() { return this.profil; }
+	public String getProfil() { return this.profil; }
 
 	public void setId(Integer id) { this.id = id; }
 	public void setNom(String nom) { this.nom = nom; }
 	public void setPrenom(String prenom) { this.prenom = prenom; }
 	public void setEmail(String email) { this.email = email; }
 	public void setPassword(String password) { this.password = password; }
-	public void setProfil(Profil profil) { this.profil = profil; }
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Utilisateur [id=");
-		builder.append(id);
-		builder.append(", nom=");
-		builder.append(nom);
-		builder.append(", prenom=");
-		builder.append(prenom);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append("]");
-		return builder.toString();
-	}
+	public void setProfil(String profil) { this.profil = profil; }
 
 }

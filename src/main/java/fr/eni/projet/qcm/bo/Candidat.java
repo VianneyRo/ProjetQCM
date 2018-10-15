@@ -6,9 +6,7 @@ public class Candidat extends Utilisateur {
 	/**
 	 * Constructeur
 	 */
-	public Candidat() {
-		super();
-	}
+	public Candidat() {}
 
 	/**
 	 * Constructeur BO
@@ -16,7 +14,7 @@ public class Candidat extends Utilisateur {
 	 * @param prenom
 	 */
 	public Candidat(String nom, String prenom) {
-		super(nom, prenom, new Profil("Candidat"));
+		super(nom, prenom, "candidat");
 	}
 
 	/**
@@ -27,8 +25,7 @@ public class Candidat extends Utilisateur {
 	 * @param email
 	 * @param password
 	 */
-
 	public Candidat(Integer id, String nom, String prenom, String email, String password) {
-		super(id, nom, prenom, email, password, new Profil("Candidat"));
+		super(id, nom, prenom, email, password, "candidat");
 	}
 }

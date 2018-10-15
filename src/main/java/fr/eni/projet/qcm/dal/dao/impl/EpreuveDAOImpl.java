@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.dal.util.DateUtil;
+import fr.eni.projet.qcm.bo.Candidat;
 import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.dal.dao.EpreuveDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;
@@ -35,6 +36,11 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			instance = new EpreuveDAOImpl();
 		}
 		return instance;
+	}
+
+	@Override
+	public List<Epreuve> selectByCandidatId(Integer candidatId) throws DaoException {
+		return null;
 	}
 
 	@Override
@@ -72,7 +78,7 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 	}
 
 	@Override
-	public void update(Epreuve epreuve) throws DaoException {
+	public void update(Integer epreuveId, Epreuve epreuve) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -169,31 +175,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		}
 
 		return list;
-	}
-
-	@Override
-	public boolean checkExistenceWithName(String name) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		boolean isExist = false;
-
-		try {
-			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_BY_NOTE_QUERY);
-
-			statement.setString(1, name);
-			resultSet = statement.executeQuery();
-
-			isExist = resultSet.next();
-
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-		return isExist;
 	}
 
 	private Epreuve resultSetToNote(ResultSet resultSet) throws SQLException {

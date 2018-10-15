@@ -10,9 +10,7 @@ import fr.eni.projet.qcm.common.AppConstants;
  */
 public class StringUtil {
 
-    private StringUtil() {
-        
-    }
+    private StringUtil() {}
     
     /**
      * Convert Null value to blank value.
@@ -21,13 +19,10 @@ public class StringUtil {
      * @return
      */
     public static final String nullToBlank(String data) {
-        
         String result = AppConstants.EMPTY;
-        
         if(data != null) {
-            result = data; 
-        }
-        
+        	result = data;
+    	}
         return result;
     }
 }

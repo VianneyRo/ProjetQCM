@@ -8,12 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.projet.qcm.bo.Epreuve;
-import fr.eni.projet.qcm.bo.Proposition;
-import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
-import fr.eni.tp.web.common.dal.exception.DaoException;
+import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 import fr.eni.tp.web.common.util.ResourceUtil;
 
@@ -67,7 +64,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 	}
 
 	@Override
-	public void update(Theme theme) throws DaoException {
+	public void update(Integer themeId, Theme theme) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

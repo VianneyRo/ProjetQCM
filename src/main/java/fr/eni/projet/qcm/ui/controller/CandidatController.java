@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
-import fr.eni.projet.qcm.bll.manager.TestManager;
+import fr.eni.projet.qcm.bll.manager.EpreuvesManager;
+import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.bo.Test;
+import fr.eni.projet.qcm.bo.Candidat;
 
 public class CandidatController extends HttpServlet{
 
@@ -19,15 +21,16 @@ public class CandidatController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private  TestManager testManager = ManagerFactory.testManager();
+	private  EpreuvesManager epreuvesManager = ManagerFactory.epreuvesManager();
 
 	/* CHARGEMENT LISTES des Test */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			List<Test> tests = testManager.selectAll();
-			
-			req.setAttribute("liste", tests);
+			String candidatId = req.getParameter("candidatId");
+			List<Epreuve> epreuves = epreuvesManager.getEpreuvesByCandidatId(Integer.parseInt(candidatId));
+
+			req.setAttribute("epreuves", epreuves.toArray());
 			req.getRequestDispatcher("AccueilCandidat").forward(req, resp);
 		}
 		catch (Exception e) {
