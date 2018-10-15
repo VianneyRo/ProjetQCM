@@ -1,0 +1,51 @@
+html {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding: 0;
+	margin: 0;
+}
+body {
+	flex: 1 0;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 0;
+	margin: 0;
+}
+
+header {
+	flex: 0 0 1.5cm;
+	display: flex;
+	flex-flow: row nowrap;
+	background-color: #454545;
+	color: #ffffff;
+}
+header .logo-container {
+	flex: 0 0 1.5cm;
+}
+header nav {
+	flex: 1 0;
+	display: flex;
+	flex-flow: row nowrap;
+}
+header .profile-container {
+	flex: 0 0;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.main-container {
+	flex: 1 0;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+footer {
+	flex: 0 0 1.5cm;
+	display: flex;
+	flex-flow: row nowrap;
+	background-color: #454545;
+	color: #ffffff;
+}

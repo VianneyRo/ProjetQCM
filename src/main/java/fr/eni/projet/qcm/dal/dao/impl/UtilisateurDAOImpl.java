@@ -15,8 +15,9 @@ import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 
 public class UtilisateurDAOImpl implements UtilisateurDAO {
-	private static final String LOGIN = "SELECT u.id, u.nom, u.prenom, u.email, p.libelle FROM utilisateur u, profil p WHERE u.email=? AND u.password=? AND u.codeProfil=p.code";
-	
+
+	private static final String LOGIN = "SELECT id, nom, prenom, email, code_profil FROM utilisateur WHERE email=? AND password=?";
+
 	private static UtilisateurDAOImpl instance;
 
 	public static UtilisateurDAOImpl getInstance() {
@@ -79,15 +80,15 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private Utilisateur resultSetToUtilisateur(ResultSet resultSet) throws DaoException {
 		Utilisateur utilisateur = null;
 		try {
-			if(resultSet.getString("libelle") != null) {
-				switch(resultSet.getString("libelle")) {
-					case "Candidat":
+			if(resultSet.getString("code_profil") != null) {
+				switch(resultSet.getString("code_profil")) {
+					case "CAND":
 						utilisateur = new Candidat();
 						break;
-					case "Collaborateur":
+					case "COLL":
 						utilisateur = new Collaborateur();
 						break;
-					case "Admin":
+					case "ADMIN":
 						utilisateur = new Admin();
 						break;
 				}
@@ -95,7 +96,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				utilisateur.setNom(resultSet.getString("nom"));
 				utilisateur.setPrenom(resultSet.getString("prenom"));
 				utilisateur.setEmail(resultSet.getString("email"));
-				utilisateur.setProfil(resultSet.getString("libelle"));
+				utilisateur.setProfil(resultSet.getString("code_profil"));
 			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);

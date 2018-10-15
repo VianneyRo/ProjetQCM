@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
 import fr.eni.projet.qcm.bll.manager.EpreuvesManager;
+
+import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.bo.QuestionTirage;
 
@@ -21,6 +23,9 @@ public class SelectionController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 7885126200275346869L;
+
+	private  ThemesManager themesManager = ManagerFactory.themesManager();
+
 	private EpreuvesManager epreuveManager = ManagerFactory.epreuvesManager();
 	
 	@Override
