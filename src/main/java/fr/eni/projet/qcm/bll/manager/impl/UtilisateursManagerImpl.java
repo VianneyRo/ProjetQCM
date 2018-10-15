@@ -24,29 +24,29 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
 
 	@Override
 	public Utilisateur connexion(String login, String password) throws ManagerException {
-//		System.out.println("login: " + login + ", password: " + password);
-//		if(login.equals("admin@eni.fr") && password.equals("admin")) {
-//			return new Admin(1, "Dmin", "Alain", "admin@eni.fr", "admin");
-//		} else if(login.equals("collaborateur@eni.fr") && password.equals("collaborateur")) {
-//			return new Collaborateur(1, "Ollaborateur", "Charles", "collaborateur@eni.fr", "collaborateur");
-//		} else if(login.equals("candidat@eni.fr") && password.equals("candidat")) {
-//			return new Candidat(1, "Andidat", "Cédric", "candidat@eni.fr", "candidat");
-//		} else {
-//			throw new ManagerException("Pb de connexion", null);
-//		}
-		Utilisateur utilisateur = null;
-		try {
-			Utilisateur utilisateurConnecte = utilisateurDao.connexion(login, password);
-			if(utilisateurConnecte == null) {
-				throw new Exception();
-			} else {
-				System.out.println("Utilisateur: [nom=" + utilisateurConnecte.getNom() + ", prenom= " + utilisateurConnecte.getPrenom() + ", profil=" + utilisateurConnecte.getProfil() + "]");
-				utilisateur = utilisateurConnecte;
-			}
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
+		System.out.println("login: " + login + ", password: " + password);
+		if(login.equals("a.dmin@eni.fr") && password.equals("admin")) {
+			return new Admin(1, "Dmin", "Alain", "admin@eni.fr", "admin");
+		} else if(login.equals("c.ollaborateur@eni.fr") && password.equals("collaborateur")) {
+			return new Collaborateur(1, "Ollaborateur", "Charles", "collaborateur@eni.fr", "collaborateur");
+		} else if((login.equals("c.andidat17@eni.fr") || login.equals("c.andidat18@eni.fr")) && password.equals("candidat")) {
+			return new Candidat(1, "Andidat", "Cédric", "candidat@eni.fr", "candidat");
+		} else {
+			throw new ManagerException("Pb de connexion", null);
 		}
-		return utilisateur;
+//		Utilisateur utilisateur = null;
+//		try {
+//			Utilisateur utilisateurConnecte = utilisateurDao.connexion(login, password);
+//			if(utilisateurConnecte == null) {
+//				throw new Exception();
+//			} else {
+//				System.out.println("Utilisateur: [nom=" + utilisateurConnecte.getNom() + ", prenom= " + utilisateurConnecte.getPrenom() + ", profil=" + utilisateurConnecte.getProfil() + "]");
+//				utilisateur = utilisateurConnecte;
+//			}
+//		} catch(Exception e) {
+//			throw new ManagerException(e.getMessage(), e);
+//		}
+//		return utilisateur;
 	}
 
 	@Override
