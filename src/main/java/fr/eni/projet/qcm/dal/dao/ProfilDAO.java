@@ -1,7 +1,6 @@
 package fr.eni.projet.qcm.dal.dao;
 
 import fr.eni.projet.qcm.bo.Profil;
-import fr.eni.projet.qcm.bo.Utilisateur;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 
 public interface ProfilDAO {

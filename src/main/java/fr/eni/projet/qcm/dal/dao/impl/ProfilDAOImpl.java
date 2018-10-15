@@ -13,9 +13,9 @@ import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 
 public class ProfilDAOImpl implements ProfilDAO {
 	private static final String SELECT_BY_UTILISATEUR = "SELECT p.id, p.code, p.libelle FROM profil p, utilisateur u WHERE u.id=? AND u.codeProfil=p.code";
-	private static final String INSERT = "INSERT INTO profil(code, libelle) VALUES(?, ?)";
-	private static final String DELETE = "DELETE FROM profil WHERE id=?";
-	private static final String UPDATE = "UPDATE profil SET code=?, libelle=? WHERE id=?";
+//	private static final String INSERT = "INSERT INTO profil(code, libelle) VALUES(?, ?)";
+//	private static final String DELETE = "DELETE FROM profil WHERE id=?";
+//	private static final String UPDATE = "UPDATE profil SET code=?, libelle=? WHERE id=?";
 	private static ProfilDAOImpl instance;
 
 	private ProfilDAOImpl() {}
@@ -55,13 +55,11 @@ public class ProfilDAOImpl implements ProfilDAO {
 	@Override
 	public void delete(Integer profilId) throws DaoException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void update(Integer profilId, Profil profil) throws DaoException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private Profil resultSetToProfil(ResultSet resultSet) throws DaoException {

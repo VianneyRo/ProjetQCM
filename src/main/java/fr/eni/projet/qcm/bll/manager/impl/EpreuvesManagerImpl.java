@@ -5,6 +5,7 @@ import java.util.List;
 import fr.eni.projet.qcm.bll.manager.EpreuvesManager;
 import fr.eni.projet.qcm.bo.Candidat;
 import fr.eni.projet.qcm.bo.Epreuve;
+import fr.eni.projet.qcm.bo.QuestionTirage;
 import fr.eni.projet.qcm.bo.Test;
 import fr.eni.projet.qcm.dal.dao.EpreuveDAO;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
@@ -76,6 +77,11 @@ public class EpreuvesManagerImpl implements EpreuvesManager {
 	@Override
 	public Epreuve modifierEpreuve(Epreuve theme) throws ManagerException {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<QuestionTirage> getQuestionsByEpreuve(Epreuve epreuve) {
 		return null;
 	}
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.eni.projet.qcm.bo.Candidat;
 import fr.eni.projet.qcm.bo.Epreuve;
+import fr.eni.projet.qcm.bo.QuestionTirage;
 import fr.eni.projet.qcm.bo.SectionTest;
 import fr.eni.projet.qcm.bo.Test;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
@@ -21,4 +22,5 @@ public interface EpreuvesManager {
     void supprimerEpreuve(Epreuve epreuve) throws ManagerException;
     Epreuve modifierEpreuve(Epreuve theme) throws ManagerException;
 
+    List<QuestionTirage> getQuestionsByEpreuve(Epreuve epreuve);
 }
