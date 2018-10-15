@@ -11,7 +11,7 @@ import fr.eni.tp.web.common.bll.exception.ManagerException;
 public class TestsManagerImpl implements TestsManager {
 	private static TestsManagerImpl instance;
 
-	public TestsManagerImpl getInstance() {
+	public static TestsManagerImpl getInstance() {
 		if(instance == null) {
 			instance = new TestsManagerImpl();
 		}

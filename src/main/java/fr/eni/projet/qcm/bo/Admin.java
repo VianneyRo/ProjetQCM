@@ -14,7 +14,7 @@ public class Admin extends Utilisateur {
 	 * @param prenom
 	 */
 	public Admin(String nom, String prenom) {
-		super(nom, prenom, "Candidat");
+		super(nom, prenom, "admin");
 	}
 
 	/**
@@ -26,6 +26,6 @@ public class Admin extends Utilisateur {
 	 * @param password
 	 */
 	public Admin(Integer id, String nom, String prenom, String email, String password) {
-		super(id, nom, prenom, email, password, "Candidat");
+		super(id, nom, prenom, email, password, "admin");
 	}
 }

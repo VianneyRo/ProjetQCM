@@ -36,91 +36,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		}
 		return instance;
 	}
-
-	@Override
-	public Epreuve insert(Epreuve epreuve) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		try {
-			connection = MSSQLConnectionFactory.get();
-
-			statement = connection.prepareStatement(INSERT_EPREUVE_QUERY, Statement.RETURN_GENERATED_KEYS);
-			
-			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
-			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
-			statement.setLong(3, epreuve.getTempsEcoule());
-			statement.setString(4, epreuve.getEtat());
-			statement.setFloat(5, epreuve.getNoteObtenue());
-			statement.setString(6, epreuve.getNiveauObtenu());
-
-			if (statement.executeUpdate() == 1) {
-				resultSet = statement.getGeneratedKeys();
-				if (resultSet.next()) {
-
-					epreuve.setId(resultSet.getInt(1));
-				}
-			}
-
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-		return epreuve;
-	}
-
-	@Override
-	public void update(Epreuve epreuve) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		try {
-			connection = MSSQLConnectionFactory.get();
-
-			statement = connection.prepareStatement(UPDATE_EPREUVE_QUERY);
-
-			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
-			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
-			statement.setLong(3, epreuve.getTempsEcoule());
-			statement.setString(4, epreuve.getEtat());
-			statement.setFloat(5, epreuve.getNoteObtenue());
-			statement.setString(6, epreuve.getNiveauObtenu());
-			statement.setInt(7, epreuve.getId());
-
-			statement.executeUpdate();
-
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-	}
-
-	@Override
-	public void delete(Integer id) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		try {
-			connection = MSSQLConnectionFactory.get();
-
-			statement = connection.prepareStatement(DELETE_EPREUVE_QUERY);
-
-			statement.setInt(1, id);
-
-			statement.executeUpdate();
-
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-	}
-
 	@Override
 	public Epreuve selectById(Integer id) throws DaoException {
 		Connection connection = null;
@@ -172,20 +87,29 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 	}
 
 	@Override
-	public boolean checkExistenceWithName(String name) throws DaoException {
+	public Epreuve insert(Epreuve epreuve) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		boolean isExist = false;
-
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_BY_NOTE_QUERY);
 
-			statement.setString(1, name);
-			resultSet = statement.executeQuery();
+			statement = connection.prepareStatement(INSERT_EPREUVE_QUERY, Statement.RETURN_GENERATED_KEYS);
+			
+			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
+			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
+			statement.setLong(3, epreuve.getTempsEcoule());
+			statement.setString(4, epreuve.getEtat());
+			statement.setFloat(5, epreuve.getNoteObtenue());
+			statement.setString(6, epreuve.getNiveauObtenu());
 
-			isExist = resultSet.next();
+			if (statement.executeUpdate() == 1) {
+				resultSet = statement.getGeneratedKeys();
+				if (resultSet.next()) {
+
+					epreuve.setId(resultSet.getInt(1));
+				}
+			}
 
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
@@ -193,7 +117,57 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
 
-		return isExist;
+		return epreuve;
+	}
+
+	@Override
+	public void update(Integer epreuveId, Epreuve epreuve) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = MSSQLConnectionFactory.get();
+
+			statement = connection.prepareStatement(UPDATE_EPREUVE_QUERY);
+
+			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
+			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
+			statement.setLong(3, epreuve.getTempsEcoule());
+			statement.setString(4, epreuve.getEtat());
+			statement.setFloat(5, epreuve.getNoteObtenue());
+			statement.setString(6, epreuve.getNiveauObtenu());
+			statement.setInt(7, epreuve.getId());
+
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+	}
+
+	@Override
+	public void delete(Integer id) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = MSSQLConnectionFactory.get();
+
+			statement = connection.prepareStatement(DELETE_EPREUVE_QUERY);
+
+			statement.setInt(1, id);
+
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
 	}
 
 	private Epreuve resultSetToNote(ResultSet resultSet) throws SQLException {

@@ -19,7 +19,7 @@ public class ThemesManagerImpl implements ThemesManager {
 
     private ThemeDAO themeDAO = DAOFactory.themeDao();
     private QuestionDAO questionDAO = DAOFactory.questionDao();
-    private PropositionDAO propositionDAO = DAOFactory.propositionDAO();
+    private PropositionDAO propositionDAO = DAOFactory.propositionDao();
     private static ThemesManagerImpl instance;
 
     private ThemesManagerImpl() {}
@@ -43,7 +43,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public Theme getTheme(Integer id) throws ManagerException, ElementNotFoundException {
+	public Theme getThemeById(Integer id) throws ManagerException, ElementNotFoundException {
 		Theme theme = null;
 		try {
 			theme = themeDAO.selectById(id);
@@ -66,9 +66,9 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public void supprimerTheme(Integer id) throws ManagerException {
+	public void supprimerTheme(Theme theme) throws ManagerException {
 		try {
-			themeDAO.delete(id);
+			themeDAO.delete(theme.getId());
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -89,14 +89,12 @@ public class ThemesManagerImpl implements ThemesManager {
 	public List<Question> getQuestions(Theme theme) throws ManagerException {
 		List<Question> questions = null;
 		try {
-			questions = questionDAO.selectByTheme(theme);
+			questions = questionDAO.selectByThemeId(theme.getId());
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
 		return questions;
 	}
-
-
 
 	@Override
 	public void ajouterQuestion(Theme theme, Question question) throws ManagerException {
@@ -111,30 +109,9 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public void modifierEnonceQuestion(Question question, String enonce) throws ManagerException {
+	public void modifierQuestion(Question question) throws ManagerException {
 		try {
-			question.setEnonce(enonce);
-			questionDAO.update(question);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-	}
-
-	@Override
-	public void modifierMediaQuestion(Question question, String media) throws ManagerException {
-		try {
-			question.setMedia(media);
-			questionDAO.update(question);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-	}
-
-	@Override
-	public void modifierPointsQuestion(Question question, Integer points) throws ManagerException {
-		try {
-			question.setPoints(points);
-			questionDAO.update(question);
+			questionDAO.update(question.getId(), question);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -143,7 +120,7 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void supprimerQuestion(Theme theme, Question question) throws ManagerException {
 		try {
-			questionDAO.delete(question);
+			questionDAO.delete(question.getId());
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -153,14 +130,12 @@ public class ThemesManagerImpl implements ThemesManager {
 	public List<Proposition> getPropositions(Question question) throws ManagerException {
 		List<Proposition> propositions = new ArrayList<Proposition>();
 		try {
-			propositions = propositionDAO.selectByQuestion(question);
+			propositions = propositionDAO.selectByQuestionId(question.getId());
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
 		return propositions;
 	}
-
-
 
 	@Override
 	public void ajouterProposition(Question question, Proposition proposition) throws ManagerException {
@@ -172,20 +147,9 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public void modifierEnonceProposition(Proposition proposition, String enonce) throws ManagerException {
+	public void modifierProposition(Proposition proposition) throws ManagerException {
 		try {
-			proposition.setEnonce(enonce);
-			propositionDAO.update(proposition);
-		} catch(Exception e) {
-			throw new ManagerException(e.getMessage(), e);
-		}
-	}
-
-	@Override
-	public void modifierCorrecteProposition(Proposition proposition, boolean correcte) throws ManagerException {
-		try {
-			proposition.setCorrecte(correcte);
-			propositionDAO.update(proposition);
+			propositionDAO.update(proposition.getId(), proposition);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -194,8 +158,8 @@ public class ThemesManagerImpl implements ThemesManager {
 	@Override
 	public void supprimerProposition(Question question, Proposition proposition) throws ManagerException {
 		try {
-			Proposition deletedProposition = propositionDAO.delete(proposition);
-			question.supprimerProposition(deletedProposition);
+			propositionDAO.delete(proposition.getId());
+			question.supprimerProposition(proposition);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

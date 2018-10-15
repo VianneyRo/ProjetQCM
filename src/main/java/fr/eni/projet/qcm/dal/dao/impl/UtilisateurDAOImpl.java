@@ -44,6 +44,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		ResultSet resultSet = null;
 		Utilisateur utilisateur = null;
 		try {
+			System.out.println("Connexion: [email=" + email + ", password=" + password + "]");
 			connection = MSSQLConnectionFactory.get();
 			statement = connection.prepareStatement(LOGIN, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, email);

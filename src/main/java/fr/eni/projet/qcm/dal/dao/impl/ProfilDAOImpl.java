@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import fr.eni.projet.qcm.bo.Profil;
-import fr.eni.projet.qcm.bo.Proposition;
-import fr.eni.projet.qcm.bo.Utilisateur;
 import fr.eni.projet.qcm.dal.dao.ProfilDAO;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
@@ -30,15 +28,15 @@ public class ProfilDAOImpl implements ProfilDAO {
 	}
 
 	@Override
-	public Profil getByUtilisateur(Utilisateur utilisateur) {
+	public Profil selectByUtilisateurId(Integer utilisateurId) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		Proposition profil = null;
+		Profil profil = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
 			statement = connection.prepareStatement(SELECT_BY_UTILISATEUR, Statement.RETURN_GENERATED_KEYS);
-			statement.setInt(1, utilisateur.getId());
+			statement.setInt(1, utilisateurId);
 
 			resultSet = statement.executeQuery();
 			profil = resultSetToProfil(resultSet);
@@ -55,18 +53,18 @@ public class ProfilDAOImpl implements ProfilDAO {
 	}
 
 	@Override
-	public void delete(Profil profil) throws DaoException {
+	public void delete(Integer profilId) throws DaoException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(Profil profil) throws DaoException {
+	public void update(Integer profilId, Profil profil) throws DaoException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private Profil resultSetToProfil(ResultSet resultSet) {
+	private Profil resultSetToProfil(ResultSet resultSet) throws DaoException {
 		Profil profil = null;
 		try {
 			profil = new Profil();

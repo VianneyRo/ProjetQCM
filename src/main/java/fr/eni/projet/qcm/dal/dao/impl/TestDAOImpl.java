@@ -33,6 +33,19 @@ public class TestDAOImpl implements TestDAO {
 		}
 		return instance;
 	}
+
+
+	@Override
+	public List<Test> selectAll() throws DaoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Test selectById(Integer id) throws DaoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	@Override
 	public Test insert(Test test) throws DaoException {
@@ -68,7 +81,7 @@ public class TestDAOImpl implements TestDAO {
 	}
 
 	@Override
-	public void update(Test test) throws DaoException {
+	public void update(Integer testId, Test test) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -95,7 +108,7 @@ public class TestDAOImpl implements TestDAO {
 	}
 
 	@Override
-	public void deleteById(Integer id) throws DaoException {
+	public void delete(Integer id) throws DaoException {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -113,43 +126,7 @@ public class TestDAOImpl implements TestDAO {
 		} finally {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
-		
-	}
 
-	@Override
-	public Test selectByLibelle(String libelle) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Test> selectAll() throws DaoException {
-		List<Test> listeTests = new ArrayList<Test>();
-		Test listeTest = null;
-		Connection connexion = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		
-		try {
-			connexion = MSSQLConnectionFactory.get();
-			statement = connexion.prepareStatement(SELECT_ALL_QUERY);
-			resultSet = statement.executeQuery();
-			
-			while(resultSet.next()) {
-				listeTest = new Test();
-				listeTest.setLibelle(resultSet.getString("libelle"));
-				listeTests.add(listeTest);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DaoException(e.getMessage(), e);
-		}
-		finally {
-			ResourceUtil.safeClose(resultSet, statement, connexion);
-		}
-		
-		return listeTests;
 	}
 
 }

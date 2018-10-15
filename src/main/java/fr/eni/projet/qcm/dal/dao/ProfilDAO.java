@@ -6,7 +6,7 @@ import fr.eni.projet.qcm.dal.exception.DaoException;
 
 public interface ProfilDAO {
 
-	Profil selectByUtilisateur(Utilisateur utilisateur);
+	Profil selectByUtilisateurId(Integer utilisateurId) throws DaoException;
 
 	public Profil insert(Profil profil) throws DaoException;
 	public void delete(Integer id) throws DaoException;

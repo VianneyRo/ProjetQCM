@@ -15,7 +15,7 @@ public class Collaborateur extends Utilisateur {
 	 * @param prenom
 	 */
 	public Collaborateur(String nom, String prenom) {
-		super(nom, prenom, new Profil("Collaborateur"));
+		super(nom, prenom, "collaborateur");
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class Collaborateur extends Utilisateur {
 	 * @param profil
 	 */
 	public Collaborateur(Integer id, String nom, String prenom, String email, String password) {
-		super(id, nom, prenom, email, password, new Profil("Collaborateur"));
+		super(id, nom, prenom, email, password, "collaborateur");
 	}
 
 }
