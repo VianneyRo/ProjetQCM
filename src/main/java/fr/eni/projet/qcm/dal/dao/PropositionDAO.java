@@ -8,9 +8,11 @@ import fr.eni.projet.qcm.dal.exception.DaoException;
 
 public interface PropositionDAO {
 
+	public List<Proposition> selectByQuestionId(Integer questionId) throws DaoException;
+	public Proposition selectById(Integer id) throws DaoException;
+
 	public Proposition insert(Proposition proposition, Question question) throws DaoException;
-	public Proposition delete(Proposition proposition) throws DaoException;
-	public Proposition update(Proposition proposition) throws DaoException;
-	public List<Proposition> selectByQuestion(Question question) throws DaoException;
+	public void delete(Integer id) throws DaoException;
+	public void update(Integer id, Proposition proposition) throws DaoException;
 
 }

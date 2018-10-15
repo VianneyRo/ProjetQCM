@@ -12,7 +12,5 @@ public class AppConstants {
     public static final String APP_PROPERTIES_NAME = "application.properties";
     public static final String APP_NAME = "QCM";
     
-    private AppConstants() {
-        
-    }
+    private AppConstants() {}
 }

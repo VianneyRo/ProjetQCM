@@ -4,6 +4,8 @@ import fr.eni.projet.qcm.common.exception.TechnicalException;
 
 public class ResourceUtil {
 
+    private ResourceUtil() {}
+
     /**
      * Safe closing resource connections.
      * 

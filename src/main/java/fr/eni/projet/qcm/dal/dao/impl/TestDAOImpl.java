@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Test;
@@ -18,6 +19,7 @@ public class TestDAOImpl implements TestDAO {
 	private static final String INSERT_TEST_QUERY = "INSERT INTO test(libelle, description, duree, seuilHaut, seuilBas) VALUES (?, ?, ?, ?, ?)";
 	private static final String DELETE_TEST_QUERY = "DELETE FROM test WHERE id = ?";
 	private static final String UPDATE_TEST_QUERY = "UPDATE test SET libelle = ?, description = ?, duree = ?, seuilHaut = ?, seuilBas = ? WHERE id = ?";
+	private static final String SELECT_ALL_QUERY = "SELECT libelle FROM test";
 	
 	private static TestDAOImpl instance;
 	
@@ -122,8 +124,32 @@ public class TestDAOImpl implements TestDAO {
 
 	@Override
 	public List<Test> selectAll() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Test> listeTests = new ArrayList<Test>();
+		Test listeTest = null;
+		Connection connexion = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connexion = MSSQLConnectionFactory.get();
+			statement = connexion.prepareStatement(SELECT_ALL_QUERY);
+			resultSet = statement.executeQuery();
+			
+			while(resultSet.next()) {
+				listeTest = new Test();
+				listeTest.setLibelle(resultSet.getString("libelle"));
+				listeTests.add(listeTest);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DaoException(e.getMessage(), e);
+		}
+		finally {
+			ResourceUtil.safeClose(resultSet, statement, connexion);
+		}
+		
+		return listeTests;
 	}
 
 }

@@ -7,10 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.eni.projet.qcm.bo.Epreuve;
-import fr.eni.projet.qcm.bo.Proposition;
-import fr.eni.projet.qcm.bo.Question;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;
@@ -181,5 +177,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 		}
 		return theme;
 	}
+		
+	
 
 }

@@ -1,19 +1,19 @@
 package fr.eni.projet.qcm.bo;
 
 
-public class Candidat extends Utilisateur {
+public class Admin extends Utilisateur {
 
 	/**
 	 * Constructeur
 	 */
-	public Candidat() {}
+	public Admin() {}
 
 	/**
 	 * Constructeur BO
 	 * @param nom
 	 * @param prenom
 	 */
-	public Candidat(String nom, String prenom) {
+	public Admin(String nom, String prenom) {
 		super(nom, prenom, "Candidat");
 	}
 
@@ -25,7 +25,7 @@ public class Candidat extends Utilisateur {
 	 * @param email
 	 * @param password
 	 */
-	public Candidat(Integer id, String nom, String prenom, String email, String password) {
+	public Admin(Integer id, String nom, String prenom, String email, String password) {
 		super(id, nom, prenom, email, password, "Candidat");
 	}
 }

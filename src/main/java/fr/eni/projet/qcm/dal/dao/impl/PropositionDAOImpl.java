@@ -19,15 +19,16 @@ public class PropositionDAOImpl implements PropositionDAO {
 	private static final String DELETE_PROPOSITION_QUERY = "DELETE FROM proposition WHERE id=?";
 	private static final String UPDATE_PROPOSITION_QUERY = "UPDATE proposition SET enonce=?, correcte=? WHERE id=?";
 	private static final String SELECT_BY_QUESTION = "SELECT id, enonce, correcte WHERE idQuestion=?";
-	private PropositionDAOImpl instance;
+	
+	private static PropositionDAOImpl instance;
 
 	private PropositionDAOImpl() {}
 
-	public PropositionDAOImpl getInstance() {
-		if(this.instance == null) {
-			this.instance = new PropositionDAOImpl();
+	public static PropositionDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new PropositionDAOImpl();
 		}
-		return this.instance;
+		return instance;
 	}
 
 	@Override

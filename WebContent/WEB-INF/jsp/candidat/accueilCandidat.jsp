@@ -57,13 +57,16 @@
           }
       </style>
 
-<div class="container center">
+<div class="container center" style="text-align:center">
 <div class="col-md-12">
     
-        <h1 class="mt-5">Liste des Test/h1>
-		<c:forEach items="${liste}" var="listee">
-				<span id="lib">${listee.libelle}</span>
+        <h1 class="mt-5">Liste des Epreuves</h1>
+		<c:forEach items="${liste}" var="test">
+ 			<form method="GET" action="SelectionController"> 
+					<input type="hidden" value="${test.id}" name="idTest">
+					<a href="SelectionController"><span id="lib">${test.libelle}</span></a>
 				<br><br>
+			</form> 
 			</c:forEach>
     </div>
 </div>

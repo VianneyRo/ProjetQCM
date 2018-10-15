@@ -19,6 +19,7 @@ public class ConnexionController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String email = req.getParameter("email");
 		String motdepasse = req.getParameter("motdepasse");
 		
@@ -26,16 +27,41 @@ public class ConnexionController extends HttpServlet{
 		ValidationUtil.checkNotNull(motdepasse);
 		
 		if (email.equals("admin@admin.com")){
-			req.getRequestDispatcher("/AdminController").forward(req, resp);
+			req.getRequestDispatcher("AdminController").forward(req, resp);
 		}
 		else if (email.equals("collaborateur@collaborateur.com")){
-			req.getRequestDispatcher("/CollaborateurController").forward(req, resp);
+			req.getRequestDispatcher("CollaborateurController").forward(req, resp);
 		}
 		
 		else {
-			req.getRequestDispatcher("/CandidatController").forward(req, resp);
+			req.getRequestDispatcher("CandidatController").forward(req, resp);
 		}
 	}
-
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			
+			String email = req.getParameter("email");
+			
+			if (email.equals("admin@admin.com")){
+				req.getRequestDispatcher("/WEB-INF/jsp/admin/accueilAdmin.jsp").forward(req, resp);
+			}
+			else if (email.equals("collaborateur@collaborateur.com")){
+				req.getRequestDispatcher("/WEB-INF/jsp/collaborateur/accueilCollaborateur.jsp").forward(req, resp);
+			}
+			else {
+				req.getRequestDispatcher("/WEB-INF/jsp/candidat/accueilCandidat.jsp").forward(req, resp);
+			}
+		}
+		catch (IllegalArgumentException f) {
+			resp.sendError(400);
+		}
+		catch (Exception e) {
+			resp.sendError(500);
+		}
+	}
+	
+	
 	
 }
