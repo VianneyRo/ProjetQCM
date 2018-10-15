@@ -1,13 +1,8 @@
 package fr.eni.projet.qcm.dal.factory;
 
 import fr.eni.projet.qcm.dal.dao.PropositionDAO;
-<<<<<<< HEAD
-import fr.eni.projet.qcm.dal.dao.CandidatDAO;
-import fr.eni.projet.qcm.dal.dao.CollaborateurDAO;
-=======
 //import fr.eni.projet.qcm.dal.dao.CandidatDAO;
 //import fr.eni.projet.qcm.dal.dao.CollaborateurDAO;
->>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
 import fr.eni.projet.qcm.dal.dao.EpreuveDAO;
 import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.dao.TestDAO;

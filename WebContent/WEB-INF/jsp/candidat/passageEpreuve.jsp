@@ -23,6 +23,46 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+<<<<<<< HEAD
+            <a class="navbar-brand" href="#" >Questionnaire Ã Â  choix multiple</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              
+            </div>
+        </div>
+      </nav>
+      
+      <style>
+  
+          img {
+              cursor: pointer;
+          }
+          .center {
+              float: none; 
+              margin-left: auto;
+              margin-right: auto;
+          }
+          
+          .text-center {
+              text-align: center;
+          }
+          
+          .page-footer {
+              position: absolute;
+              bottom: 0;
+              text-align: center;
+              width: 100%;
+          }
+      </style>
+
+<div class="container center" style="text-align:center">
+<div class="col-md-12">
+    
+        <h1 class="mt-5">Vous avez 1h pour rÃ©pondre aux questions</h1>
+=======
             <a class="navbar-brand" href="#" >Questionnaire à  choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -61,6 +101,7 @@
 <div class="col-md-12">
     
         <h1 class="mt-5">Vous avez 1h pour répondre aux questions</h1>
+>>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
 		<c:forEach items="${questions}" var="question">
 					<a href="#"><span id="lib">${question.enonce}</span></a>
 				<br><br>

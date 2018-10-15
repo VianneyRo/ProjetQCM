@@ -6,16 +6,13 @@ public class Candidat extends Utilisateur {
 	/**
 	 * Constructeur
 	 */
-	public Candidat() {
-		super();
-	}
+	public Candidat() {}
 
 	/**
 	 * Constructeur BO
 	 * @param nom
 	 * @param prenom
 	 */
-
 	public Candidat(String nom, String prenom) {
 		super(nom, prenom, "candidat");
 	}

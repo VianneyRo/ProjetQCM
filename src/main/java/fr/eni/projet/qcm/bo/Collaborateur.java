@@ -5,9 +5,7 @@ public class Collaborateur extends Utilisateur {
 	/**
 	 * Constructeur
 	 */
-	public Collaborateur() {
-		super();
-	}
+	public Collaborateur() {}
 
 	/**
 	 * Constructeur BO

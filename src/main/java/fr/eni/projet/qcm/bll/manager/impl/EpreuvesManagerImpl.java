@@ -12,7 +12,7 @@ import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
 
 public class EpreuvesManagerImpl implements EpreuvesManager {
-	private EpreuveDAO epreuveDao = DAOFactory.epreuveDAO();
+	private EpreuveDAO epreuveDao = DAOFactory.epreuveDao();
 	private static EpreuvesManagerImpl instance;
 
 	public static EpreuvesManagerImpl getInstance() {
@@ -37,7 +37,7 @@ public class EpreuvesManagerImpl implements EpreuvesManager {
 	public List<Epreuve> getEpreuvesByCandidat(Candidat candidat) throws ManagerException {
 		List<Epreuve> epreuves = null;
 		try {
-			epreuves = epreuveDao.selectById(candidat.getId());
+			epreuves = epreuveDao.selectByCandidatId(candidat.getId());
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}
@@ -48,7 +48,7 @@ public class EpreuvesManagerImpl implements EpreuvesManager {
 	public List<Epreuve> getEpreuvesByCandidatId(Integer candidatId) throws ManagerException {
 		List<Epreuve> epreuves = null;
 		try {
-			epreuves = epreuveDao.selectById(candidatId);
+			epreuves = epreuveDao.selectByCandidatId(candidatId);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

@@ -7,14 +7,12 @@ import fr.eni.projet.qcm.common.AppConstants;
 import fr.eni.projet.qcm.common.exception.TechnicalException;
 
 public class AppConfig {
-
     private static final Properties PROPERTIES = new Properties();
     
     /**
      * We Want to load at App startup, no LazyLoading.
      */
     static {
-
         try {
             PROPERTIES.load(AppConfig.class.getClassLoader()
                     .getResourceAsStream(AppConstants.APP_PROPERTIES_NAME));

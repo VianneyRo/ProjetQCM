@@ -36,6 +36,11 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		}
 		return instance;
 	}
+
+	@Override
+	public List<Epreuve> selectByCandidatId(Integer candidatId) throws DaoException {
+		return null;
+	}
 	@Override
 	public Epreuve selectById(Integer id) throws DaoException {
 		Connection connection = null;
