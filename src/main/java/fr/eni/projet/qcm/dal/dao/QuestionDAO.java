@@ -1,25 +1,18 @@
-package fr.eni.projet.qcm.bll.factory;
+package fr.eni.projet.qcm.dal.dao;
 
-import fr.eni.projet.qcm.bll.manager.QuestionsManager;
-import fr.eni.projet.qcm.bll.manager.TestManager;
-import fr.eni.projet.qcm.bll.manager.ThemesManager;
-import fr.eni.projet.qcm.bll.manager.impl.QuestionsManagerImpl;
-import fr.eni.projet.qcm.bll.manager.impl.TestManagerImpl;
-import fr.eni.projet.qcm.bll.manager.impl.ThemesManagerImpl;
+import java.util.List;
 
-public class ManagerFactory {
-	
-	
-	public static TestManager testManager() {
-		return TestManagerImpl.getInstance();
-	}
-	
-	public static ThemesManager themesManager() {
-		return ThemesManagerImpl.getInstance();
-	}
-	
-	public static QuestionsManager questionsManager() {
-		return QuestionsManagerImpl.getInstance();
-	}
-	
+import fr.eni.projet.qcm.bo.Question;
+import fr.eni.projet.qcm.bo.Test;
+import fr.eni.projet.qcm.bo.Theme;
+import fr.eni.projet.qcm.dal.exception.DaoException;
+
+public interface QuestionDAO {
+
+	public Question insert(Question question, Theme theme) throws DaoException;
+	public Question delete(Question question) throws DaoException;
+	public Question update(Question question) throws DaoException;
+	public List<Question> selectByTheme(Theme theme) throws DaoException;
+	public List<Question> selectByEpreuve(Test test) throws DaoException;
+	public List<Question> selectAll() throws DaoException;
 }
