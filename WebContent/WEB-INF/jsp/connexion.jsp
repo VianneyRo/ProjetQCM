@@ -61,7 +61,7 @@
         <div class="alert alert-danger" id="alert-message" style="visibility: hidden"></div>
         <div class="alert alert-info" id="info-message" role="alert" style="visibility: hidden"> </div>
 
-                <form method="GET" action="ConnexionController">
+                <form method="POST" action="ConnexionController">
             <fieldset>
                 <p>Vous pouvez vous connecter via ce formulaire.</p>
 
@@ -70,7 +70,7 @@
                 <br />
 
                 <label for="motdepasse">Mot de passe <span class="re	quis">*</span></label>
-                <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
+                <input type="password" id="password" name="password" value="" size="20" maxlength="20" />
               
                 <br />
 

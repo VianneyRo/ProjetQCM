@@ -55,7 +55,7 @@
 
 <div class="container center">
 <div class="col-md-12">
-    		 <h1 class="mt-5">Collaborateur/h1>
+    		 <h1 class="mt-5">Collaborateur</h1>
    
     </div>
 </div>

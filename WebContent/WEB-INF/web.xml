@@ -32,15 +32,15 @@
   </servlet>
   <servlet>
   	<servlet-name>adminAccueil</servlet-name>
-    <jsp-file>/WEB-INF/jsp/admin/accueil.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/admin/accueilAdmin.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>candidatAccueil</servlet-name>
-    <jsp-file>/WEB-INF/jsp/candidat/accueil.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/candidat/accueilCandidat.jsp</jsp-file>
   </servlet>
   <servlet>
   	<servlet-name>collaborateurAccueil</servlet-name>
-    <jsp-file>/WEB-INF/jsp/collaborateur/accueil.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/collaborateur/accueilCollaborateur.jsp</jsp-file>
   </servlet>
 
   <servlet>
