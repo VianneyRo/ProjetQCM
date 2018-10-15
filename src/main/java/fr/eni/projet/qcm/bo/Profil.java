@@ -4,7 +4,6 @@ package fr.eni.projet.qcm.bo;
 public class Profil {
 	
 	private Integer id;
-	private String code;
 	private String libelle;	
 
 	/**
@@ -16,8 +15,7 @@ public class Profil {
 	 * Constructeur BO
 	 * @param libelle
 	 */
-	public Profil(String code, String libelle) {
-		this.code = code;
+	public Profil(String libelle) {
 		this.libelle = libelle;
 	}
 	
@@ -26,18 +24,26 @@ public class Profil {
 	 * @param id
 	 * @param libelle
 	 */
-	public Profil(Integer id, String code, String libelle) {
+	public Profil(Integer id, String libelle) {
 		this.id = id;
-		this.code = code;
 		this.libelle = libelle;
 	}
 
 	public Integer getId() { return id; }
-	public String getCode() { return code; }
 	public String getLibelle() { return libelle; }
 
 	public void setId(Integer id) { this.id = id; }
-	public void setCode(String code) { this.code = code; }
 	public void setLibelle(String libelle) { this.libelle = libelle; }
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Profil [id=");
+		builder.append(id);
+		builder.append(", libelle=");
+		builder.append(libelle);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }

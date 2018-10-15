@@ -6,12 +6,14 @@ import fr.eni.projet.qcm.bo.Test;
 import fr.eni.tp.web.common.dal.exception.DaoException;
 
 public interface TestDAO {
+	
+	Test insert(Test test) throws DaoException;
+	
+	List<Test> selectAll() throws DaoException;
 
-	public List<Test> selectAll() throws DaoException;
-	public Test selectById(Integer id) throws DaoException;
+	Test selectByLibelle(String libelle) throws DaoException;
 
-	public Test insert(Test test) throws DaoException;
-	public void delete(Integer id) throws DaoException;
-	public void update(Integer id, Test test) throws DaoException;
+	void deleteById(Integer id) throws DaoException;
 
+	void update(Test test) throws DaoException;
 }

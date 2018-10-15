@@ -15,13 +15,8 @@ import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
 
 public class ThemesManagerImpl implements ThemesManager {
-<<<<<<< HEAD
 
 
-=======
-
-
->>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
     private ThemeDAO themeDAO = DAOFactory.themeDao();
     private QuestionDAO questionDAO = DAOFactory.questionDao();
     private PropositionDAO propositionDAO = DAOFactory.propositionDAO();

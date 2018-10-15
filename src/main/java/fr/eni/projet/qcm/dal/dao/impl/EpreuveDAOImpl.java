@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.dal.util.DateUtil;
-import fr.eni.projet.qcm.bo.Candidat;
 import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.dal.dao.EpreuveDAO;
 import fr.eni.tp.web.common.dal.exception.DaoException;
@@ -36,11 +35,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			instance = new EpreuveDAOImpl();
 		}
 		return instance;
-	}
-
-	@Override
-	public List<Epreuve> selectByCandidatId(Integer candidatId) throws DaoException {
-		return null;
 	}
 
 	@Override
@@ -177,6 +171,31 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		return list;
 	}
 
+	@Override
+	public boolean checkExistenceWithName(String name) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean isExist = false;
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_BY_NOTE_QUERY);
+
+			statement.setString(1, name);
+			resultSet = statement.executeQuery();
+
+			isExist = resultSet.next();
+
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return isExist;
+	}
+
 	private Epreuve resultSetToNote(ResultSet resultSet) throws SQLException {
 		Epreuve epreuve = new Epreuve();
 		epreuve.setId(resultSet.getInt("idEpreuve"));
@@ -187,11 +206,5 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		epreuve.setNoteObtenue(resultSet.getFloat("note_obtenue"));
 		epreuve.setNiveauObtenu(resultSet.getString("niveau_obtenu"));
 		return epreuve;
-	}
-
-	@Override
-	public void update(Integer id, Epreuve epreuve) throws DaoException {
-		// TODO Auto-generated method stub
-		
 	}
 }

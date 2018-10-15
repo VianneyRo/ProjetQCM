@@ -8,7 +8,9 @@ package fr.eni.projet.qcm.common.util;
  */
 public class ObjectUtil {
 
-    private ObjectUtil() {}
+    private ObjectUtil() {
+        
+    }
     
     /**
      * Check If Not blank.

@@ -9,6 +9,7 @@ import java.sql.SQLException;
  *
  */
 public class DaoException extends Exception {
+
     private static final long serialVersionUID = 5373358650308469523L;
 
     public DaoException(SQLException e) {
