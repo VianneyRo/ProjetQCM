@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Question;
+import fr.eni.projet.qcm.bo.Test;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
+import fr.eni.tp.web.common.util.ResourceUtil;
 
 public class QuestionDAOImpl implements QuestionDAO {
 	private static final String SELECT_BY_THEME = "SELECT id, enonce, media, points WHERE themeId=?";

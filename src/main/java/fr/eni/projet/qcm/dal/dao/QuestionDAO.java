@@ -3,6 +3,7 @@ package fr.eni.projet.qcm.dal.dao;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Question;
+import fr.eni.projet.qcm.bo.Test;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.projet.qcm.dal.exception.DaoException;
 

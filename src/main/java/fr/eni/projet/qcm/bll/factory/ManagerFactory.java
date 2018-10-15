@@ -2,9 +2,11 @@ package fr.eni.projet.qcm.bll.factory;
 
 import fr.eni.projet.qcm.bll.manager.EpreuvesManager;
 import fr.eni.projet.qcm.bll.manager.TestsManager;
+import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bll.manager.impl.EpreuvesManagerImpl;
 import fr.eni.projet.qcm.bll.manager.impl.TestsManagerImpl;
+import fr.eni.projet.qcm.bll.manager.impl.ThemesManagerImpl;
 import fr.eni.projet.qcm.bll.manager.impl.UtilisateursManagerImpl;
 
 public class ManagerFactory {
@@ -20,4 +22,9 @@ public class ManagerFactory {
 	public static EpreuvesManager epreuvesManager() {
 		return EpreuvesManagerImpl.getInstance();
 	}
+	
+	public static ThemesManager themesManager() {
+		return ThemesManagerImpl.getInstance();
+	}
+	
 }

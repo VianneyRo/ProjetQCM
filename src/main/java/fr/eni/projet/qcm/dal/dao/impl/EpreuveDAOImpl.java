@@ -42,6 +42,55 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 	public List<Epreuve> selectByCandidatId(Integer candidatId) throws DaoException {
 		return null;
 	}
+	@Override
+	public Epreuve selectById(Integer id) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Epreuve epreuve = null;
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_QUERY);
+
+			statement.setInt(1, id);
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				epreuve = resultSetToNote(resultSet);
+			}
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return epreuve;
+	}
+
+	@Override
+	public List<Epreuve> selectAll() throws DaoException {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<Epreuve> list = new ArrayList<>();
+
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(SELECT_ALL_EPREUVES_QUERY);
+
+			while (resultSet.next()) {
+				list.add(resultSetToNote(resultSet));
+			}
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+
+		return list;
+	}
 
 	@Override
 	public Epreuve insert(Epreuve epreuve) throws DaoException {
@@ -125,56 +174,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
 
-	}
-
-	@Override
-	public Epreuve selectById(Integer id) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		Epreuve epreuve = null;
-
-		try {
-			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_ONE_EPREUVE_QUERY);
-
-			statement.setInt(1, id);
-			resultSet = statement.executeQuery();
-
-			while (resultSet.next()) {
-				epreuve = resultSetToNote(resultSet);
-			}
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-		return epreuve;
-	}
-
-	@Override
-	public List<Epreuve> selectAll() throws DaoException {
-		Connection connection = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		List<Epreuve> list = new ArrayList<>();
-
-		try {
-			connection = MSSQLConnectionFactory.get();
-			statement = connection.createStatement();
-			resultSet = statement.executeQuery(SELECT_ALL_EPREUVES_QUERY);
-
-			while (resultSet.next()) {
-				list.add(resultSetToNote(resultSet));
-			}
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		} finally {
-			ResourceUtil.safeClose(resultSet, statement, connection);
-		}
-
-		return list;
 	}
 
 	private Epreuve resultSetToNote(ResultSet resultSet) throws SQLException {

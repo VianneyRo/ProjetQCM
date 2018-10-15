@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Test;
@@ -18,6 +19,7 @@ public class TestDAOImpl implements TestDAO {
 	private static final String INSERT_TEST_QUERY = "INSERT INTO test(libelle, description, duree, seuilHaut, seuilBas) VALUES (?, ?, ?, ?, ?)";
 	private static final String DELETE_TEST_QUERY = "DELETE FROM test WHERE id = ?";
 	private static final String UPDATE_TEST_QUERY = "UPDATE test SET libelle = ?, description = ?, duree = ?, seuilHaut = ?, seuilBas = ? WHERE id = ?";
+	private static final String SELECT_ALL_QUERY = "SELECT libelle FROM test";
 	
 	private static TestDAOImpl instance;
 	
@@ -124,7 +126,7 @@ public class TestDAOImpl implements TestDAO {
 		} finally {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
-		
+
 	}
 
 }
