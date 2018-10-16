@@ -31,5 +31,6 @@ public class CollaborateurController extends HttpServlet {
 			resp.sendError(500);
 		}
 		
-}
+	}
+	
 }

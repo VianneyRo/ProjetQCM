@@ -41,58 +41,41 @@
 	</nav>
 
 	<style>
-	img {
-		cursor: pointer;
-	}
-	
-	.center {
-		float: none;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
-	.text-center {
-		text-align: center;
-	}
-	
-	.page-footer {
-		position: absolute;
-		bottom: 0;
-		text-align: center;
-		width: 100%;
-	}
+img {
+	cursor: pointer;
+}
+
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.page-footer {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+}
 </style>
 
 	<div class="container center" style="text-align:center">
 		<div class="col-md-12">
-			<h1 class="mt-5">Liste des Collaborateurs enregistrés</h1><br>
+			<h1 class="mt-5">Ajout d'un nouveau Collaborateur</h1><br>
 		</div>
 		
-		<table class="table">
-           <thead class="card-header" style="background-color: #e3f2fd;">
-           <tr>
-               <th scope="col">Nom</th>
-               <th scope="col">Prénom</th>
-               <th scope="col">Email</th>
-               <th scope="col"></th>
-           </tr>
-           </thead>
-           <tbody>
-				<c:forEach items="${collaborateurs}" var="collaborateur">
-			<tr>
-				 <input type="hidden" value="${collaborateur.id}" name="id">
-				 <td>${collaborateur.nom}</td>
-                 <td>${collaborateur.prenom}</td>
-                 <td>${collaborateur.email}</td>
-                 <td>
-                    <button type="button" class="btn btn-danger"> X </button>
-                 </td>
-            </tr>
-				</c:forEach>
-			  </tbody>
-            </table>
-          	<button type="button" class="btn btn-success"><a href="ajoutCollaborateurController">+</a></button>
-            
+		<form action="ajoutCollaborateurController" method="POST">
+		
+		Nom :	<input type="text" name="nom" id="nom"> <br>
+		Prénom :	<input type="text" name="prenom" id="prenom"><br>
+		Email :	<input type="text" name="email" id="email"> <br>
+			
+			<input type="submit" value="Enregistrer">
+		</form>
 	</div>
 
 	<footer class="page-footer font-small">

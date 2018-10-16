@@ -21,4 +21,6 @@ public interface UtilisateursManager {
 	
 	 List<Utilisateur> getAllCollaborateurs() throws ManagerException;
 	 List<Utilisateur> getAllCandidats() throws ManagerException;
+
+	Utilisateur insert(Utilisateur unCollaborateur) throws ManagerException;
 }
