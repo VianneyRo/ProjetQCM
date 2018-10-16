@@ -1,5 +1,7 @@
 package fr.eni.projet.qcm.bll.manager.impl;
 
+import java.util.List;
+
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bo.Admin;
 import fr.eni.projet.qcm.bo.Candidat;
@@ -83,6 +85,28 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
 	public void supprimerPromotion(Promotion promotion) throws ManagerException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Utilisateur> getAllCollaborateurs() throws ManagerException {
+		List<Utilisateur> collaborateurs = null;
+		try {
+			collaborateurs = utilisateurDao.selectAllCollaborateur();
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return collaborateurs;
+	}
+
+	@Override
+	public List<Utilisateur> getAllCandidats() throws ManagerException {
+		List<Utilisateur> candidats = null;
+		try {
+			candidats = utilisateurDao.selectAllCandidat();
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return candidats;
 	}
 
 }

@@ -57,7 +57,8 @@
   	<servlet-name>collaborateurAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/accueil.jsp</jsp-file>
   </servlet>
-    <servlet>
+  
+  <servlet>
   	<servlet-name>gestionThemes</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/gestionThemes.jsp</jsp-file>
   </servlet>
