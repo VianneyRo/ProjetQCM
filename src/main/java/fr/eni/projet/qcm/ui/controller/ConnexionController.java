@@ -30,7 +30,7 @@ public class ConnexionController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
-		String password = req.getParameter("motdepasse");		
+		String password = req.getParameter("password");		
 		
 		try {
 			ValidationUtil.checkNotNull(email);
@@ -48,5 +48,7 @@ public class ConnexionController extends HttpServlet{
 			req.getRequestDispatcher("/connexion").forward(req, resp);
 		}
 	}
+	
+	
 
 }

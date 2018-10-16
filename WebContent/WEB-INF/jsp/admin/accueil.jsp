@@ -20,9 +20,11 @@
 		</header>
 		<div class="main-container" style="text-align:center">
 			<div class="tiles">
+				
+			
 			</div>
 		</div>
-		<footer>
+		<footer style="text-align:center">
 			<div class="copyright-container">
 				<p>&copy; 2018 Copyright: <a href="https://www.eni-ecole.fr"> ENI Ecole</a></p>
 			</div>

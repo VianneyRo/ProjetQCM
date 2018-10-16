@@ -88,4 +88,3 @@
 </footer>
 
 </body>
->>>>>>> branch 'master' of https://github.com/VianneyRo/ProjetQCM.git
