@@ -29,7 +29,7 @@ public class DAOFactory {
 		return ThemeDAOImpl.getInstance();
 	}
 
-	public static TestDAO TestDao() {
+	public static TestDAO testDao() {
 		return TestDAOImpl.getInstance();
 	}
 	

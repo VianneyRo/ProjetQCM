@@ -4,7 +4,6 @@
 
 <!doctype html>
 <html lang="fr">
-<<<<<<< HEAD
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -24,7 +23,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#" >Questionnaire à  choix multiple</a>
+            <a class="navbar-brand" href="#" >Questionnaire à choix multiple</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,18 +58,33 @@
       </style>
 
 <div class="container center" style="text-align:center">
-<div class="col-md-12">
-    
-        <h1 class="mt-5">Liste des epreuves</h1>
-		<c:forEach items="${liste}" var="test">
- 			<form method="GET" action="SelectionController"> 
-					<input type="hidden" value="${epreuve.id}" name="idTest">
-<%-- 					<a href="SelectionController"><span id="lib">${test.libelle}</span></a> --%>
-				<br><br>
-			</form> 
-			</c:forEach>
-    </div>
-</div>
+   		 <div class="col-md-12">
+			<h1 class="mt-5">Liste des Tests à Faire</h1>
+		</div>
+		
+		<table id="tableauTheme" class="table">		
+			<thead class ="card-header" style="background-color: #e3f2fd;">
+			<tr>
+				<th scope="col">Libellé</th>
+				<th scope="col">Description</th>
+				<th scope="col">Durée</th>
+				<th scope="col"></th>
+			</tr>		
+			</thead>
+			<tbody>		
+				<c:forEach items="${tests}" var="test">
+				<tr>
+					<input type="hidden" value="${test.id}" name="idTheme">
+					<td>${test.libelle}</td>
+					<td>${test.description}</td>
+					<td>${test.duree}</td>
+					<td><button type="button" class="btn btn-warning">S'inscrire</button></td>
+				</tr>		
+				</c:forEach>	
+			</tbody>
+		</table>
+				
+	</div>
 
 <footer class="page-footer font-small">
     <div class="footer-copyright text-center py-3">&copy; 2018 Copyright:
