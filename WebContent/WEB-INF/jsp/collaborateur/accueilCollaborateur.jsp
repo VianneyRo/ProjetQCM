@@ -56,7 +56,7 @@
 
     		 <h1 class="mt-5">Collaborateur</h1><br>
     		 
-    		 <button type="button" class="btn btn-light"><a href="ThemeController">Gestion des Thèmes</a></button>
+    		 <button type="button" class="btn btn-light"><a href="collaborateur/gestionThemes">Gestion des Thèmes</a></button>
         
         	 <button type="button" class="btn btn-light"><a href="TestController">Gestion des Tests</a></button>
     		 

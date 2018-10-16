@@ -14,11 +14,12 @@
 	name='viewport' />
 <title>Projet QCM</title>
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/functions.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/gestionThemes.css">
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/functions.js"></script>
 
 </head>
 
@@ -40,38 +41,31 @@
 		</div>
 	</nav>
 
-	<style>
-img {
-	cursor: pointer;
-}
-
-.center {
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.page-footer {
-	position: absolute;
-	bottom: 0;
-	text-align: center;
-	width: 100%;
-}
-</style>
-
 	<div class="container center" style="text-align:center">
 		<div class="col-md-12">
-			<h1 class="mt-5">Gestion des Themes</h1><button type="button" class="btn btn-success"><a href="ajoutThemeController">+</a></button>	
+			<h1 class="mt-5">Gestion des Themes</h1>
+			<button type="button" class="btn btn-success" ><a href="ajoutThemeController"></a>Ajouter un thème</button>	
+			<br>
 		</div>
-		<c:forEach items="${themes}" var="theme">
-			<input type="hidden" value="${theme.id}" name="idTheme">
-			<span id="libelle">${theme.libelle}</span><button type="button" class="btn btn-danger"><a href="supprimerThemeController">-</a></button>
-			<br><br>
-		</c:forEach>			
+		
+		<table id="tableauTheme" class="table">		
+		<thead class ="card-header" style="background-color: #e3f2fd;">
+		<tr>
+			<th scope="col">Libellé</th>
+			<th scope="col"></th>
+		</tr>		
+		</thead>
+		<tbody>		
+			<c:forEach items="${themes}" var="theme">
+			<tr>
+				<input type="hidden" value="${theme.id}" name="idTheme">
+				<td>${theme.libelle}</td>
+				<td><button type="button" class="btn btn-danger"><a href="ajoutThemeController">Supprimer</a></button></td>
+				<br><br>	
+			</tr>		
+			</c:forEach>	
+		</tbody>
+		</table>		
 	</div>
 
 	<footer class="page-footer font-small">

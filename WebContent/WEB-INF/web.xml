@@ -29,6 +29,10 @@
     <servlet-name>gestionThemes</servlet-name>
     <url-pattern>/collaborateur/gestionThemes</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ajoutThemes</servlet-name>
+    <url-pattern>/collaborateur/ajoutThemes</url-pattern>
+  </servlet-mapping> 
 
   <servlet>
     <servlet-name>connexion</servlet-name>
@@ -46,14 +50,22 @@
   	<servlet-name>collaborateurAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/accueilCollaborateur.jsp</jsp-file>
   </servlet>
-    <servlet>
+  <servlet>
   	<servlet-name>gestionThemes</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/gestionThemes.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>ajoutThemes</servlet-name>
+    <jsp-file>/WEB-INF/jsp/collaborateur/ajouterTheme.jsp</jsp-file>
   </servlet>
 
   <servlet>
     <servlet-name>connexionController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.ConnexionController</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ajoutThemeController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.ajoutThemeController</servlet-class>
   </servlet>
 
 </web-app>
