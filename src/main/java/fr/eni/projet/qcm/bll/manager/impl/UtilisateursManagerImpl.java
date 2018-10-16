@@ -1,5 +1,7 @@
 package fr.eni.projet.qcm.bll.manager.impl;
 
+import java.util.List;
+
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bo.Admin;
 import fr.eni.projet.qcm.bo.Candidat;
@@ -7,9 +9,12 @@ import fr.eni.projet.qcm.bo.Collaborateur;
 import fr.eni.projet.qcm.bo.Profil;
 import fr.eni.projet.qcm.bo.Promotion;
 import fr.eni.projet.qcm.bo.Utilisateur;
+import fr.eni.projet.qcm.dal.dao.CollaborateurDAO;
 import fr.eni.projet.qcm.dal.dao.UtilisateurDAO;
+import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
+import fr.eni.tp.web.common.util.ValidationUtil;
 
 public class UtilisateursManagerImpl implements UtilisateursManager {
 	private UtilisateurDAO utilisateurDao = DAOFactory.utilisateurDAO();
@@ -82,6 +87,43 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
 	@Override
 	public void supprimerPromotion(Promotion promotion) throws ManagerException {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Utilisateur> getAllCollaborateurs() throws ManagerException {
+		List<Utilisateur> collaborateurs = null;
+		try {
+			collaborateurs = utilisateurDao.selectAllCollaborateur();
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return collaborateurs;
+	}
+
+	@Override
+	public List<Utilisateur> getAllCandidats() throws ManagerException {
+		List<Utilisateur> candidats = null;
+		try {
+			candidats = utilisateurDao.selectAllCandidat();
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return candidats;
+	}
+
+	@Override
+	public Utilisateur insert(Utilisateur unCollaborateur) throws ManagerException {
+		Utilisateur collaborateur = null;
+		
+		ValidationUtil.checkNotNull(unCollaborateur);
+		
+		try {
+			collaborateur = utilisateurDao.insert(unCollaborateur);
+		} catch (DaoException e) {
+			throw new ManagerException("Erreur DAO", e);
+		}
+		return collaborateur;
 		
 	}
 

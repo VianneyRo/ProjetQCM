@@ -1,6 +1,5 @@
 package fr.eni.projet.qcm.bo;
 
-import fr.eni.projet.qcm.bo.Profil;
 
 public abstract class Utilisateur {
 

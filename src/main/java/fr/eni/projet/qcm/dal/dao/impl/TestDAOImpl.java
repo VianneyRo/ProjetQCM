@@ -19,7 +19,7 @@ public class TestDAOImpl implements TestDAO {
 	private static final String INSERT_TEST_QUERY = "INSERT INTO test(libelle, description, duree, seuilHaut, seuilBas) VALUES (?, ?, ?, ?, ?)";
 	private static final String DELETE_TEST_QUERY = "DELETE FROM test WHERE id = ?";
 	private static final String UPDATE_TEST_QUERY = "UPDATE test SET libelle = ?, description = ?, duree = ?, seuilHaut = ?, seuilBas = ? WHERE id = ?";
-	private static final String SELECT_ALL_QUERY = "SELECT libelle FROM test";
+	private static final String SELECT_ALL_QUERY = "SELECT * FROM test";
 	
 	private static TestDAOImpl instance;
 	
@@ -37,8 +37,33 @@ public class TestDAOImpl implements TestDAO {
 
 	@Override
 	public List<Test> selectAll() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Test> tests = new ArrayList<Test>();
+		Test test = null;
+		Connection connexion = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connexion = MSSQLConnectionFactory.get();
+			statement = connexion.prepareStatement(SELECT_ALL_QUERY);
+			resultSet = statement.executeQuery();
+			
+			while(resultSet.next()) {
+				test = new Test();
+				test.setLibelle(resultSet.getString("libelle"));
+				test.setDescription(resultSet.getString("description"));
+				test.setDuree(resultSet.getInt(4));
+				tests.add(test);
+			}
+
+		} catch (Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		finally {
+			ResourceUtil.safeClose(resultSet, statement, connexion);
+		}
+		
+		return tests;
 	}
 
 	@Override
@@ -128,5 +153,5 @@ public class TestDAOImpl implements TestDAO {
 		}
 
 	}
-
+	
 }

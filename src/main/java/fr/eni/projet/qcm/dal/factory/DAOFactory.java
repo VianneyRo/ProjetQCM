@@ -8,8 +8,6 @@ import fr.eni.projet.qcm.dal.dao.QuestionDAO;
 import fr.eni.projet.qcm.dal.dao.TestDAO;
 import fr.eni.projet.qcm.dal.dao.ThemeDAO;
 import fr.eni.projet.qcm.dal.dao.UtilisateurDAO;
-import fr.eni.projet.qcm.dal.dao.impl.CandidatDAOImpl;
-import fr.eni.projet.qcm.dal.dao.impl.CollaborateurDAOImpl;
 import fr.eni.projet.qcm.dal.dao.impl.EpreuveDAOImpl;
 import fr.eni.projet.qcm.dal.dao.impl.PropositionDAOImpl;
 import fr.eni.projet.qcm.dal.dao.impl.QuestionDAOImpl;
@@ -31,7 +29,7 @@ public class DAOFactory {
 		return ThemeDAOImpl.getInstance();
 	}
 
-	public static TestDAO TestDao() {
+	public static TestDAO testDao() {
 		return TestDAOImpl.getInstance();
 	}
 	
