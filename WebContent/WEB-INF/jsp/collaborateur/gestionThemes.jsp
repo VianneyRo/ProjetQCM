@@ -65,11 +65,11 @@ img {
 
 	<div class="container center" style="text-align:center">
 		<div class="col-md-12">
-			<h1 class="mt-5">Gestion des Themes</h1><button type="button" class="btn btn-success">+</button>	
+			<h1 class="mt-5">Gestion des Themes</h1><button type="button" class="btn btn-success"><a href="ajoutThemeController">+</a></button>	
 		</div>
 		<c:forEach items="${themes}" var="theme">
-			<input type="hidden" value="${theme.idTheme}" name="idTheme">
-			<span id="libelle">${theme.libelle}</span>
+			<input type="hidden" value="${theme.id}" name="idTheme">
+			<span id="libelle">${theme.libelle}</span><button type="button" class="btn btn-danger"><a href="supprimerThemeController">-</a></button>
 			<br><br>
 		</c:forEach>			
 	</div>

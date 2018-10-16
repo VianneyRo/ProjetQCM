@@ -25,6 +25,10 @@
     <servlet-name>collaborateurAccueil</servlet-name>
     <url-pattern>/collaborateur/accueil</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>gestionThemes</servlet-name>
+    <url-pattern>/collaborateur/gestionThemes</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>connexion</servlet-name>
@@ -41,6 +45,10 @@
   <servlet>
   	<servlet-name>collaborateurAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/accueilCollaborateur.jsp</jsp-file>
+  </servlet>
+    <servlet>
+  	<servlet-name>gestionThemes</servlet-name>
+    <jsp-file>/WEB-INF/jsp/collaborateur/gestionThemes.jsp</jsp-file>
   </servlet>
 
   <servlet>

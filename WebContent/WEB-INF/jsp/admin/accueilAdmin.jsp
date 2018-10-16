@@ -57,6 +57,7 @@
 <div class="col-md-12">
     
         <h1 class="mt-5">Administrateur : Gestion des paramètres</h1><br>
+        <!-- A compléter  -->
         
         <button type="button" class="btn btn-light"><a href="CandidatController">CANDIDAT</a></button>
         
