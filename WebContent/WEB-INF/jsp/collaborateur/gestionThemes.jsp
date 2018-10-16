@@ -25,7 +25,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand" href="#">Thèmes</a>
+			<a class="navbar-brand" href="#">Collaborateur : Gestion des Thèmes</a>
 			
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -63,15 +63,29 @@ img {
 }
 </style>
 
-	<div class="container center" style="text-align:center">
+<div class="container center" style="text-align:center">
 		<div class="col-md-12">
-			<h1 class="mt-5">Gestion des Themes</h1><button type="button" class="btn btn-success"><a href="ajoutThemeController">+</a></button>	
+			<h1 class="mt-5">Liste des Thèmes enregistrés</h1>
 		</div>
-		<c:forEach items="${themes}" var="theme">
-			<input type="hidden" value="${theme.id}" name="idTheme">
-			<span id="libelle">${theme.libelle}</span><button type="button" class="btn btn-danger"><a href="supprimerThemeController">-</a></button>
-			<br><br>
-		</c:forEach>			
+		<table id="tableauTheme" class="table">		
+		<thead class ="card-header" style="background-color: #e3f2fd;">
+		<tr>
+			<th scope="col">Libellé</th>
+			<th scope="col"></th>
+		</tr>		
+		</thead>
+		<tbody>		
+			<c:forEach items="${themes}" var="theme">
+			<tr>
+				<input type="hidden" value="${theme.id}" name="idTheme">
+				<td>${theme.libelle}</td>
+				<td><button type="button" class="btn btn-danger">X</button></td>
+				<br><br>	
+			</tr>		
+			</c:forEach>	
+		</tbody>
+		</table>
+				<button type="button" class="btn btn-success"><a href="ajoutThemeController">+</a></button>	
 	</div>
 
 	<footer class="page-footer font-small">
