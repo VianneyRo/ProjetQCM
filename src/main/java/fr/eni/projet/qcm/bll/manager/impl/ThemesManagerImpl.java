@@ -66,9 +66,9 @@ public class ThemesManagerImpl implements ThemesManager {
 	}
 
 	@Override
-	public void supprimerTheme(Theme theme) throws ManagerException {
+	public void supprimerTheme(Integer id) throws ManagerException {
 		try {
-			themeDAO.delete(theme.getId());
+			themeDAO.delete(id);
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

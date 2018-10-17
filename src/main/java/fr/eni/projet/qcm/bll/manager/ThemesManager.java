@@ -14,7 +14,7 @@ public interface ThemesManager {
     List<Theme> getAllThemes() throws ManagerException;
     Theme getThemeById(Integer id) throws ManagerException, ElementNotFoundException;
     void ajouterTheme(Theme theme) throws ManagerException;
-    void supprimerTheme(Theme theme) throws ManagerException;
+    void supprimerTheme(Integer id) throws ManagerException;
     Theme modifierTheme(Theme theme) throws ManagerException;
     List<Question> getQuestions(Theme theme) throws ManagerException;
 
