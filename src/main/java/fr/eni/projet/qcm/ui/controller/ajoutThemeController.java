@@ -11,6 +11,7 @@ import fr.eni.projet.qcm.bll.factory.ManagerFactory;
 import fr.eni.projet.qcm.bll.manager.ThemesManager;
 import fr.eni.projet.qcm.bo.Theme;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
+import fr.eni.tp.web.common.util.ValidationUtil;
 
 public class ajoutThemeController extends HttpServlet {
 
@@ -26,16 +27,17 @@ public class ajoutThemeController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Theme theme = new Theme();
-		String libelleTheme = req.getParameter("libelle");
-		theme.setLibelle(libelleTheme);
-		try {
-			themesManager.ajouterTheme(theme);
-		} catch (ManagerException e) {
-			e.printStackTrace();
-		}
+//		Theme theme = new Theme();
+//		String libelleTheme = req.getParameter("libelle");
+//		ValidationUtil.checkNotBlank(libelleTheme);
+//		theme.setLibelle(libelleTheme);
+//		try {
+//			themesManager.ajouterTheme(theme);
+//		} catch (ManagerException e) {
+//			e.printStackTrace();
+//		}
 		
-		req.getRequestDispatcher("/WEB-INF/jsp/collaborateur/gestionThemes.jsp").forward(req, resp);
+		req.getRequestDispatcher("https://getbootstrap.com/docs/4.0/components/buttons/").forward(req, resp);
 	}
 
 }

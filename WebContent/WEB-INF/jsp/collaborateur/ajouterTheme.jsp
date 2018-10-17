@@ -10,7 +10,7 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 <title>Nouveau thème</title>
 
-<link rel="stylesheet" href="../css/ajouterThemes.css">
+<link rel="stylesheet" href="../css/ajouterTheme.css">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../js/jquery-3.2.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
@@ -40,12 +40,14 @@
 	<div class="container center" style="text-align:center">
 		<div class="col-md-12">
 			<h1 class="mt-5">Nouveau thème</h1>
-			
+			<br>
+			<form action="ajoutThemeController" method="post">
+				Libellé : <input type="text" name="libelle" id ="libelle">
+				<input class="btn btn-primary" type="submit" value="Valider">
+			</form>
 		</div>
-		<form action="ajoutThemeController" method="post">
-			Libellé : <input type="text" name="libelle" id ="libelle">
-			<input type="submit" value="Valider">
-		</form>
+		<br>
+	<button type="button" class="btn btn-secondary"><a class="btnRetour" href="../collaborateur/gestionThemes">Retour</a></button>
 	</div>
 
 

@@ -19,7 +19,10 @@ img {
 	width: 100%;
 }
 
-.libelle{
+#libelle{
 	font-family: verdana, sans-serif;
-	font-size: 30px;
+}
+
+.btnAjouter{
+	color : white;
 }

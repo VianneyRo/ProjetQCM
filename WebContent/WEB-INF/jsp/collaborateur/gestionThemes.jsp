@@ -44,7 +44,7 @@
 	<div class="container center" style="text-align:center">
 
 		<div class="col-md-12">
-			<h1 class="mt-5">Liste des Thèmes enregistrés</h1>
+			<h1 class="mt-5">Liste des thèmes</h1>
 		</div>
 
 		<table id="tableauTheme" class="table">		
@@ -65,7 +65,7 @@
 			</c:forEach>	
 		</tbody>
 		</table>
-				<button type="button" class="btn btn-success"><a href="ajoutThemeController">Ajouter</a></button>	
+				<button type="button" class="btn btn-success"><a class="btnAjouter" href="../collaborateur/ajoutThemes">Ajouter</a></button>	
 	</div>
 
 	<footer class="page-footer font-small">
