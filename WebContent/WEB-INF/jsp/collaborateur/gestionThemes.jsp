@@ -59,8 +59,7 @@
 			<tr>
 				<input type="hidden" value="${theme.id}" name="idTheme">
 				<td>${theme.libelle}</td>
-				<td><button type="button" class="btn btn-danger">Supprimer</button></td>
-				<br><br>	
+				<td><button type="button" class="btn btn-danger">Supprimer</button></td>	
 			</tr>		
 			</c:forEach>	
 		</tbody>
