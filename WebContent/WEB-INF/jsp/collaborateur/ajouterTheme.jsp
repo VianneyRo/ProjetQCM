@@ -41,14 +41,13 @@
 		<div class="col-md-12">
 			<h1 class="mt-5">Nouveau thème</h1>
 			<br>
-			<form action="ajoutThemeController" method="post">
+			<form action="../collaborateur/ajoutThemes" method="post">
 				Libellé : <input type="text" name="libelle" id ="libelle">
 				<input class="btn btn-primary" type="submit" value="Valider">
 			</form>
 		</div>
 		<br>
-	<button type="button" class="btn btn-secondary"><a class="btnRetour" href="../collaborateur/gestionThemes">Retour</a></button>
-	</div>
+	<a class="btnRetour" href="../collaborateur/gestionThemes"></a>
 
 
 </body>

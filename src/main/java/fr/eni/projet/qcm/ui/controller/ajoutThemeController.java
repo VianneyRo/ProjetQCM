@@ -1,6 +1,7 @@
 package fr.eni.projet.qcm.ui.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,17 +28,18 @@ public class ajoutThemeController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//		Theme theme = new Theme();
-//		String libelleTheme = req.getParameter("libelle");
-//		ValidationUtil.checkNotBlank(libelleTheme);
-//		theme.setLibelle(libelleTheme);
-//		try {
-//			themesManager.ajouterTheme(theme);
-//		} catch (ManagerException e) {
-//			e.printStackTrace();
-//		}
-		
-		req.getRequestDispatcher("https://getbootstrap.com/docs/4.0/components/buttons/").forward(req, resp);
+		Theme theme = new Theme();
+		String libelleTheme = req.getParameter("libelle");
+		ValidationUtil.checkNotBlank(libelleTheme);
+		theme.setLibelle(libelleTheme);
+		try {
+			themesManager.ajouterTheme(theme);
+			List<Theme> themes = themesManager.getAllThemes();
+			req.setAttribute("themes", themes);
+			req.getRequestDispatcher("/WEB-INF/jsp/collaborateur/gestionThemes.jsp").forward(req, resp);
+		} catch (ManagerException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
