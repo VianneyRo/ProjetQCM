@@ -10,7 +10,11 @@ import fr.eni.tp.web.common.bll.exception.ManagerException;
 public interface UtilisateursManager {
 
 	Utilisateur connexion(String login, String password) throws ManagerException;
+	List<Utilisateur> selectAll() throws ManagerException;
+	void ajouterUtilisateur(Utilisateur utilisateur) throws ManagerException;
+	void supprimerUtilisateur(Integer utilisateurId) throws ManagerException;
 
+	Profil selectProfilByUtilisateurId(Integer utilisateurId) throws ManagerException;
 	void ajouterProfil(Profil profil) throws ManagerException;
 	void modifierProfil(Profil profil) throws ManagerException;
 	void supprimerProfil(Profil profil) throws ManagerException;

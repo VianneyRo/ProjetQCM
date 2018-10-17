@@ -14,7 +14,7 @@ public class Candidat extends Utilisateur {
 	 * @param prenom
 	 */
 	public Candidat(String nom, String prenom) {
-		super(nom, prenom, "candidat");
+		super(nom, prenom, "CAND");
 	}
 
 	/**
@@ -26,8 +26,7 @@ public class Candidat extends Utilisateur {
 	 * @param password
 	 */
 	public Candidat(Integer id, String nom, String prenom, String email, String password) {
-		super(id, nom, prenom, email, password, "candidat");
+		super(id, nom, prenom, email, password, "CAND");
 	}
 
-	
 }

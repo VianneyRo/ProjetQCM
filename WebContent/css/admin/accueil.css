@@ -1,0 +1,35 @@
+.tiles {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.tile {
+	flex: 0 0 8cm;
+	height: 8cm;
+	display: flex;
+	flex-flow: column wrap;
+	margin: .5cm;
+	text-decoration: none;
+	background-color: #aaaaaa;
+	color: #ffffff;
+}
+
+.tile-icon {
+	flex: 0 0 6.5cm;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tile-icon {
+	font-size: 5em;
+}
+
+.tile-title {
+	flex: 0 0 1.5cm;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.tile-title h2 {
+	font-family: "Open Sans";
+}
