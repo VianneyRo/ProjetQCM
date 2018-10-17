@@ -39,7 +39,7 @@ public class PropositionDAOImpl implements PropositionDAO {
 		List<Proposition> propositions = new ArrayList<Proposition>();
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_BY_QUESTION, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(SELECT_BY_QUESTION);
 			statement.setInt(1, questionId);
 
 			resultSet = statement.executeQuery();
@@ -60,11 +60,13 @@ public class PropositionDAOImpl implements PropositionDAO {
 		Proposition proposition = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_BY_ID, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(SELECT_BY_ID);
 			statement.setInt(1, id);
 
 			resultSet = statement.executeQuery();
-			proposition = resultSetToProposition(resultSet);
+			if(resultSet.next()) {
+				proposition = resultSetToProposition(resultSet);
+			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		}
@@ -84,8 +86,12 @@ public class PropositionDAOImpl implements PropositionDAO {
 			statement.setString(2, proposition.getEnonce());
 			statement.setBoolean(3, proposition.isCorrecte());
 
-			resultSet = statement.executeQuery();
-			insertedProposition = resultSetToProposition(resultSet);
+			if (statement.executeUpdate() == 1) {
+				resultSet = statement.getGeneratedKeys();
+				if (resultSet.next()) {
+					insertedProposition = resultSetToProposition(resultSet);
+				}
+			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		}

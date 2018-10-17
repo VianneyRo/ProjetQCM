@@ -63,7 +63,9 @@ public class QuestionDAOImpl implements QuestionDAO {
 			statement.setInt(1, id);
 
 			resultSet = statement.executeQuery();
-			question = resultSetToQuestion(resultSet);
+			if(resultSet.next()) {
+				question = resultSetToQuestion(resultSet);
+			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		}

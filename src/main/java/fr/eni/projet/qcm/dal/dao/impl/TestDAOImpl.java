@@ -85,7 +85,9 @@ public class TestDAOImpl implements TestDAO {
 			statement.setInt(1, id);
 
 			resultSet = statement.executeQuery();
-			test = resultSetToTest(resultSet);
+			if(resultSet.next()) {
+				test = resultSetToTest(resultSet);
+			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		} finally {

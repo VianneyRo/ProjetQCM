@@ -22,7 +22,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String LOGIN = "SELECT id, nom, prenom, email, code_profil FROM utilisateur WHERE email=? AND password=?";
 	private static final String SELECT_ALL = "SELECT id, nom, prenom, email, code_profil FROM utilisateur";
 	private static final String SELECT_ALL_COLLABORATEUR = "SELECT id, nom, prenom, email FROM utilisateur WHERE code_profil='COLL'";
-	private static final String SELECT_ALL_CANDIDAT= "SELECT id, nom, prenom, email, code_promotion FROM utilisateur WHERE code_profil='CAND'";
+	private static final String SELECT_ALL_CANDIDAT = "SELECT id, nom, prenom, email, code_promotion FROM utilisateur WHERE code_profil='CAND'";
 
 	private static UtilisateurDAOImpl instance;
 
@@ -54,74 +54,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public Utilisateur selectById(Integer id) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Utilisateur connexion(String email, String password) throws DaoException {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		Utilisateur utilisateur = null;
-		
-		try {
-			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(LOGIN, Statement.RETURN_GENERATED_KEYS);
-			statement.setString(1, email);
-			statement.setString(2, password);
-
-			resultSet = statement.executeQuery();
-			utilisateur = resultSetToUtilisateur(resultSet);
-		} catch(Exception e) {
-			throw new DaoException(e.getMessage(), e);
-		}
-	
-		return utilisateur;
-	}
-
-	@Override
-	public Utilisateur insert(Utilisateur utilisateur) throws DaoException {
-		return null;
-	}
-
-	@Override
-	public void delete(Integer id) throws DaoException {
-	}
-
-	@Override
-	public void update(Integer id, Utilisateur utilisateur) throws DaoException {
-	}
-
-	private Utilisateur resultSetToUtilisateur(ResultSet resultSet) throws DaoException {
-		Utilisateur utilisateur = null;
-		try {
-			if(resultSet.getString("code_profil") != null) {
-				switch(resultSet.getString("code_profil")) {
-					case "CAND":
-						utilisateur = new Candidat();
-						break;
-					case "COLL":
-						utilisateur = new Collaborateur();
-						break;
-					case "ADMIN":
-						utilisateur = new Admin();
-						break;
-				}
-				utilisateur.setId(resultSet.getInt("id"));
-				utilisateur.setNom(resultSet.getString("nom"));
-				utilisateur.setPrenom(resultSet.getString("prenom"));
-				utilisateur.setEmail(resultSet.getString("email"));
-				utilisateur.setProfil(resultSet.getString("code_profil"));
-			}
-		} catch(Exception e) {
-			throw new DaoException(e.getMessage(), e);
-		}
-		return utilisateur;
-	}
-
-	@Override
 	public List<Utilisateur> selectAllCollaborateur() throws DaoException {
 		Connection connection = null;
 		Statement statement = null;
@@ -142,20 +74,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		}
 
 		return collaborateurs;
-	}
-	
-	private Utilisateur resultSetToCollaborateur(ResultSet resultSet) throws DaoException {
-		Collaborateur collaborateur = null;
-		try {
-			collaborateur = new Collaborateur();
-			collaborateur.setId(resultSet.getInt("id"));
-			collaborateur.setNom(resultSet.getString("nom"));
-			collaborateur.setPrenom(resultSet.getString("prenom"));
-			collaborateur.setEmail(resultSet.getString("email"));
-		} catch (SQLException e) {
-			throw new DaoException(e.getMessage(), e);
-		}
-		return collaborateur;
 	}
 
 	@Override
@@ -180,6 +98,83 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 		return candidats;
 	}
+
+	@Override
+	public Utilisateur selectById(Integer id) throws DaoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Utilisateur connexion(String email, String password) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Utilisateur utilisateur = null;
+		
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(LOGIN, Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, email);
+			statement.setString(2, password);
+
+			resultSet = statement.executeQuery();
+			if(resultSet.next()) {
+				utilisateur = resultSetToUtilisateur(resultSet);
+			}
+		} catch(Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+	
+		return utilisateur;
+	}
+
+	@Override
+	public Utilisateur insert(Utilisateur utilisateur) throws DaoException {
+		return null;
+	}
+
+	@Override
+	public void delete(Integer id) throws DaoException {
+	}
+
+	@Override
+	public void update(Integer id, Utilisateur utilisateur) throws DaoException {
+	}
+
+	private Utilisateur resultSetToUtilisateur(ResultSet resultSet) throws DaoException {
+		Utilisateur utilisateur = null;
+		try {
+			switch(resultSet.getString("code_profil")) {
+				case "CAND":
+					utilisateur = resultSetToCandidat(resultSet);
+					break;
+				case "COLL":
+					utilisateur = resultSetToCollaborateur(resultSet);
+					break;
+				case "ADMIN":
+					utilisateur = resultSetToAdmin(resultSet);
+					break;
+			}
+		} catch(Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		return utilisateur;
+	}
+	
+	private Utilisateur resultSetToCollaborateur(ResultSet resultSet) throws DaoException {
+		Collaborateur collaborateur = null;
+		try {
+			collaborateur = new Collaborateur();
+			collaborateur.setId(resultSet.getInt("id"));
+			collaborateur.setNom(resultSet.getString("nom"));
+			collaborateur.setPrenom(resultSet.getString("prenom"));
+			collaborateur.setEmail(resultSet.getString("email"));
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		return collaborateur;
+	}
 	
 	private Utilisateur resultSetToCandidat(ResultSet resultSet) throws DaoException {
 		Candidat candidat = null;
@@ -194,6 +189,20 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 			throw new DaoException(e.getMessage(), e);
 		}
 		return candidat;
+	}
+	
+	private Utilisateur resultSetToAdmin(ResultSet resultSet) throws DaoException {
+		Admin admin = null;
+		try {
+			admin = new Admin();
+			admin.setId(resultSet.getInt("id"));
+			admin.setNom(resultSet.getString("nom"));
+			admin.setPrenom(resultSet.getString("prenom"));
+			admin.setEmail(resultSet.getString("email"));
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		return admin;
 	}
 
 }

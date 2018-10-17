@@ -30,13 +30,8 @@ public class UtilisateursManagerImpl implements UtilisateursManager {
 	public Utilisateur connexion(String login, String password) throws ManagerException {
 		Utilisateur utilisateur = null;
 		try {
-			Utilisateur utilisateurConnecte = utilisateurDao.connexion(login, password);
-			if(utilisateurConnecte == null) {
-				throw new Exception();
-			} else {
-				System.out.println("Utilisateur: [nom=" + utilisateurConnecte.getNom() + ", prenom= " + utilisateurConnecte.getPrenom() + ", profil=" + utilisateurConnecte.getProfil() + "]");
-				utilisateur = utilisateurConnecte;
-			}
+			utilisateur = utilisateurDao.connexion(login, password);
+			System.out.println("Utilisateur: [nom=" + utilisateur.getNom() + ", prenom= " + utilisateur.getPrenom() + ", profil=" + utilisateur.getProfil() + "]");
 		} catch(Exception e) {
 			throw new ManagerException(e.getMessage(), e);
 		}

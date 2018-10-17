@@ -19,7 +19,7 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 
 	private static final String SELECT_ALL_EPREUVES_QUERY = "SELECT e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e ORDER BY e.etat DESC";
 	private static final String SELECT_ONE_EPREUVE_QUERY = "SELECT e.id, e.dateDebutValidite, e.dateFinValidite, e.tempsEcoule, e.noteObtenue, e.niveauObtenu, e.etat FROM epreuve e WHERE e.id = ?";
-	private static final String SELECT_ONE_EPREUVE_BY_NOTE_QUERY = "SELECT e.id FROM epreuve e WHERE e.noteObtenue = ?";
+//	private static final String SELECT_ONE_EPREUVE_BY_NOTE_QUERY = "SELECT e.id FROM epreuve e WHERE e.noteObtenue = ?";
 	private static final String INSERT_EPREUVE_QUERY = "INSERT INTO epreuve(dateDebutValidite, dateFinValidite, tempsEcoule, note_obtenue, niveau_obtenu, etat) VALUES(?,?,?,?,?,?) ";
 	private static final String DELETE_EPREUVE_QUERY = "DELETE FROM epreuve WHERE id = ? ";
 	private static final String UPDATE_EPREUVE_QUERY = "UPDATE epreuve SET dateDebutValidite = ?, dateFinValidite = ?, tempsEcoule = ?, noteObtenue = ?, niveauObtenu = ?, etat = ? WHERE id = ?";
@@ -98,9 +98,7 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		ResultSet resultSet = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-
 			statement = connection.prepareStatement(INSERT_EPREUVE_QUERY, Statement.RETURN_GENERATED_KEYS);
-			
 			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
 			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
 			statement.setLong(3, epreuve.getTempsEcoule());
@@ -111,11 +109,9 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			if (statement.executeUpdate() == 1) {
 				resultSet = statement.getGeneratedKeys();
 				if (resultSet.next()) {
-
 					epreuve.setId(resultSet.getInt(1));
 				}
 			}
-
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		} finally {
@@ -132,9 +128,7 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		ResultSet resultSet = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-
 			statement = connection.prepareStatement(UPDATE_EPREUVE_QUERY);
-
 			statement.setDate(1, DateUtil.UtilDateToJDBCDate(epreuve.getDateDebutValidite()));
 			statement.setDate(2, DateUtil.UtilDateToJDBCDate(epreuve.getDateFinValidite()));
 			statement.setLong(3, epreuve.getTempsEcoule());
@@ -144,7 +138,6 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 			statement.setInt(7, epreuve.getId());
 
 			statement.executeUpdate();
-
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		} finally {
@@ -160,13 +153,10 @@ public class EpreuveDAOImpl implements EpreuveDAO {
 		ResultSet resultSet = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-
 			statement = connection.prepareStatement(DELETE_EPREUVE_QUERY);
-
 			statement.setInt(1, id);
 
 			statement.executeUpdate();
-
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		} finally {

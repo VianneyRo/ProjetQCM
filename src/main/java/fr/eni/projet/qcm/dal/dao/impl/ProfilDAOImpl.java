@@ -39,7 +39,9 @@ public class ProfilDAOImpl implements ProfilDAO {
 			statement.setInt(1, utilisateurId);
 
 			resultSet = statement.executeQuery();
-			profil = resultSetToProfil(resultSet);
+			if(resultSet.next()) {
+				profil = resultSetToProfil(resultSet);
+			}
 		} catch(Exception e) {
 			throw new DaoException(e.getMessage(), e);
 		}
