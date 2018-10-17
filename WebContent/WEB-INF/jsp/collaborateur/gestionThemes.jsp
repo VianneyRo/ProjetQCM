@@ -57,9 +57,14 @@
 		<tbody>		
 			<c:forEach items="${themes}" var="theme">
 			<tr>
-				<input type="hidden" value="${theme.id}" name="idTheme">
 				<td>${theme.libelle}</td>
-				<td><button type="button" class="btn btn-danger">Supprimer</button></td>	
+				<td>
+				<form action="../collaborateur/supprimerTheme" method="get">
+					<input type="hidden" value="${theme.id}" name="idTheme">
+					<input class="btn btn-primary" type="submit" value="Supprimer">
+				</form>
+				</td>	
+			
 			</tr>		
 			</c:forEach>	
 		</tbody>

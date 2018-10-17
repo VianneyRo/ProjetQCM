@@ -64,6 +64,11 @@
     <servlet-name>ajoutThemeController</servlet-name>
     <url-pattern>/collaborateur/ajoutThemes</url-pattern>
   </servlet-mapping> 
+  
+   <servlet-mapping>
+    <servlet-name>supprimerThemeController</servlet-name>
+    <url-pattern>/collaborateur/supprimerTheme</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>connexion</servlet-name>
@@ -132,5 +137,12 @@
     <servlet-name>ajoutThemeController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.ajoutThemeController</servlet-class>
   </servlet>
+  
+   <servlet>
+    <servlet-name>supprimerThemeController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.SupprimerThemeController</servlet-class>
+  </servlet>
+  
+
 
 </web-app>
