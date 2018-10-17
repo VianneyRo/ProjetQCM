@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -7,7 +9,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="sebeez">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/admin/accueil.css">
 	</head>
 
 	<body>
@@ -19,6 +23,22 @@
 		</header>
 		<div class="main-container" style="text-align:center">
 			<div class="tiles">
+				<a href="admin/utilisateursController" class="tile">
+					<div class="tile-icon">
+						<i class="fas fa-users"></i>
+					</div>
+					<div class="tile-title">
+						<h2>Utilisateurs</h2>
+					</div>
+				</a>
+				<a href="admin/epreuvesController" class="tile">
+					<div class="tile-icon">
+						<i class="fas fa-file-alt"></i>
+					</div>
+					<div class="tile-title">
+						<h2>Épreuves</h2>
+					</div>
+				</a>
 			</div>
 		</div>
 		<footer>

@@ -2,18 +2,17 @@ package fr.eni.projet.qcm.ui.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.qcm.bll.factory.ManagerFactory;
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
+import fr.eni.projet.qcm.bo.Profil;
 import fr.eni.projet.qcm.bo.Utilisateur;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
 import fr.eni.tp.web.common.util.ValidationUtil;
 
-@WebServlet("/ConnexionController")
 public class ConnexionController extends HttpServlet{
 	private UtilisateursManager utilisateursManager;
 
@@ -31,21 +30,25 @@ public class ConnexionController extends HttpServlet{
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");		
 		Utilisateur utilisateur = null;
+		Profil profil = null;
 		try {
 			ValidationUtil.checkNotNull(email);
 			ValidationUtil.checkNotNull(password);
 			utilisateur = utilisateursManager.connexion(email, password);
-
 			if(utilisateur != null) {
-				System.out.println(utilisateur.getPrenom() + " " + utilisateur.getNom());
+				profil = utilisateursManager.selectProfilByUtilisateurId(utilisateur.getId());
 				req.setAttribute("utilisateurId", utilisateur.getId());
-				req.getRequestDispatcher("/" + utilisateur.getProfil() + "/accueil").forward(req, resp);
+				if(profil == null) {
+					throw new Exception();
+				}
 			} else {
-				req.getRequestDispatcher("/connexion").forward(req, resp);
+				throw new Exception();
 			}
-		} catch (ManagerException e) {
+		} catch (Exception e) {
 			req.getRequestDispatcher("/connexion").forward(req, resp);
 		}
+		req.setAttribute("userId", utilisateur.getId());
+		req.getRequestDispatcher("/" + profil.getLibelle() + "/controller").forward(req, resp);
 	}
 
 }

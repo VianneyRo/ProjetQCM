@@ -9,6 +9,7 @@ public interface TestDAO {
 
 	public List<Test> selectAll() throws DaoException;
 	public Test selectById(Integer id) throws DaoException;
+	public Test selectByEpreuveId(Integer id) throws DaoException;
 
 	public Test insert(Test test) throws DaoException;
 	public void delete(Integer id) throws DaoException;

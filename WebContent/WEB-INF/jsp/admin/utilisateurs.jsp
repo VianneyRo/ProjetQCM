@@ -5,16 +5,16 @@
 <!doctype html>
 <html lang="fr">
 	<head>
-		<title>Accueil Candidat</title>
+		<title>Admin - Gestion Utilisateurs</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="sebeez">
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="css/array.css">
-		<link rel="stylesheet" href="css/candidat/accueil.css">
+		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../css/array.css">
+		<link rel="stylesheet" href="../css/admin/utilisateurs.css">
 	</head>
 
 	<body>
@@ -28,25 +28,29 @@
 			<div class="array-wrapper">
 				<div class="array-container">
 					<div class="titre-array">
-						<h2>Mes Épreuves</h2>
+						<h2>Utilisateurs</h2>
 					</div>
 					<div class="header-array">
-						<div class="e-libelle">NOM</div>
-						<div class="e-duree">DUREE</div>
-						<div class="e-date-debut">DATE</div>
-						<div class="e-actions"></div>
+						<div class="u-id">ID</div>
+						<div class="u-profil">TYPE</div>
+						<div class="u-nom">PRÉNOM NOM</div>
+						<div class="u-promotion">PROMOTION</div>
+						<div class="u-actions"></div>
 					</div>
 					<div class="liste-array">
-						<c:forEach items="${epreuves}" var="epreuve">
+						<c:forEach items="${users}" var="user">
 							<div class="item">
-								<div class="e-libelle i-display-left">${epreuve.libelle}</div>
-								<div class="e-duree i-display-center">${epreuve.duree}</div>
-								<div class="e-date-debut i-display-center">${epreuve.dateDebut}</div>
-								<div class="e-actions i-display-right">
-									<form method="GET" action="passerEpreuve">
+								<div class="u-id i-display-right">${user.id}</div>
+								<div class="u-profil i-display-left">${user.profil}</div>
+								<div class="u-nom i-display-left">${user.prenom} ${user.nom}</div>
+								<div class="u-promotion i-display-left"></div>
+								<div class="u-actions i-display-right">
+									<!-- <form method="DELETE" action="gestionUtilisateurs">
+									</form> -->
+									<form method="DELETE" action="gestionUtilisateurs">
 										<input class="hidden" type="text" value="1" name="utilisateurId"/>
 										<button class="action-button" type="submit">
-											<i class="fas fa-arrow-right"></i>
+											<i class="fas fa-times"></i>
 										</button>
 									</form>
 								</div>

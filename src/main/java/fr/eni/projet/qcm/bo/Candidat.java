@@ -2,6 +2,7 @@ package fr.eni.projet.qcm.bo;
 
 
 public class Candidat extends Utilisateur {
+	private String codePromotion;
 
 	/**
 	 * Constructeur
@@ -14,7 +15,7 @@ public class Candidat extends Utilisateur {
 	 * @param prenom
 	 */
 	public Candidat(String nom, String prenom) {
-		super(nom, prenom, "candidat");
+		super(nom, prenom, "CAND");
 	}
 
 	/**
@@ -25,7 +26,11 @@ public class Candidat extends Utilisateur {
 	 * @param email
 	 * @param password
 	 */
-	public Candidat(Integer id, String nom, String prenom, String email, String password) {
-		super(id, nom, prenom, email, password, "candidat");
+	public Candidat(Integer id, String nom, String prenom, String email, String password, String codePromotion) {
+		super(id, nom, prenom, email, password, "CAND");
+		this.codePromotion = codePromotion;
 	}
+
+	public String getCodePromotion() { return this.codePromotion; }
+	public void setCodePromotion(String codePromotion) { this.codePromotion = codePromotion; }
 }

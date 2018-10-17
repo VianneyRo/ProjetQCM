@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Candidat;
@@ -16,6 +17,7 @@ import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 
 public class UtilisateurDAOImpl implements UtilisateurDAO {
 	private static final String LOGIN = "SELECT id, nom, prenom, email, code_profil FROM utilisateur WHERE email=? AND password=?";
+	private static final String SELECT_ALL = "SELECT id, nom, prenom, email, code_profil FROM utilisateur";
 	private static UtilisateurDAOImpl instance;
 
 	public static UtilisateurDAOImpl getInstance() {
@@ -27,8 +29,22 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	@Override
 	public List<Utilisateur> selectAll() throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_ALL);
+
+			resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				utilisateurs.add(resultSetToUtilisateur(resultSet));
+			}
+		} catch(Exception e) {
+			
+		}		
+		return utilisateurs;
 	}
 
 	@Override
@@ -44,7 +60,6 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		ResultSet resultSet = null;
 		Utilisateur utilisateur = null;
 		try {
-			System.out.println("Connexion: [email=" + email + ", password=" + password + "]");
 			connection = MSSQLConnectionFactory.get();
 			statement = connection.prepareStatement(LOGIN, Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, email);
@@ -67,13 +82,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 	@Override
 	public void delete(Integer id) throws DaoException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void update(Integer id, Utilisateur utilisateur) throws DaoException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	private Utilisateur resultSetToUtilisateur(ResultSet resultSet) throws DaoException {

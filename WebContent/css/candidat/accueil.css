@@ -1,0 +1,28 @@
+.e-libelle {
+	flex: 0 1 5cm;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.e-duree { flex: 0 1 2cm; }
+.e-date-debut { flex: 0 1 4cm; }
+.e-actions { flex: 0 1 2cm; }
+
+.hidden {
+	display: none;
+}
+.action-button {
+	cursor: pointer;
+	display: flex;
+	height: .6cm;
+	width: .6cm;
+	border: none;
+	background-color: #555555;
+	color: #ffffff;
+	align-items: center;
+	justify-content: center;
+}
+.action-button:hover {
+	background-color: #dddddd;
+	color: #bb5555;
+}

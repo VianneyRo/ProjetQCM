@@ -74,7 +74,7 @@
 				<h1 class="mt-5"><u>Authentifiez-vous</u></h1>
 				<div class="alert alert-danger" id="alert-message" style="visibility: hidden"></div>
 				<div class="alert alert-info" id="info-message" role="alert" style="visibility: hidden"></div>
-				<form method="POST" action="ConnexionController">
+				<form method="POST" action="connexionController">
 					<p>Vous pouvez vous connecter via ce formulaire.</p>
 					<div class="form-inputs">
 						<div class="form-input">

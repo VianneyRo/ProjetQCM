@@ -38,14 +38,17 @@ header .profile-container {
 	flex: 1 0;
 	display: flex;
 	flex-flow: column nowrap;
-	align-items: center;
-	justify-content: flex-start;
 }
 
 footer {
 	flex: 0 0 1.5cm;
 	display: flex;
 	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
 	background-color: #454545;
 	color: #ffffff;
+}
+.copyright-container {
+	font-family: "Open Sans";
 }

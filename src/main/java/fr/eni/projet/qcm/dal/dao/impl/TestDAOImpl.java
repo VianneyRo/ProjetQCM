@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.qcm.bo.Test;
@@ -19,8 +18,9 @@ public class TestDAOImpl implements TestDAO {
 	private static final String INSERT_TEST_QUERY = "INSERT INTO test(libelle, description, duree, seuilHaut, seuilBas) VALUES (?, ?, ?, ?, ?)";
 	private static final String DELETE_TEST_QUERY = "DELETE FROM test WHERE id = ?";
 	private static final String UPDATE_TEST_QUERY = "UPDATE test SET libelle = ?, description = ?, duree = ?, seuilHaut = ?, seuilBas = ? WHERE id = ?";
-	private static final String SELECT_ALL_QUERY = "SELECT libelle FROM test";
-	
+//	private static final String SELECT_ALL_QUERY = "SELECT libelle FROM test";
+	private static final String SELECT_BY_EPREUVE = "SELECT t.id, t.libelle, t.description, t.duree, t.seuil_haut, t.seuil_bas FROM epreuve e, test t WHERE e.id_test=t.id AND e.id=?";
+
 	private static TestDAOImpl instance;
 	
 	private TestDAOImpl(){
@@ -46,6 +46,27 @@ public class TestDAOImpl implements TestDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Test selectByEpreuveId(Integer id) throws DaoException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		Test test = null;
+		try {
+			connection = MSSQLConnectionFactory.get();
+			statement = connection.prepareStatement(SELECT_BY_EPREUVE, Statement.RETURN_GENERATED_KEYS);
+			statement.setInt(1, id);
+
+			resultSet = statement.executeQuery();
+			test = resultSetToTest(resultSet);
+		} catch(Exception e) {
+			throw new DaoException(e.getMessage(), e);
+		} finally {
+			ResourceUtil.safeClose(resultSet, statement, connection);
+		}
+		return test;
+	}
 	
 	@Override
 	public Test insert(Test test) throws DaoException {
@@ -54,9 +75,7 @@ public class TestDAOImpl implements TestDAO {
 		ResultSet resultSet = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-
 			statement = connection.prepareStatement(INSERT_TEST_QUERY, Statement.RETURN_GENERATED_KEYS);
-
 			statement.setString(1, test.getLibelle());
 			statement.setString(2, test.getDescription());
 			statement.setInt(3, test.getDuree());
@@ -127,6 +146,21 @@ public class TestDAOImpl implements TestDAO {
 			ResourceUtil.safeClose(resultSet, statement, connection);
 		}
 
+	}
+
+	private Test resultSetToTest(ResultSet resultSet) throws DaoException {
+		Test test = new Test();
+		try {
+			test.setId(resultSet.getInt("id"));
+			test.setLibelle(resultSet.getString("libelle"));
+			test.setDescription(resultSet.getString("description"));
+			test.setDuree(resultSet.getInt("duree"));
+			test.setSeuilHaut(resultSet.getFloat("seuil_haut"));
+			test.setSeuilBas(resultSet.getFloat("seuil_bas"));
+		} catch (SQLException e) {
+			throw new DaoException(e.getMessage(), e);
+		}
+		return test;
 	}
 
 }
