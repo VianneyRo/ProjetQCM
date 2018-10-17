@@ -5,12 +5,15 @@ import java.util.List;
 import fr.eni.projet.qcm.bll.manager.TestsManager;
 import fr.eni.projet.qcm.bo.SectionTest;
 import fr.eni.projet.qcm.bo.Test;
+import fr.eni.projet.qcm.dal.dao.TestDAO;
+import fr.eni.projet.qcm.dal.factory.DAOFactory;
 import fr.eni.tp.web.common.bll.exception.ElementNotFoundException;
 import fr.eni.tp.web.common.bll.exception.ManagerException;
 
 public class TestsManagerImpl implements TestsManager {
 	private static TestsManagerImpl instance;
-
+	private TestDAO testDAO = DAOFactory.testDao();
+	
 	public static TestsManagerImpl getInstance() {
 		if(instance == null) {
 			instance = new TestsManagerImpl();
@@ -20,8 +23,14 @@ public class TestsManagerImpl implements TestsManager {
 
 	@Override
 	public List<Test> getAllTests() throws ManagerException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Test> tests = null;
+		try {
+			tests = testDAO.selectAll();
+		} catch(Exception e) {
+			throw new ManagerException(e.getMessage(), e);
+		}
+		return tests;
 	}
 
 	@Override

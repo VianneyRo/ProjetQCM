@@ -23,20 +23,20 @@
 		</header>
 		<div class="main-container" style="text-align:center">
 			<div class="tiles">
-				<a href="admin/utilisateursController" class="tile">
+				<a href="CandidatController" class="tile">
 					<div class="tile-icon">
-						<i class="fas fa-users"></i>
+						<i class="fas fa-user-graduate"></i>
 					</div>
 					<div class="tile-title">
-						<h2>Utilisateurs</h2>
+						<h2>Candidats</h2>
 					</div>
 				</a>
-				<a href="admin/epreuvesController" class="tile">
+				<a href="CollaborateurController" class="tile">
 					<div class="tile-icon">
-						<i class="fas fa-file-alt"></i>
+						<i class="fas fa-user-tie"></i>
 					</div>
 					<div class="tile-title">
-						<h2>Épreuves</h2>
+						<h2>Collaborateurs</h2>
 					</div>
 				</a>
 			</div>

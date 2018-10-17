@@ -26,3 +26,25 @@
 	background-color: #dddddd;
 	color: #bb5555;
 }
+
+/* ------------------------------ */
+
+img {
+    cursor: pointer;
+}
+.center {
+    float: none; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.page-footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}

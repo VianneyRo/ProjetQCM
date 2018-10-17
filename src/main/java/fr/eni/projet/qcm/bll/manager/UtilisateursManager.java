@@ -22,5 +22,9 @@ public interface UtilisateursManager {
 	void ajouterPromotion(Promotion promotion) throws ManagerException;
 	void modifierPromotion(Promotion promotion) throws ManagerException;
 	void supprimerPromotion(Promotion promotion) throws ManagerException;
+	
+	 List<Utilisateur> getAllCollaborateurs() throws ManagerException;
+	 List<Utilisateur> getAllCandidats() throws ManagerException;
 
+	Utilisateur insert(Utilisateur unCollaborateur) throws ManagerException;
 }

@@ -14,5 +14,7 @@ public interface UtilisateurDAO {
 	public Utilisateur insert(Utilisateur utilisateur) throws DaoException;
 	public void delete(Integer id) throws DaoException;
 	public void update(Integer id, Utilisateur utilisateur) throws DaoException;
+	public List<Utilisateur> selectAllCollaborateur() throws DaoException;
+	public List<Utilisateur> selectAllCandidat() throws DaoException;
 
 }

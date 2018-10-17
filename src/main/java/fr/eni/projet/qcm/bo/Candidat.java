@@ -2,7 +2,6 @@ package fr.eni.projet.qcm.bo;
 
 
 public class Candidat extends Utilisateur {
-	private String codePromotion;
 
 	/**
 	 * Constructeur
@@ -26,11 +25,8 @@ public class Candidat extends Utilisateur {
 	 * @param email
 	 * @param password
 	 */
-	public Candidat(Integer id, String nom, String prenom, String email, String password, String codePromotion) {
+	public Candidat(Integer id, String nom, String prenom, String email, String password) {
 		super(id, nom, prenom, email, password, "CAND");
-		this.codePromotion = codePromotion;
 	}
 
-	public String getCodePromotion() { return this.codePromotion; }
-	public void setCodePromotion(String codePromotion) { this.codePromotion = codePromotion; }
 }

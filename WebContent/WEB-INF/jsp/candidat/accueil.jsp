@@ -17,59 +17,62 @@
 		<link rel="stylesheet" href="css/candidat/accueil.css">
 	</head>
 
-	<body>
-		<header>
-			<div class="logo-container"></div>
-			<nav></nav>
-			<div class="profile-container">
-			</div>
-		</header>
-		<div class="main-container" style="text-align:center">
-			<div class="array-wrapper">
-				<div class="array-container">
-					<div class="titre-array">
-						<h2>Mes Épreuves</h2>
-					</div>
-					<div class="header-array">
-						<div class="e-libelle">NOM</div>
-						<div class="e-duree">DUREE</div>
-						<div class="e-date-debut">DATE</div>
-						<div class="e-actions"></div>
-					</div>
-					<div class="liste-array">
-						<c:forEach items="${epreuves}" var="epreuve">
-							<div class="item">
-								<div class="e-libelle i-display-left">${epreuve.libelle}</div>
-								<div class="e-duree i-display-center">${epreuve.duree}</div>
-								<div class="e-date-debut i-display-center">${epreuve.dateDebut}</div>
-								<div class="e-actions i-display-right">
-									<form method="GET" action="passerEpreuve">
-										<input class="hidden" type="text" value="1" name="utilisateurId"/>
-										<button class="action-button" type="submit">
-											<i class="fas fa-arrow-right"></i>
-										</button>
-									</form>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<!-- <div class="pages-array">
-						<form method="GET" action="triUtilisateurs">
-							<input/>
-						</form>
-					</div> -->
-					<!-- <div class="ajout-array">
-						<form method="POST" action="gestionUtilisateurs">
-							<input type="text" name=""/>
-						</form>
-					</div> -->
-				</div>
-			</div>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/functions.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#" >Questionnaire à choix multiple</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
 		</div>
-		<footer>
-			<div class="copyright-container">
-				<p>&copy; 2018 Copyright: <a href="https://www.eni-ecole.fr"> ENI Ecole</a></p>
-			</div>
-		</footer>
-	</body>
-</html>
+	</nav>
+
+	<div class="container center" style="text-align:center">
+		<div class="col-md-12">
+			<h1 class="mt-5">Liste des Tests à Faire</h1>
+		</div>
+
+		<table id="tableauTheme" class="table">		
+			<thead class ="card-header" style="background-color: #e3f2fd;">
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Description</th>
+					<th scope="col">Durée</th>
+					<th scope="col"></th>
+				</tr>		
+			</thead>
+			<tbody>		
+				<c:forEach items="${epreuves}" var="epreuve">
+					<tr>
+						<td>${epreuve.libelle}</td>
+						<td>${epreuve.description}</td>
+						<td>${epreuve.duree}</td>
+						<td>
+							<form>
+								<input type="hidden" value="${epreuve.id}" name="idEpreuve">
+								<button type="button" class="btn btn-warning">Passer le test</button>
+							</form>
+						</td>
+					</tr>		
+				</c:forEach>	
+			</tbody>
+		</table>
+				
+	</div>
+
+<footer class="page-footer font-small">
+	<div class="footer-copyright text-center py-3">&copy; 2018 Copyright:
+		<a href="https://www.eni-ecole.fr"> ENI Ecole</a>
+	</div>
+</footer>
+
+</body>

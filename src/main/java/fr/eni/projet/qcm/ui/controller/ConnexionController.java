@@ -10,7 +10,6 @@ import fr.eni.projet.qcm.bll.factory.ManagerFactory;
 import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bo.Profil;
 import fr.eni.projet.qcm.bo.Utilisateur;
-import fr.eni.tp.web.common.bll.exception.ManagerException;
 import fr.eni.tp.web.common.util.ValidationUtil;
 
 public class ConnexionController extends HttpServlet{
@@ -20,7 +19,9 @@ public class ConnexionController extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = -1286738201204346510L;
-
+	
+	Utilisateur utilisateur = null;
+	
 	public ConnexionController() {
 		utilisateursManager = ManagerFactory.utilisateursManager();
 	}
@@ -28,9 +29,10 @@ public class ConnexionController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
-		String password = req.getParameter("password");		
+		String password = req.getParameter("password");
 		Utilisateur utilisateur = null;
 		Profil profil = null;
+
 		try {
 			ValidationUtil.checkNotNull(email);
 			ValidationUtil.checkNotNull(password);

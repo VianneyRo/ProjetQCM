@@ -18,7 +18,7 @@ import fr.eni.tp.web.common.bll.exception.ManagerException;
 
 public class EpreuvesManagerImpl implements EpreuvesManager {
 	private EpreuveDAO epreuveDao = DAOFactory.epreuveDao();
-	private TestDAO testDao = DAOFactory.TestDao();
+	private TestDAO testDao = DAOFactory.testDao();
 	private static EpreuvesManagerImpl instance;
 
 	public static EpreuvesManagerImpl getInstance() {

@@ -1,0 +1,41 @@
+img {
+	cursor: pointer;
+}
+.center {
+	float: none; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.page-footer {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+}
+
+form {
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.form-inputs {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 500px;
+}
+.form-input {
+	display: flex;
+	flex-flow: row nowrap;
+}
+.form-input label {
+	flex: 0 0 25%;
+}
+.form-input input {
+	flex: 1 0 75%;
+}

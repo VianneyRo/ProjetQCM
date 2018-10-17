@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-
+  
   <welcome-file-list>
     <welcome-file>connexion</welcome-file>
   </welcome-file-list>
@@ -9,10 +9,12 @@
     <servlet-name>connexion</servlet-name>
     <url-pattern>/connexion</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>connexionController</servlet-name>
     <url-pattern>/connexionController</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>adminController</servlet-name>
     <url-pattern>/admin/controller</url-pattern>
@@ -47,19 +49,32 @@
     <servlet-name>candidatAccueil</servlet-name>
     <url-pattern>/candidat/accueil</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>collaborateurAccueil</servlet-name>
     <url-pattern>/collaborateur/accueil</url-pattern>
   </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>themeController</servlet-name>
+    <url-pattern>/collaborateur/gestionThemes</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ajoutThemeController</servlet-name>
+    <url-pattern>/collaborateur/ajoutThemes</url-pattern>
+  </servlet-mapping> 
 
   <servlet>
     <servlet-name>connexion</servlet-name>
     <jsp-file>/WEB-INF/jsp/connexion.jsp</jsp-file>
   </servlet>
+  
   <servlet>
   	<servlet-name>adminAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/admin/accueil.jsp</jsp-file>
   </servlet>
+  
   <servlet>
   	<servlet-name>adminListeUtilisateurs</servlet-name>
     <jsp-file>/WEB-INF/jsp/admin/utilisateurs.jsp</jsp-file>
@@ -68,9 +83,19 @@
   	<servlet-name>candidatAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/candidat/accueil.jsp</jsp-file>
   </servlet>
+  
   <servlet>
   	<servlet-name>collaborateurAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/accueil.jsp</jsp-file>
+  </servlet>
+
+  <servlet>
+  	<servlet-name>gestionThemes</servlet-name>
+    <jsp-file>/WEB-INF/jsp/collaborateur/gestionThemes.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>ajoutThemes</servlet-name>
+    <jsp-file>/WEB-INF/jsp/collaborateur/ajouterTheme.jsp</jsp-file>
   </servlet>
 
   <servlet>
@@ -96,6 +121,16 @@
   <servlet>
     <servlet-name>adminGestionUtilisateursController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.admin.GestionUtilisateursController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>themeController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.ThemeController</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ajoutThemeController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.ajoutThemeController</servlet-class>
   </servlet>
 
 </web-app>
