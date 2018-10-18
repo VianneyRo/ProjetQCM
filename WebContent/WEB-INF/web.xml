@@ -95,21 +95,24 @@
   	<servlet-name>adminAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/admin/accueil.jsp</jsp-file>
   </servlet>
-  
   <servlet>
   	<servlet-name>adminListeUtilisateurs</servlet-name>
     <jsp-file>/WEB-INF/jsp/admin/utilisateurs.jsp</jsp-file>
   </servlet>
+
   <servlet>
   	<servlet-name>candidatAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/candidat/accueil.jsp</jsp-file>
+  </servlet>
+  <servlet>
+  	<servlet-name>candidatPasserEpreuve</servlet-name>
+    <jsp-file>/WEB-INF/jsp/candidat/passerEpreuve.jsp</jsp-file>
   </servlet>
   
   <servlet>
   	<servlet-name>collaborateurAccueil</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/accueil.jsp</jsp-file>
   </servlet>
-
   <servlet>
   	<servlet-name>gestionThemes</servlet-name>
     <jsp-file>/WEB-INF/jsp/collaborateur/gestionThemes.jsp</jsp-file>
@@ -151,8 +154,12 @@
     <servlet-name>adminCollaborateursController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.admin.CollaborateursController</servlet-class>
   </servlet>
-  
-  
+
+  <servlet>
+    <servlet-name>candidatPasserEpreuveController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.candidat.PasserEpreuveController</servlet-class>
+  </servlet>
+
   <servlet>
     <servlet-name>themeController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.ThemeController</servlet-class>
