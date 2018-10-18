@@ -21,5 +21,5 @@ public interface EpreuvesManager {
     void supprimerEpreuve(Epreuve epreuve) throws ManagerException;
     Epreuve modifierEpreuve(Epreuve theme) throws ManagerException;
 
-    List<QuestionTirage> getQuestionsByEpreuve(Epreuve epreuve);
+    List<QuestionTirage> getQuestionsByEpreuveId(Integer epreuveId) throws ManagerException;
 }

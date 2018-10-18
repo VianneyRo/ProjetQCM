@@ -23,7 +23,7 @@
 		</header>
 		<div class="main-container" style="text-align:center">
 			<div class="tiles">
-				<a href="CandidatController" class="tile">
+				<a href="administrateur/candidats" class="tile">
 					<div class="tile-icon">
 						<i class="fas fa-user-graduate"></i>
 					</div>
@@ -31,7 +31,7 @@
 						<h2>Candidats</h2>
 					</div>
 				</a>
-				<a href="/collaborateur/controller" class="tile">
+				<a href="administrateur/collaborateurs" class="tile">
 					<div class="tile-icon">
 						<i class="fas fa-user-tie"></i>
 					</div>

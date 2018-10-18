@@ -58,8 +58,22 @@
       </style>
 
 <div class="container center" style="text-align:center">
-<div class="col-md-12">
-    
+	<div class="col-md-12">
+		<div class="liste-questions-container">
+			<c:forEach items="${questionsTirage}" var="questionTirage">
+				<div class="question-container">
+					<form method="get" action="candidat/passerEpreuve">
+						<input type="number" name="epreuveId" value="${epreuve.id}"/>
+						<input type="number" name="questionId" value="${questionTirage.id}"/>
+						<a class="btn bt-small
+							${questionTirage.marquee ? 'qestion-marquee' : ''}
+							${questionId == currentQuestionTirage.id ? 'question-current' : ''}"
+							type="submit">${question.num}</a>
+					</form>
+				</div>
+			</c:forEach>
+		</div>
+	
         <h1 class="mt-5">Vous avez 1h pour répondre aux questions</h1>
 		<c:forEach items="${questions}" var="question">
 					<a href="#"><span id="lib">${question.enonce}</span></a>
