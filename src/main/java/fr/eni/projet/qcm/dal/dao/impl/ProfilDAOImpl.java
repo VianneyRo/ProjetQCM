@@ -12,7 +12,7 @@ import fr.eni.projet.qcm.dal.exception.DaoException;
 import fr.eni.tp.web.common.dal.factory.MSSQLConnectionFactory;
 
 public class ProfilDAOImpl implements ProfilDAO {
-	private static final String SELECT_BY_UTILISATEUR = "SELECT p.id, p.code, p.libelle FROM profil p, utilisateur u WHERE u.id=? AND u.code_profil=p.code";
+	private static final String SELECT_BY_UTILISATEUR = "SELECT p.code, p.libelle FROM profil p, utilisateur u WHERE u.id=? AND u.code_profil=p.code";
 //	private static final String INSERT = "INSERT INTO profil(code, libelle) VALUES(?, ?)";
 //	private static final String DELETE = "DELETE FROM profil WHERE id=?";
 //	private static final String UPDATE = "UPDATE profil SET code=?, libelle=? WHERE id=?";
@@ -35,7 +35,7 @@ public class ProfilDAOImpl implements ProfilDAO {
 		Profil profil = null;
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(SELECT_BY_UTILISATEUR, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(SELECT_BY_UTILISATEUR);
 			statement.setInt(1, utilisateurId);
 
 			resultSet = statement.executeQuery();
@@ -68,7 +68,6 @@ public class ProfilDAOImpl implements ProfilDAO {
 		Profil profil = null;
 		try {
 			profil = new Profil();
-			profil.setId(resultSet.getInt("id"));
 			profil.setCode(resultSet.getString("code"));
 			profil.setLibelle(resultSet.getString("enonce"));
 		} catch (SQLException e) {
