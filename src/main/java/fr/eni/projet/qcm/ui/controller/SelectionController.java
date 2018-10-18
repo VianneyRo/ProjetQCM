@@ -35,7 +35,7 @@ public class SelectionController extends HttpServlet {
 			// Récupère l'id dans l'url
 			int id = Integer.parseInt(req.getParameter("ID"));
 			Epreuve epreuve = epreuveManager.getEpreuveById(id);
-			List<QuestionTirage> lesQuestions = epreuveManager.getQuestionsByEpreuve(epreuve);
+			List<QuestionTirage> lesQuestions = epreuveManager.getQuestionsByEpreuveId(epreuve.getId());
 			req.setAttribute("questions", lesQuestions);
 			req.getRequestDispatcher("/WEB-INF/jsp/candidat/passageEpreuve.jsp").forward(req, resp);
 		}

@@ -1,4 +1,4 @@
-package fr.eni.projet.qcm.ui.controller;
+package fr.eni.projet.qcm.ui.controller.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,7 +15,6 @@ import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bo.Epreuve;
 import fr.eni.projet.qcm.bo.Utilisateur;
 
-@WebServlet("/CandidatController")
 public class CandidatController extends HttpServlet{
 	/**
 	 * 

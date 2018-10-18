@@ -57,7 +57,7 @@
 						<td>${epreuve.description}</td>
 						<td>${epreuve.duree}</td>
 						<td>
-							<form>
+							<form method="get" action="candidat/passerEpreuveController">
 								<input type="hidden" value="${epreuve.id}" name="idEpreuve">
 								<button type="button" class="btn btn-warning">Passer le test</button>
 							</form>

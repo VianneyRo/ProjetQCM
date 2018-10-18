@@ -1,4 +1,4 @@
-package fr.eni.projet.qcm.ui.controller;
+package fr.eni.projet.qcm.ui.controller.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +14,6 @@ import fr.eni.projet.qcm.bll.manager.UtilisateursManager;
 import fr.eni.projet.qcm.bo.Utilisateur;
 
 
-@WebServlet("/CollaborateurController")
 public class CollaborateurController extends HttpServlet {
 	
 	private static final long serialVersionUID = 3263229810023667329L;

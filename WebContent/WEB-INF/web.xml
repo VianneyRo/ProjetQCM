@@ -44,10 +44,26 @@
     <servlet-name>adminGestionUtilisateursController</servlet-name>
     <url-pattern>/administrateur/gestionUtilisateursController</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminCandidatsController</servlet-name>
+    <url-pattern>/administrateur/candidats</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>adminCollaborateursController</servlet-name>
+    <url-pattern>/administrateur/collaborateurs</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>candidatAccueil</servlet-name>
     <url-pattern>/candidat/accueil</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>candidatPasserEpreuveController</servlet-name>
+    <url-pattern>/candidat/passerEpreuveController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>candidatPasserEpreuve</servlet-name>
+    <url-pattern>/candidat/passerEpreuve</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
@@ -127,6 +143,15 @@
     <servlet-name>adminGestionUtilisateursController</servlet-name>
     <servlet-class>fr.eni.projet.qcm.ui.controller.admin.GestionUtilisateursController</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>adminCandidatsController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.admin.CandidatController</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>adminCollaborateursController</servlet-name>
+    <servlet-class>fr.eni.projet.qcm.ui.controller.admin.CollaborateursController</servlet-class>
+  </servlet>
+  
   
   <servlet>
     <servlet-name>themeController</servlet-name>
