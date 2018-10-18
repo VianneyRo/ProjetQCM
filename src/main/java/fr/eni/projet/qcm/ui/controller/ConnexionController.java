@@ -37,20 +37,12 @@ public class ConnexionController extends HttpServlet{
 			ValidationUtil.checkNotNull(email);
 			ValidationUtil.checkNotNull(password);
 			utilisateur = utilisateursManager.connexion(email, password);
-			if(utilisateur != null) {
-				profil = utilisateursManager.selectProfilByUtilisateurId(utilisateur.getId());
-				req.setAttribute("utilisateurId", utilisateur.getId());
-				if(profil == null) {
-					throw new Exception();
-				}
-			} else {
-				throw new Exception();
-			}
+			profil = utilisateursManager.selectProfilByUtilisateurId(utilisateur.getId());
+			req.setAttribute("userId", utilisateur.getId());
+			req.getRequestDispatcher("/" + profil.getLibelle() + "/controller").forward(req, resp);
 		} catch (Exception e) {
 			req.getRequestDispatcher("/connexion").forward(req, resp);
 		}
-		req.setAttribute("userId", utilisateur.getId());
-		req.getRequestDispatcher("/" + profil.getLibelle() + "/controller").forward(req, resp);
 	}
 
 }
