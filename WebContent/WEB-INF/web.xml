@@ -17,7 +17,7 @@
   
   <servlet-mapping>
     <servlet-name>adminController</servlet-name>
-    <url-pattern>/admin/controller</url-pattern>
+    <url-pattern>/administrateur/controller</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>candidatController</servlet-name>
@@ -30,19 +30,19 @@
 
   <servlet-mapping>
     <servlet-name>adminAccueil</servlet-name>
-    <url-pattern>/admin/accueil</url-pattern>
+    <url-pattern>/administrateur/accueil</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>adminListeUtilisateurs</servlet-name>
-    <url-pattern>/admin/utilisateurs</url-pattern>
+    <url-pattern>/administrateur/utilisateurs</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>adminListeUtilisateursController</servlet-name>
-    <url-pattern>/admin/utilisateursController</url-pattern>
+    <url-pattern>/administrateur/utilisateursController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>adminGestionUtilisateursController</servlet-name>
-    <url-pattern>/admin/gestionUtilisateursController</url-pattern>
+    <url-pattern>/administrateur/gestionUtilisateursController</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
