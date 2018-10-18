@@ -30,7 +30,9 @@ public class ajoutThemeController extends HttpServlet {
 
 		Theme theme = new Theme();
 		String libelleTheme = req.getParameter("libelle");
-		ValidationUtil.checkNotBlank(libelleTheme);
+		if(libelleTheme == null || libelleTheme.length() == 0){
+			
+		}
 		theme.setLibelle(libelleTheme);
 		try {
 			themesManager.ajouterTheme(theme);

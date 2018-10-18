@@ -31,7 +31,7 @@
 						<h2>Candidats</h2>
 					</div>
 				</a>
-				<a href="CollaborateurController" class="tile">
+				<a href="/collaborateur/controller" class="tile">
 					<div class="tile-icon">
 						<i class="fas fa-user-tie"></i>
 					</div>

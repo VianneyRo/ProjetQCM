@@ -20,6 +20,14 @@
 </head>
 <body>
 
+<script type="text/javascript">
+	function activationBouton(){
+		while(document.forme.libelle.value == ""){
+			document.getElementById("boutonValider").setAttribute("disabled", "disabled");	
+		}
+	}
+</script>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#">Collaborateur : Gestion des thèmes</a>
@@ -41,13 +49,16 @@
 		<div class="col-md-12">
 			<h1 class="mt-5">Nouveau thème</h1>
 			<br>
-			<form action="../collaborateur/ajoutThemes" method="post">
+			<form action="../collaborateur/ajoutThemes" method="post" name="form">
 				Libellé : <input type="text" name="libelle" id ="libelle">
-				<input class="btn btn-primary" type="submit" value="Valider">
+				<input id="boutonValider" class="btn btn-primary" type="submit" value="Valider">
 			</form>
 		</div>
 		<br>
 	<a class="btnRetour" href="../collaborateur/gestionThemes"></a>
+	
+	<button type="button" class="btn btn-secondary"><a class="btnRetour" href="../collaborateur/gestionThemes">Retour</a></button>
+	</div>
 
 
 </body>
