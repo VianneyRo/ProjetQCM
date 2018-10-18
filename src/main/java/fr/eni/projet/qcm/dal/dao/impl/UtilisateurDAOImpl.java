@@ -114,7 +114,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 		
 		try {
 			connection = MSSQLConnectionFactory.get();
-			statement = connection.prepareStatement(LOGIN, Statement.RETURN_GENERATED_KEYS);
+			statement = connection.prepareStatement(LOGIN);
 			statement.setString(1, email);
 			statement.setString(2, password);
 
