@@ -39,7 +39,7 @@ public class ConnexionController extends HttpServlet{
 			utilisateur = utilisateursManager.connexion(email, password);
 			profil = utilisateursManager.selectProfilByUtilisateurId(utilisateur.getId());
 			req.setAttribute("userId", utilisateur.getId());
-			req.getRequestDispatcher("/" + profil.getLibelle() + "/controller").forward(req, resp);
+			req.getRequestDispatcher("/" + profil.getLibelle().toLowerCase() + "/controller").forward(req, resp);
 		} catch (Exception e) {
 			req.getRequestDispatcher("/connexion").forward(req, resp);
 		}
