@@ -46,10 +46,8 @@ public class ajoutCollaborateurController extends HttpServlet{
 			List<Utilisateur> collaborateurs= utilisateursManager.getAllCollaborateurs();
 			req.setAttribute("collaborateurs", collaborateurs);
 			req.getRequestDispatcher("/WEB-INF/jsp/admin/gestionCollaborateurs.jsp").forward(req, resp);
-		}
-		
-			catch (Exception e) {
+		} catch (Exception e) {
 				resp.sendError(500);
-			}
 		}
+	}
 }
