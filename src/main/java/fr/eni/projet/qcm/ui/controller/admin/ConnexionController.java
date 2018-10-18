@@ -27,7 +27,7 @@ public class ConnexionController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/admin/accueil").forward(req, resp);
+		req.getRequestDispatcher("/administrateur/accueil").forward(req, resp);
 	}
 
 }
