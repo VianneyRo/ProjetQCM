@@ -69,7 +69,7 @@ public class ProfilDAOImpl implements ProfilDAO {
 		try {
 			profil = new Profil();
 			profil.setCode(resultSet.getString("code"));
-			profil.setLibelle(resultSet.getString("enonce"));
+			profil.setLibelle(resultSet.getString("libelle"));
 		} catch (SQLException e) {
 			throw new DaoException(e.getMessage(), e);
 		}
